@@ -1,0 +1,42 @@
+<div class="body">
+  <div class="login-form">
+    <h2 class="text-center mb-4">Login</h2>
+    @if(error) {
+      <div class="alert alert-light-danger color-danger"><i class="bi bi-exclamation-circle"></i> {{ error }}</div>
+    }
+    <form action="index.html" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="form-group position-relative has-icon-left mb-4">
+        <input autofocus formControlName="email" type="text" class="form-control form-control-xl" [ngClass]="loginForm.get('email')?.touched && loginForm.get('email')?.errors ? 'is-invalid' : ''" placeholder="email">
+        @if (loginForm.get('email')?.touched && loginForm.get('email')?.hasError('required')) {
+         <div class="invalid-feedback">Email is required.</div>
+        } 
+        @if (loginForm.get('email')?.touched && loginForm.get('email')?.hasError('email')) {
+         <div class="invalid-feedback">Email must be an email.</div>
+        } 
+        <div class="form-control-icon">
+          <i class="bi bi-person"></i>
+        </div>
+      </div>
+      <div class="form-group position-relative has-icon-left mb-4">
+        <input formControlName="password" type="password" class="form-control form-control-xl" [ngClass]="loginForm.get('password')?.touched && loginForm.get('password')?.errors ? 'is-invalid' : ''" placeholder="Password">
+        @if (loginForm.get('password')?.touched && loginForm.get('password')?.hasError('required')) {
+          <div class="invalid-feedback">Password is required.</div>
+        }
+        <div class="form-control-icon">
+          <i class="bi bi-shield-lock"></i>
+        </div>
+      </div>
+      <div class="form-check form-check-lg d-flex align-items-end">
+        <input class="form-check-input me-2" type="checkbox" value="" id="flexCheckDefault">
+        <label class="form-check-label text-gray-600" for="flexCheckDefault">
+          Keep me logged in
+        </label>
+      </div>
+      @if (!isLoading) {
+        <button type="submit" class="btn btn-primary btn-block btn-lg shadow-lg mt-5">Log in</button>
+      } @else {
+        <button type="submit" disabled class="btn btn-primary btn-block btn-lg shadow-lg mt-5">Loading...</button>
+      }
+    </form>
+  </div>
+</div>

@@ -1,0 +1,9 @@
+.skeleton-row {
+  height: 20px;
+  background-color: #f0f0f0;
+  margin-bottom: 10px;
+}
+
+.skeleton-row:last-child {
+  margin-bottom: 0;
+}

@@ -1,0 +1,25 @@
+.main-content {
+    margin-left: 300px; /* This should match the width of your sidebar */
+    padding: 20px;
+  }
+
+  /* session-list.component.css */
+.status-pending {
+  color: #ffc107; /* Yellow for pending */
+  font-weight: bold;
+}
+
+.status-in-progress {
+  color: #17a2b8; /* Blue for in progress */
+  font-weight: bold;
+}
+
+.status-completed {
+  color: #28a745; /* Green for completed */
+  font-weight: bold;
+}
+
+.status-cancelled {
+  color: #dc3545; /* Red for cancelled */
+  font-weight: bold;
+}

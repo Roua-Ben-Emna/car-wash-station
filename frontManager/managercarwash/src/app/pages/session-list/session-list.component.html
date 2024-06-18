@@ -1,0 +1,51 @@
+<div class="main-content">
+    <div class="container mt-4">
+      <h2>Sessions List</h2>
+      <div class="table-responsive">
+        <table class="table table-striped table-hover">
+          <thead class="thead-dark">
+            <tr>
+              <th>ID</th>
+              <th>Car</th>
+              <th>Size of Car</th>
+              <th>Wash Type</th>
+              <th>Reservation Time</th>
+              <th>Estimated Wait Time</th>
+              <th>Estimated Wait Duration</th>
+              <th>Status</th>
+              <th>Actions</th>
+              <!-- Add more headers as needed -->
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let session of sessions$ | async">
+              <td>{{ session.id }}</td>
+              <td>{{ session.car.make }} {{ session.car.model }}</td>
+              <td>{{ session.car.size }}</td>
+              <td>{{ session.washType }}</td>
+              <td>{{ session.washTime | date:'medium' }}</td>
+              <td>{{ formatDurationShow(session.estimatedWaitTime) }}</td>
+              <td>{{ formatDurationShow(session.estimatedWashDuration) }}</td>
+              <td [ngClass]="getStatusClass(session.status)">{{ session.status }}</td>
+              <td>
+                <button *ngIf="session.status === 'In Progress'" (click)="updateSessionStatus(session)" class="btn btn-success">
+                    <div class="d-flex align-items-center">
+                      <i class="bi bi-check2 me-1"></i>
+                      <span>Complete</span>
+                    </div>
+                  </button>
+              </td>
+              <!-- Add more columns as needed
+              <td>
+                <button *ngIf="session.status === 'In Progress'" (click)="updateSessionStatus(session)" class="btn btn-success btn-sm">
+                  <i class="fa fa-check"></i> Complete
+                </button>
+              </td>
+              -->
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  
