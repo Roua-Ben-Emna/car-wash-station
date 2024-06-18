@@ -41,11 +41,7 @@ public class User {
     @JsonIgnore
     private Set<Car> cars = new HashSet<>();
 
-    @OneToOne(mappedBy = "manager", cascade = CascadeType.ALL)
-    @JsonIgnore
-    private CarWashStation managedStation;
-
-
-
+    @OneToMany(mappedBy = "manager", cascade = CascadeType.ALL)
+    private Set<CarWashStation> managedStations = new HashSet<>();
 
 }

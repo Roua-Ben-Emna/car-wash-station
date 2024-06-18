@@ -45,6 +45,7 @@ import java.util.*;
 @RequiredArgsConstructor
 @RequestMapping("/api/auth")
 @EnableCaching
+@CrossOrigin(origins = "*")
 public class UserController {
 
     @Autowired

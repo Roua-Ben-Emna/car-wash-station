@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="140f50dd-f6d0-47ff-a56b-2cafc7894b11" name="Changes" comment="authentication , car , station">
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/com/isi/carwash/Controller/CarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/com/isi/carwash/Controller/CarController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/com/isi/carwash/Controller/CarWashSessionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/com/isi/carwash/Controller/CarWashSessionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/com/isi/carwash/Controller/CarWashStationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/com/isi/carwash/Controller/CarWashStationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/com/isi/carwash/Controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/com/isi/carwash/Controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/com/isi/carwash/Entity/Car.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/com/isi/carwash/Entity/Car.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/com/isi/carwash/Entity/CarWashSession.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/com/isi/carwash/Entity/CarWashSession.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/com/isi/carwash/Entity/CarWashStation.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/com/isi/carwash/Entity/CarWashStation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/com/isi/carwash/Entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/com/isi/carwash/Entity/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/com/isi/carwash/Repository/CarRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/com/isi/carwash/Repository/CarRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/com/isi/carwash/Repository/CarWashSessionRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/com/isi/carwash/Repository/CarWashSessionRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/com/isi/carwash/Repository/CarWashStationRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/com/isi/carwash/Repository/CarWashStationRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/com/isi/carwash/Service/car/CarService.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/com/isi/carwash/Service/car/CarService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/com/isi/carwash/Service/car/CarWashStationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/com/isi/carwash/Service/car/CarWashStationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/com/isi/carwash/Service/session/CarWashSessionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/com/isi/carwash/Service/session/CarWashSessionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/resources/application.properties" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Enum" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="downloadAnnotationsAutomatically" value="true" />
+        <option name="downloadDocsAutomatically" value="true" />
+        <option name="downloadSourcesAutomatically" value="true" />
+        <option name="workspaceImportForciblyTurnedOn" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
+  <component name="ProjectId" id="2hMYZMXyr1slzvByy4ha2MUfDz0" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;HTTP Request.generated-requests | #36.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.generated-requests | #37.executor&quot;: &quot;Run&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Spring Boot.BackendCarWashApplication.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/summer_internship/car_wash_station/back/src/main/java/com/isi/carwash/Service/user&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\summer_internship\car_wash_station\back\src\main\java\com\isi\carwash\Service\user" />
+      <recent name="D:\summer_internship\car_wash_station\back\src\main\java\com\isi\carwash\event" />
+      <recent name="D:\summer_internship\car_wash_station\back\src\main\java\com\isi\carwash\Service\" />
+      <recent name="D:\summer_internship\car_wash_station\back\src\main\java\com\isi\carwash\Service" />
+      <recent name="D:\summer_internship\car_wash_station\back\src\main\java\com\isi\carwash\Entity" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.isi.carwash.Entity" />
+      <recent name="com.isi.carwash.Repository" />
+      <recent name="com.isi.carwash.Dto" />
+      <recent name="com.isi.carwash.filters" />
+      <recent name="com.isi.carwash.utils" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Spring Boot.BackendCarWashApplication">
+    <configuration name="generated-requests | #36" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="36" requestIdentifier="#36" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="generated-requests | #37" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="37" requestIdentifier="#37" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="BackendCarWashApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="backend_car_wash" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.isi.carwash.BackendCarWashApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="HTTP Request.generated-requests | #37" />
+        <item itemvalue="HTTP Request.generated-requests | #36" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-21.0.2-openjdk-21.0.2-4caba194b151-4f524021" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="140f50dd-f6d0-47ff-a56b-2cafc7894b11" name="Changes" comment="" />
+      <created>1717405470039</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1717405470039</updated>
+      <workItem from="1717405471213" duration="2147000" />
+      <workItem from="1717408403526" duration="2093000" />
+      <workItem from="1717411226537" duration="19657000" />
+      <workItem from="1717491700312" duration="9469000" />
+      <workItem from="1717504945548" duration="17366000" />
+      <workItem from="1717577630719" duration="2425000" />
+      <workItem from="1717587784697" duration="2290000" />
+      <workItem from="1717590487319" duration="1236000" />
+      <workItem from="1717593450150" duration="1000" />
+      <workItem from="1717599037089" duration="2174000" />
+      <workItem from="1717666983658" duration="11967000" />
+      <workItem from="1717696015126" duration="18629000" />
+      <workItem from="1718007723621" duration="2748000" />
+      <workItem from="1718012676241" duration="6443000" />
+      <workItem from="1718095016686" duration="7925000" />
+      <workItem from="1718180787100" duration="3344000" />
+      <workItem from="1718270347347" duration="9413000" />
+      <workItem from="1718355932615" duration="1259000" />
+      <workItem from="1718362866926" duration="14454000" />
+      <workItem from="1718702619583" duration="1293000" />
+    </task>
+    <task id="LOCAL-00001" summary="authentication , car , station">
+      <option name="closed" value="true" />
+      <created>1717680063091</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1717680063091</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="authentication , car , station" />
+    <option name="LAST_COMMIT_MESSAGE" value="authentication , car , station" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/back/src/main/java/com/isi/carwash/Configuration/SwaggerConfig.java</url>
+          <line>30</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>

@@ -2,6 +2,7 @@ package com.isi.carwash.Service.car;
 
 import com.isi.carwash.Entity.Car;
 import com.isi.carwash.Entity.Car;
+import com.isi.carwash.Entity.CarWashStation;
 import com.isi.carwash.Entity.User;
 import com.isi.carwash.Repository.CarRepository;
 import jakarta.persistence.EntityNotFoundException;
@@ -19,6 +20,9 @@ public class CarService {
     @Autowired
     private CarRepository carRepository;
 
+    public List<Car> getAllCarsByUser(Long userId) {
+        return carRepository.findByUserId(userId);
+    }
     public List<Car> getAllCarsByStation(Long stationId) {
         return carRepository.findAllByStationId(stationId);
     }

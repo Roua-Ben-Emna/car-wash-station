@@ -1,0 +1,9 @@
+{
+  "id": 1,
+  "name": "My Car Wash",
+  "latitude": 47.123,
+  "longitude": -122.456,
+  "maxCapacityCars": 50,
+  "currentCarsInWash": 10,
+  "manager": null
+}

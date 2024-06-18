@@ -1,11 +1,13 @@
 package com.isi.carwash.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.isi.carwash.enums.WashType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.Duration;
 import java.util.Date;
 
 @Data
@@ -18,11 +20,14 @@ public class CarWashSession {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "station_id")
-    private Long stationId;
+    @ManyToOne()
+    @JoinColumn(name = "station_id")
+    private CarWashStation carWashStation;
 
-    @Column(name = "car_id")
-    private Long carId;
+    @ManyToOne()
+    @JoinColumn(name = "car_id")
+    private Car car;
+
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "wash_time")
@@ -30,20 +35,20 @@ public class CarWashSession {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "wash_type")
-    private WashType washType; // Use the WashType enum instead of String
+    private WashType washType;
 
     @Column(name = "actual_wait_time")
-    private int actualWaitTime; // Real wait time
+    private Duration actualWaitTime;
 
     @Column(name = "actual_wash_duration")
-    private int actualWashDuration; // Real wash duration
+    private Duration actualWashDuration;
 
     @Column(name = "estimated_wait_time")
-    private int estimatedWaitTime; // Estimated wait time
+    private Duration estimatedWaitTime;
 
     @Column(name = "estimated_wash_duration")
-    private int estimatedWashDuration; // Estimated wash duration
+    private Duration estimatedWashDuration;
 
     @Column(name = "status")
-    private String status; // Status of the car wash session (e.g., in progress, completed, cancelled)
+    private String status;
 }

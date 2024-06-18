@@ -9,6 +9,8 @@ import java.util.List;
 
 @Repository
 public interface CarRepository extends JpaRepository<Car, Long> {
-    @Query("SELECT c FROM Car c JOIN CarWashSession s ON c.id = s.carId WHERE s.stationId = :stationId")
-    List<Car> findAllByStationId(Long stationId);
+    @Query("SELECT c FROM Car c JOIN CarWashSession s ON c.id = s.car.id WHERE s.carWashStation.id = :station_id")
+    List<Car> findAllByStationId(Long station_id);
+    List<Car> findByUserId(Long userId);
+
 }

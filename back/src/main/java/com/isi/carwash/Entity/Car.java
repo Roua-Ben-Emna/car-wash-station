@@ -8,7 +8,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Data  // Includes getters, setters, equals, hashCode, toString
 @Entity
@@ -26,8 +28,8 @@ public class Car {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
-    @OneToMany(mappedBy = "carId", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "car", cascade = CascadeType.ALL)
     @JsonIgnore
-    private List<CarWashSession> washSessions;
+    private Set<CarWashSession> Sessions = new HashSet<>();
 
 }

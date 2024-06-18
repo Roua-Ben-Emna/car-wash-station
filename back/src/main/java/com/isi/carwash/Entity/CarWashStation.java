@@ -1,15 +1,18 @@
 package com.isi.carwash.Entity;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
+import java.time.Duration;
+import java.util.HashSet;
+import java.util.Set;
 
 
-@Data  // Includes getters, setters, equals, hashCode, toString
+@Data
 @Entity
-@NoArgsConstructor  // Empty constructor
+@NoArgsConstructor
 @AllArgsConstructor
 public class CarWashStation {
     @Id
@@ -18,6 +21,14 @@ public class CarWashStation {
     private String name;
     private double latitude;
     private double longitude;
+    private String location;
+
+    private Duration  EstimateTypeExterior;
+    private Duration  EstimateTypeInterior;
+    private Duration  EstimateTypeExteriorInterior;
+    private Duration  EstimateCarSmall;
+    private Duration  EstimateCarMedium;
+    private Duration  EstimateCarLarge;
 
     @Column(name = "max_capacity_cars")
     private int maxCapacityCars;
@@ -25,8 +36,11 @@ public class CarWashStation {
     @Column(name = "current_cars_in_wash")
     private int currentCarsInWash;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "user_id")
     private User manager;
-    // Constructor, getters and setters
+
+    @OneToMany(mappedBy = "carWashStation", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private Set<CarWashSession> Sessions = new HashSet<>();
 }

@@ -1,5 +1,4 @@
 package com.isi.carwash.Controller;
-
 import com.isi.carwash.Entity.CarWashStation;
 import com.isi.carwash.Entity.User;
 import com.isi.carwash.Repository.UserRepository;
@@ -7,14 +6,17 @@ import com.isi.carwash.Service.car.CarWashStationService;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
+import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 @RestController
 @RequestMapping("/api/auth/carwash-stations")
+@CrossOrigin(origins = "*")
 public class CarWashStationController {
 
     @Autowired
@@ -26,6 +28,7 @@ public class CarWashStationController {
         List<CarWashStation> carWashStations = carWashStationService.getAllCarWashStations();
         return new ResponseEntity<>(carWashStations, HttpStatus.OK);
     }
+
 
     @GetMapping("/{id}")
     public ResponseEntity<CarWashStation> getCarWashStationById(@PathVariable Long id) {
@@ -49,6 +52,7 @@ public class CarWashStationController {
     @PutMapping("/{id}")
     public ResponseEntity<CarWashStation> updateCarWashStation(@PathVariable Long id, @RequestBody CarWashStation carWashStation) {
         CarWashStation updatedCarWashStation = carWashStationService.updateCarWashStation(id, carWashStation);
+        notifyClients();
         return new ResponseEntity<>(updatedCarWashStation, HttpStatus.OK);
     }
 
@@ -58,9 +62,49 @@ public class CarWashStationController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-//    @GetMapping("/nearby")
-//    public ResponseEntity<List<CarWashStation>> getCarWashStationsByProximateLocation(@RequestParam double latitude, @RequestParam double longitude, @RequestParam double distance) {
-//        List<CarWashStation> carWashStations = carWashStationService.getCarWashStationByProximateLocation(latitude, longitude, distance);
-//        return new ResponseEntity<>(carWashStations, HttpStatus.OK);
-//    }
+    @GetMapping("/search")
+    public ResponseEntity<List<CarWashStation>> searchCarWashStationsByName(@RequestParam String name) {
+        List<CarWashStation> carWashStations = carWashStationService.searchCarWashStationsByName(name);
+        return new ResponseEntity<>(carWashStations, HttpStatus.OK);
+    }
+
+    @GetMapping("/nearby")
+    public ResponseEntity<List<CarWashStation>> getCarWashStationsByProximateLocation(@RequestParam double latitude, @RequestParam double longitude) {
+        List<CarWashStation> carWashStations = carWashStationService.getCarWashStationsByProximateLocation(latitude, longitude);
+        return new ResponseEntity<>(carWashStations, HttpStatus.OK);
+    }
+
+// partie le SSE information en temps réel :
+private final List<SseEmitter> emitters = new CopyOnWriteArrayList<>();
+
+    // SSE endpoint
+    @GetMapping("/sse")
+    public SseEmitter getCarWashStationsSSE() {
+        SseEmitter emitter = new SseEmitter();
+        emitters.add(emitter);
+        emitter.onCompletion(() -> emitters.remove(emitter));
+        emitter.onTimeout(() -> emitters.remove(emitter));
+        emitter.onError((ex) -> emitters.remove(emitter));
+
+        sendCarWashStations(emitter);
+
+        return emitter;
+    }
+
+    private void sendCarWashStations(SseEmitter emitter) {
+        try {
+            List<CarWashStation> carWashStations = carWashStationService.getAllCarWashStations();
+            emitter.send(SseEmitter.event()
+                    .name("carwash-stations")
+                    .data(carWashStations, MediaType.APPLICATION_JSON));
+        } catch (Exception e) {
+            emitter.completeWithError(e);
+        }
+    }
+
+    public void notifyClients() {
+        for (SseEmitter emitter : emitters) {
+            sendCarWashStations(emitter);
+        }
+    }
 }

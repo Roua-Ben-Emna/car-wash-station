@@ -15,4 +15,7 @@ public interface CarWashStationRepository extends JpaRepository<CarWashStation, 
 //    List<CarWashStation> findByProximateLocation(@Param("latitude") double latitude,
 //                                                 @Param("longitude") double longitude,
 //                                                 @Param("distance") double distance);
+List<CarWashStation> findByNameContainingIgnoreCase(String name);
+
+
 }
