@@ -4,22 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="140f50dd-f6d0-47ff-a56b-2cafc7894b11" name="Changes" comment="authentication , car , station">
-      <change beforePath="$PROJECT_DIR$/back/src/main/java/com/isi/carwash/Controller/CarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/com/isi/carwash/Controller/CarController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/java/com/isi/carwash/Controller/CarWashSessionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/com/isi/carwash/Controller/CarWashSessionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/java/com/isi/carwash/Controller/CarWashStationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/com/isi/carwash/Controller/CarWashStationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/java/com/isi/carwash/Controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/com/isi/carwash/Controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/java/com/isi/carwash/Entity/Car.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/com/isi/carwash/Entity/Car.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/java/com/isi/carwash/Entity/CarWashSession.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/com/isi/carwash/Entity/CarWashSession.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/java/com/isi/carwash/Entity/CarWashStation.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/com/isi/carwash/Entity/CarWashStation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/java/com/isi/carwash/Entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/com/isi/carwash/Entity/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/java/com/isi/carwash/Repository/CarRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/com/isi/carwash/Repository/CarRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/java/com/isi/carwash/Repository/CarWashSessionRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/com/isi/carwash/Repository/CarWashSessionRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/java/com/isi/carwash/Repository/CarWashStationRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/com/isi/carwash/Repository/CarWashStationRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/java/com/isi/carwash/Service/car/CarService.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/com/isi/carwash/Service/car/CarService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/java/com/isi/carwash/Service/car/CarWashStationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/com/isi/carwash/Service/car/CarWashStationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/java/com/isi/carwash/Service/session/CarWashSessionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/com/isi/carwash/Service/session/CarWashSessionService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/resources/application.properties" afterDir="false" />
+    <list default="true" id="140f50dd-f6d0-47ff-a56b-2cafc7894b11" name="Changes" comment="update  car , station , add session">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontManager/managercarwash/src/app/pages/car-wash-station/car-wash-station.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontManager/managercarwash/src/app/pages/car-wash-station/car-wash-station.component.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -153,7 +140,7 @@
       <workItem from="1718270347347" duration="9413000" />
       <workItem from="1718355932615" duration="1259000" />
       <workItem from="1718362866926" duration="14454000" />
-      <workItem from="1718702619583" duration="1293000" />
+      <workItem from="1718702619583" duration="2815000" />
     </task>
     <task id="LOCAL-00001" summary="authentication , car , station">
       <option name="closed" value="true" />
@@ -163,7 +150,31 @@
       <option name="project" value="LOCAL" />
       <updated>1717680063091</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="update  car , station , add session">
+      <option name="closed" value="true" />
+      <created>1718706112285</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1718706112285</updated>
+    </task>
+    <task id="LOCAL-00003" summary="update  car , station , add session">
+      <option name="closed" value="true" />
+      <created>1718706128744</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1718706128744</updated>
+    </task>
+    <task id="LOCAL-00004" summary="update  car , station , add session">
+      <option name="closed" value="true" />
+      <created>1718706148084</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1718706148084</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -182,7 +193,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="authentication , car , station" />
-    <option name="LAST_COMMIT_MESSAGE" value="authentication , car , station" />
+    <MESSAGE value="update  car , station , add session" />
+    <option name="LAST_COMMIT_MESSAGE" value="update  car , station , add session" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

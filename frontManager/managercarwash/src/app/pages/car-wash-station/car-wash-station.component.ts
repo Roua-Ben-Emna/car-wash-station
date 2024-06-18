@@ -16,6 +16,7 @@ import { Router } from '@angular/router';
   styleUrl: './car-wash-station.component.css'
 })
 export class CarWashStationComponent {
+  
   stations: any[] = [];
   showModal = false;
   isEditMode = false;
@@ -83,11 +84,31 @@ formatDurationShow(duration: number): string {
     this.stationForm.reset();
     this.showModal = true;
     this.cdr.detectChanges();  // Ensure DOM is updated
-    this.initMap();
-    setTimeout(() => {
-      this.resetMap();
-      this.map.invalidateSize();
-    }, 0);
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        const lat = position.coords.latitude;
+        const lng = position.coords.longitude;
+        this.initMap(lat, lng);
+        
+        if (this.map) {
+          const customIcon = L.icon({
+            iconUrl: '../assets/images/marker2.png', // Replace with the path to your custom icon
+            iconSize: [38, 38], // Size of the icon
+            iconAnchor: [19, 38], // Point of the icon which will correspond to marker's location
+            popupAnchor: [0, -38] // Point from which the popup should open relative to the iconAnchor
+          });
+          this.marker = L.marker([lat, lng], { icon: customIcon }).addTo(this.map);
+          this.map.setView([lat, lng], 13);
+        }
+      },
+      (error) => {
+        console.error('Error getting current location:', error);
+        // Default to a fixed location if geolocation fails
+        const defaultLat = 51.505;
+      const defaultLng = -0.09;
+      this.initMap(defaultLat, defaultLng);
+      }
+    );
   }
 
   openEditModal(station: any): void {
@@ -110,11 +131,17 @@ formatDurationShow(duration: number): string {
     });
     this.showModal = true;
     this.cdr.detectChanges();  // Ensure DOM is updated
-    this.initMap();
-    setTimeout(() => {
-      this.setMapMarker(station.latitude, station.longitude);
-      this.map.invalidateSize();
-    }, 0);
+    this.initMap(station.latitude, station.longitude);
+    if (this.map) {
+      const customIcon = L.icon({
+        iconUrl: '../assets/images/marker2.png', // Replace with the path to your custom icon
+        iconSize: [38, 38], // Size of the icon
+        iconAnchor: [19, 38], // Point of the icon which will correspond to marker's location
+        popupAnchor: [0, -38] // Point from which the popup should open relative to the iconAnchor
+      });
+      this.marker = L.marker([station.latitude, station.longitude], { icon: customIcon }).addTo(this.map);
+      this.map.setView([station.latitude, station.longitude], 13);
+    }
   }
 
   closeModal(): void {
@@ -211,49 +238,24 @@ formatDurationShow(duration: number): string {
   }
 
   }
-  private initMap(): void {
-    if (this.map) {
-      this.map.remove();  // Remove the existing map
-    }
-    
-  // Use the browser's Geolocation API to get the current position
-  navigator.geolocation.getCurrentPosition((position) => {
-    const lat = position.coords.latitude;
-    const lng = position.coords.longitude;
-    this.stationForm.patchValue({ latitude: lat, longitude: lng });
-
-    this.map = L.map('map').setView([lat, lng], 13); // Center the map on the current location
-
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '© OpenStreetMap contributors'
-    }).addTo(this.map);
-
-    this.map.on('click', (e: any) => {
-      const lat = e.latlng.lat;
-      const lng = e.latlng.lng;
-      this.stationForm.patchValue({ latitude: lat, longitude: lng });
-      this.setMapMarker(lat, lng);
-    });
-
-    this.setMapMarker(lat, lng);
-  }, () => {
-    // If geolocation fails, default to a fixed location
-    const lat = 51.505;
-    const lng = -0.09;
+  private initMap(lat: number, lng: number): void {
+    // Initialize the map with the provided coordinates or a default location
     this.map = L.map('map').setView([lat, lng], 13);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '© OpenStreetMap contributors'
     }).addTo(this.map);
 
+    // Set up click event listener for adding markers
     this.map.on('click', (e: any) => {
       const lat = e.latlng.lat;
       const lng = e.latlng.lng;
       this.stationForm.patchValue({ latitude: lat, longitude: lng });
       this.setMapMarker(lat, lng);
     });
-  });
-  }
+
+
+}
 
   private setMapMarker(lat: number, lng: number): void {
     const customIcon = L.icon({
