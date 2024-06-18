@@ -1,0 +1,61 @@
+<div class="container">
+    <h2 class="form-title">Create Car Wash Session</h2>
+    <form [formGroup]="carWashSessionForm" (ngSubmit)="onSubmit()"  class="form-container">
+      <div class="form-group">
+        <label for="stationId">Car Wash Station:</label>
+        <select
+          id="stationId"
+          formControlName="carWashStationId"
+          (ngModelChange)="onStationChange()">
+        <option *ngFor="let station of carWashStations" [value]="station.id" [selected]="station.id === defaultStationId">{{ station.name }}</option>
+        </select>
+        <div *ngIf="carWashSessionForm.get('carWashStationId')?.invalid && carWashSessionForm.get('carWashStationId')?.touched" class="text-danger">
+          Station is required.
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="carId">Car:</label>
+        <select
+          id="carId"
+        formControlName="carId"
+        >
+          <option *ngFor="let car of cars" [value]="car.id"  >{{ car.model }}</option>
+        </select>
+        <div *ngIf="carWashSessionForm.get('carId')?.invalid && carWashSessionForm.get('carId')?.touched" class="text-danger">
+          Car is required.
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="washType">Wash Type:</label>
+        <select
+          id="washType"
+          formControlName="washType"
+        >
+          <option *ngIf="showExteriorOption" value="EXTERIOR" >Exterior</option>
+          <option *ngIf="showInteriorOption" value="INTERIOR">Interior</option>
+          <option *ngIf="showExteriorInteriorOption" value="EXTERIOR_INTERIOR">Exterior & Interior</option>
+        </select>
+        <div *ngIf="carWashSessionForm.get('washType')?.invalid && carWashSessionForm.get('washType')?.touched" class="text-danger">
+          Wash Type is required.
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="washTime">Wash Time:</label>
+        <input
+          type="datetime-local"
+          id="washTime"
+          formControlName="washTime"
+          class="form-control"
+        />
+        <div *ngIf="carWashSessionForm.get('washTime')?.invalid && carWashSessionForm.get('washTime')?.touched" class="text-danger">
+          Wash Time is required.
+        </div>
+      </div>
+  
+      <button type="submit" class="btn btn-primary" [disabled]="carWashSessionForm.invalid">Create Session</button>
+    </form>
+  </div>
+  

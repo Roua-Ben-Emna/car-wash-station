@@ -1,0 +1,4 @@
+.hide-header-footer app-header,
+.hide-header-footer app-footer {
+    display: none;
+}

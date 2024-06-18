@@ -1,0 +1,78 @@
+
+  
+<section class="content-section">
+  <div class="section-header">
+      <h2 class="section-title text-center wow fadeInDown">Nearby Car Wash Stations</h2>
+      <p class="text-center wow fadeInDown">Trouver les stations de lavage proximité de vous<br> </p>
+  </div>
+ 
+  <div class="map-container">
+    <div id="map"></div>
+  </div>
+
+
+
+<section id="pricing">
+  <div class="container">
+      <div class="section-header">
+          <h2 class="section-title text-center wow fadeInDown">Car Wash Stations</h2>
+      </div>
+      <div class="colomn"> 
+      <div  *ngFor="let station of carWashStations">
+          <div class="col-md-4">     
+                  <ul class="price" style="width:100%">
+                  <li class="header">{{ station.name }}</li>
+                  <li class="grey">{{ station.location }}</li>
+                  <li class="grey">Places:  {{station.currentCarsInWash}}  / {{ station.maxCapacityCars }}</li>
+                  <li class="grey" *ngIf="station.estimateTypeExterior">Services: <p class="card-text">Exterior</p>
+                      <p class="card-text" *ngIf="station.estimateTypeInterior">Interior</p>
+                      <p class="card-text" *ngIf="station.estimateTypeExteriorInterior">Interior & Exterior</p>
+                  </li>
+                  <li class="grey">       
+                    <button class="btn btn-primary btn-add-car" style="border-radius: 5px;" (click)="reservation(station)">
+                    To book
+                    </button>
+              </li>
+           
+
+                  </ul>
+          </div>        
+      </div>        
+      </div>
+  </div>
+</section>
+
+
+
+
+   <!--
+<div class="map-container">
+  <google-map height="400px" width="750px" [center]="center" [zoom]="zoom" (mapClick)="addMarker($event)">
+    <map-marker *ngIf="markerPosition" [position]="markerPosition" [options]="markerOptions"></map-marker>
+    <map-marker *ngFor="let station of carWashStations" [position]="{lat: station.latitude, lng: station.longitude}" [title]="station.name" (mapClick)="showStationInfo(station)"></map-marker>
+    <map-info-window *ngIf="selectedStationInfo" [options]="infoWindowOptions">
+      <div>
+        <h3>{{ selectedStationInfo.name }}</h3>
+        <p>{{ selectedStationInfo.address }}</p>
+        <p>Services: {{ selectedStationInfo.services }}</p>
+      </div>
+    </map-info-window>
+  </google-map>
+</div>
+
+
+<div class="station-list">
+    <div class="card-container">
+    <div class="card" *ngFor="let station of carWashStations">
+      <div class="card-body">
+        <h3 class="card-title">{{ station.name }}</h3>
+        <p class="card-text">{{ station.location }}</p>
+        <p class="card-text">Places disponibles: {{ station.maxCapacityCars }} - {{station.currentCarsInWash}}</p>
+        <p class="card-text" *ngIf="station.estimateTypeExterior">Services: EXTERIOR</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+</section>
+-->

@@ -1,0 +1,62 @@
+<div class="background-container">
+  <div class="authentication-container">
+    <h2>{{ isLogin ? 'Login' : 'Signup' }}</h2>
+    
+    <div *ngIf="isLogin; else signupForm">
+      <!-- Login form -->
+      <form [formGroup]="loginForm" (ngSubmit)="login()">
+        <!-- Login form fields -->
+        <input placeholder="Email address" name="email_login" id="email_login" formControlName="email" required>
+        <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched" class="text-danger">
+          <div *ngIf="loginForm.get('email')?.errors?.['required']">Email is required.</div>
+          <div *ngIf="loginForm.get('email')?.errors?.['email']">Invalid email format.</div>
+        </div>
+        <input matInput placeholder="Password" type="password" name="password_login" id="'password_login" formControlName="password" required>  
+        <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" class="text-danger">
+          <div *ngIf="loginForm.get('password')?.errors?.['required']">Password is required.</div>
+        </div>
+        <button type="submit"  (click)="login()">Login</button>
+   
+      </form>
+      <!-- Forgot Password -->
+      <a routerLink="/reset-password" >Forgot Password?</a>
+    </div>
+    
+    <ng-template #signupForm>
+      <!-- Signup form -->
+        <form [formGroup]="registerForm" (ngSubmit)="register()">
+          <!-- Signup form fields -->
+          <input type="text" formControlName="firstname" placeholder="First Name" required>
+          <div *ngIf="registerForm.get('firstname')?.invalid && registerForm.get('firstname')?.touched" class="text-danger">
+            <div *ngIf="registerForm.get('firstname')?.errors?.['required']">First Name is required.</div>
+          </div>
+          <input type="text" formControlName="lastname" placeholder="Last Name" required>
+          <div *ngIf="registerForm.get('lastname')?.invalid && registerForm.get('lastname')?.touched" class="text-danger">
+            <div *ngIf="registerForm.get('lastname')?.errors?.['required']">Last Name is required.</div>
+          </div>
+          <input type="email" formControlName="email" placeholder="Email" required>
+          <div *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched" class="text-danger">
+            <div *ngIf="registerForm.get('email')?.errors?.['required']">Email is required.</div>
+            <div *ngIf="registerForm.get('email')?.errors?.['email']">Invalid email format.</div>
+          </div>
+          <input type="text" formControlName="telephone" placeholder="Telephone" required>
+          <div *ngIf="registerForm.get('telephone')?.invalid && registerForm.get('telephone')?.touched" class="text-danger">
+            <div *ngIf="registerForm.get('telephone')?.errors?.['required']">Telephone is required.</div>
+          </div>
+          <input type="password" formControlName="password" placeholder="Password" required>
+          <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched" class="text-danger">
+            <div *ngIf="registerForm.get('password')?.errors?.['required']">Password is required.</div>
+          </div>
+          <input type="password" formControlName="confirmPassword" placeholder="Confirm Password" required>
+          <div *ngIf="registerForm.get('confirmPassword')?.invalid && registerForm.get('confirmPassword')?.touched" class="text-danger">
+            <div *ngIf="registerForm.get('confirmPassword')?.errors?.['required']">Confirm Password is required.</div>
+            <div *ngIf="registerForm.get('confirmPassword')?.errors?.['confirmationvalidator']">Passwords do not match.</div>
+          </div>
+          <button type="submit" (click) = "register()">Signup</button>
+        
+        </form>
+    </ng-template>
+    
+    <button class="switch-button" (click)="toggleForm()">Switch to {{ isLogin ? 'Signup' : 'Login' }}</button>
+  </div>
+</div>

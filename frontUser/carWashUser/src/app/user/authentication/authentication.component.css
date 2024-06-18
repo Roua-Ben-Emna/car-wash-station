@@ -1,0 +1,84 @@
+.background-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: rgba(97, 150, 220, 0.9);
+  background-size: cover;
+}
+
+.authentication-container {
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 15px;
+  padding: 40px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  width: 400px;
+  max-width: 90%;
+  transition: all 0.3s ease;
+}
+
+.authentication-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.authentication-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.authentication-container input {
+  margin-bottom: 10px;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+}
+
+.authentication-container input:focus {
+  border-color: #007bff;
+}
+
+
+.authentication-container button {
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.authentication-container button:hover {
+  background-color: #0056b3;
+}
+
+.switch-button {
+  background: none;
+  border: none;
+  color: #007bff;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 20px;
+}
+
+.switch-button:hover {
+  text-decoration: underline;
+}
+
+.authentication-container a {
+  text-align: center;
+  display: block;
+  margin-top: 15px;
+  text-decoration: none;
+  color: #007bff;
+}
+
+.authentication-container a:hover {
+  text-decoration: underline;
+}
+
