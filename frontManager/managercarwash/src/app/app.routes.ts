@@ -24,10 +24,7 @@ export const routes: Routes = [
     path: 'login',
     component: AuthenticationComponent
   },
-  {
-    path: 'edit-account',
-    component: EditAccountComponent
-  },
+
   {
     path:'reset-password',
     component:ResetPasswordComponent
@@ -40,10 +37,7 @@ export const routes: Routes = [
     path:'verification-email',
     component:VerificationEmailComponent
   },
-  {
-    path : 'sessions',
-    component :SessionListComponent
-  },
+
   {
     path: '',
     component: MainComponent,
@@ -59,8 +53,15 @@ export const routes: Routes = [
       {
         path : 'station',
         component :CarWashStationComponent
-      }
-
+      },
+      {
+        path: 'edit-account',
+        component: EditAccountComponent
+      },
+      {
+        path : 'sessions',
+        component :SessionListComponent
+      },
       
     ]
   },

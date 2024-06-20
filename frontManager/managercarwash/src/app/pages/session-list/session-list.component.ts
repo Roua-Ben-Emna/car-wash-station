@@ -6,12 +6,14 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { switchMap } from 'rxjs/operators';
+import { SidebarComponent } from '../../shared/layout/sidebar/sidebar.component';
+import { FooterComponent } from '../../shared/layout/footer/footer.component';
 
 @Component({
   selector: 'app-session-list',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule,
-    HttpClientModule],
+    HttpClientModule, SidebarComponent, FooterComponent],
   templateUrl: './session-list.component.html',
   styleUrl: './session-list.component.css'
 })

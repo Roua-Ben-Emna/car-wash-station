@@ -1,12 +1,12 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
-import { SseService } from '../../services/sse.service';
-import { CarWashStation } from '../../models/car-wash-station.model';
+
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CarWashStationService } from '../../services/station-service/station.service';
 import { HttpClientModule } from '@angular/common/http';
 import * as L from 'leaflet';
 import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-car-wash-station',
   standalone: true,
@@ -69,6 +69,7 @@ formatDurationShow(duration: number): string {
       location: ['', Validators.required],
       maxCapacityCars: ['', Validators.required],
       currentCarsInWash: ['', Validators.required],
+      parallelCarWashing: ['', Validators.required],
       estimateTypeExterior: [''],
       estimateTypeInterior: [''],
       estimateTypeExteriorInterior: [''],
@@ -77,6 +78,7 @@ formatDurationShow(duration: number): string {
       estimateCarLarge: ['',Validators.required],
       manager:  { id: 1 }
     });
+    
   }
 
   openAddModal(): void {
