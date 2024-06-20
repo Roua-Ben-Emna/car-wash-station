@@ -22,19 +22,21 @@ public class CarWashStation {
     private double latitude;
     private double longitude;
     private String location;
-
-    private Duration  EstimateTypeExterior;
-    private Duration  EstimateTypeInterior;
-    private Duration  EstimateTypeExteriorInterior;
-    private Duration  EstimateCarSmall;
-    private Duration  EstimateCarMedium;
-    private Duration  EstimateCarLarge;
+    private long  EstimateTypeExterior;
+    private long  EstimateTypeInterior;
+    private long  EstimateTypeExteriorInterior;
+    private long  EstimateCarSmall;
+    private long  EstimateCarMedium;
+    private long  EstimateCarLarge;
 
     @Column(name = "max_capacity_cars")
     private int maxCapacityCars;
 
     @Column(name = "current_cars_in_wash")
     private int currentCarsInWash;
+
+    @Column(name = "parallel_car_washing")
+    private int parallelCarWashing;
 
     @ManyToOne
     @JoinColumn(name = "user_id")

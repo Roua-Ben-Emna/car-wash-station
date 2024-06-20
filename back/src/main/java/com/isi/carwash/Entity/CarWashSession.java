@@ -38,17 +38,18 @@ public class CarWashSession {
     private WashType washType;
 
     @Column(name = "actual_wait_time")
-    private Duration actualWaitTime;
+    private long actualWaitTime;
 
     @Column(name = "actual_wash_duration")
-    private Duration actualWashDuration;
+    private long actualWashDuration;
 
     @Column(name = "estimated_wait_time")
-    private Duration estimatedWaitTime;
+    private long estimatedWaitTime;
 
     @Column(name = "estimated_wash_duration")
-    private Duration estimatedWashDuration;
+    private long estimatedWashDuration;
 
     @Column(name = "status")
     private String status;
+    private boolean notified;
 }

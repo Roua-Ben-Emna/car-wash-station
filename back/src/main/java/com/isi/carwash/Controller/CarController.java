@@ -52,7 +52,11 @@ public class CarController {
 
     }
 
-
+    @GetMapping("/search")
+    public ResponseEntity<List<Car>> searchCarsByMakeAndModel(@RequestParam String make, @RequestParam String model) {
+        List<Car> cars = carService.searchCarsByMakeAndModel(make, model);
+        return new ResponseEntity<>(cars, HttpStatus.OK);
+    }
     @PutMapping("/{id}")
     public Car updateCar(@PathVariable Long id, @RequestBody Car updatedCar) {
         return carService.updateCar(id, updatedCar);
@@ -67,4 +71,5 @@ public class CarController {
     public List<Car> getAllCarsByStation(@PathVariable Long stationId) {
         return carService.getAllCarsByStation(stationId);
     }
+
 }

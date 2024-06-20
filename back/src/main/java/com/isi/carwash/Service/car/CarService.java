@@ -38,7 +38,9 @@ public class CarService {
             throw new EntityNotFoundException("Car not found !");
         }
     }
-
+    public List<Car> searchCarsByMakeAndModel(String make, String model) {
+        return carRepository.findByMakeAndModel(make, model);
+    }
     public Car updateCar(Long id, Car updatedcar){
         Optional<Car> optionalCar = carRepository.findById(id);
         if(optionalCar.isPresent()) {

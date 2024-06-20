@@ -97,4 +97,35 @@ public class RegistrationCompleteEventListener implements ApplicationListener<Re
         mailSender.send(message);
     }
 
+
+    public void sendSessionReminderEmail(User user, String sessionEndTime) throws MessagingException, UnsupportedEncodingException {
+        String subject = "Car Wash Session Reminder";
+        String senderName = "Car Wash Service";
+        String mailContent = "<div style=\"font-family: Arial, sans-serif; max-width: 600px; margin: auto; padding: 20px; border: 1px solid #ddd; border-radius: 10px;\">" +
+                "<div style=\"text-align: center; padding-bottom: 20px;\">" +
+                "<h1 style=\"color: #333;\">Car Wash Session Reminder</h1>" +
+                "<img src=\"https://example.com/logo.png\" alt=\"Car Wash Service Logo\" style=\"width: 100px; height: auto;\">" +
+                "</div>" +
+                "<p style=\"color: #555;\">Hi " + user.getFirstname() + " " + user.getLastname() + ",</p>" +
+                "<p style=\"color: #555;\">This is a reminder that your car wash session will end at " + sessionEndTime + ".</p>" +
+                "<p style=\"color: #555;\">Please ensure that you are available to collect your car on time.</p>" +
+                "<p style=\"color: #555;\">Thank you,<br>The Car Wash Service Team</p>" +
+                "<hr style=\"border-top: 1px solid #eee;\">" +
+                "<p style=\"color: #999; font-size: 12px; text-align: center;\">If you have any questions, feel free to contact us at <a href=\"mailto:support@carwashservice.com\">support@carwashservice.com</a>.</p>" +
+                "</div>";
+
+        sendEmail(user, subject, mailContent, senderName);
+    }
+
+
+    public void sendEmail(User user, String subject, String mailContent, String senderName) throws MessagingException, UnsupportedEncodingException {
+        MimeMessage message = mailSender.createMimeMessage();
+        MimeMessageHelper messageHelper = new MimeMessageHelper(message);
+        messageHelper.setFrom("rouabenemna@gmail.com", senderName);
+        messageHelper.setTo(user.getEmail());
+        messageHelper.setSubject(subject);
+        messageHelper.setText(mailContent, true);
+        mailSender.send(message);
+    }
+
 }

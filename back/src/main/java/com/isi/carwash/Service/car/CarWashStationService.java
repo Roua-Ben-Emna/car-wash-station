@@ -42,6 +42,7 @@ public class CarWashStationService {
         existingCarWashStation.setEstimateTypeExterior(carWashStation.getEstimateTypeExterior());
         existingCarWashStation.setEstimateTypeInterior(carWashStation.getEstimateTypeInterior());
         existingCarWashStation.setEstimateTypeExteriorInterior(carWashStation.getEstimateTypeExteriorInterior());
+        existingCarWashStation.setParallelCarWashing(carWashStation.getParallelCarWashing());
         return carWashStationRepository.save(existingCarWashStation);
     }
     public List<CarWashStation> searchCarWashStationsByName(String name) {
@@ -66,7 +67,7 @@ public class CarWashStationService {
                 + Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2))
                 * Math.sin(lonDistance / 2) * Math.sin(lonDistance / 2);
         double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-        double distance = R * c * 1000; // convert to meters
+        double distance = R * c * 1000;
         return distance;
     }
 
