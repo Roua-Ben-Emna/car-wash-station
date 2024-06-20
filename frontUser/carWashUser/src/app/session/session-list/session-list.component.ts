@@ -43,26 +43,23 @@ export class SessionListComponent implements OnInit {
     return sessions.sort((a, b) => new Date(b.washTime).getTime() - new Date(a.washTime).getTime());
   }
   
-  formatTime(milliseconds: number): string {
-    const totalMinutes = Math.floor(milliseconds / 60000);
-    const hours = Math.floor(totalMinutes / 60);
-    const minutes = totalMinutes % 60;
-    return `${hours}h ${minutes}m`;
+  formatTime(duration: number): string {
+    const hours = Math.floor(duration / 3600000);
+    const minutes = Math.floor((duration % 3600000) / 60000);
+    return `${hours}h ${minutes} m`;
   }
 
   cancelReservation(): void {
     const cancelledStatus = 'cancelled';
 
     // Update the session status to 'cancelled'
-    this.carWashSessionService.updateCarWashSession(this.sessionToDelete.id, { status: cancelledStatus })
-      .subscribe(() => {
-        // Once the status is updated, delete the session
+
         this.carWashSessionService.deleteCarWashSession(this.sessionToDelete.id).subscribe(() => {
           // Reload sessions to reflect the cancelled reservation
           this.closeModal();
           this.loadSessions();
         });
-      });
+   
   }
 
 

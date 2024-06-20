@@ -12,39 +12,57 @@
       </button>
     </div>
   </div>
-
-  <div class="row">
-    <div *ngFor="let car of cars" class="col-md-6 mb-4">
-      <div class="card car-card">
-        <div class="d-flex justify-content-end">
-          <!-- Icon for dropdown menu -->
-          <div class="dropdown">
-            <button class="btn btn-transparent" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <!-- Three-dot icon -->
-              <i class="fas fa-ellipsis-v text-primary"></i>
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="border: none; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); background-color: #fff;">
-              <button class="dropdown-item" (click)="editCar(car)">
-                <i class="fas fa-pencil-alt"></i> Edit
-              </button>
-              <button class="dropdown-item" (click)="openModal(car)">
-                <i class="fas fa-trash"></i> Delete
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">{{ car.make }} {{ car.model }}</h5>
-          <p class="card-text">
-            <strong>Year:</strong> {{ car.year }}<br>
-            <strong>Size:</strong> {{ car.size }}
-          </p>
-
-        </div>
+  <div class="row mb-3">
+    <div class="col-md-6">
+      <div class="input-group input-group-sm">
+        <input type="text" class="form-control" placeholder="Search by make or model" [(ngModel)]="searchTerm">
+        <button class="btn btn-primary" type="button" (click)="searchCars()">
+          <i class="fas fa-search"></i> Search
+        </button>
       </div>
     </div>
   </div>
 
+  <div class="row">
+    <ng-container *ngIf="filteredCars.length > 0; else noCarsFound">
+      <div class="col-md-6 mb-4" *ngFor="let car of filteredCars">
+        <div class="card car-card">
+          <!-- Car card content -->
+          <div class="d-flex justify-content-end">
+            <!-- Icon for dropdown menu -->
+            <div class="dropdown">
+              <button class="btn btn-transparent" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <!-- Three-dot icon -->
+                <i class="fas fa-ellipsis-v text-primary"></i>
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="border: none; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); background-color: #fff;">
+                <button class="dropdown-item" (click)="editCar(car)">
+                  <i class="fas fa-pencil-alt"></i> Edit
+                </button>
+                <button class="dropdown-item" (click)="openModal(car)">
+                  <i class="fas fa-trash"></i> Delete
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">{{ car.make }} {{ car.model }}</h5>
+            <p class="card-text">
+              <strong>Year:</strong> {{ car.year }}<br>
+              <strong>Size:</strong> {{ car.size }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+    <ng-template #noCarsFound>
+      <div class="col-md-12">
+        <div class="alert alert-info" role="alert">
+          No cars found matching the search criteria.
+        </div>
+      </div>
+    </ng-template>
+  </div>
   <div class="modal" [class.show]="showModal">
 
     <div class="modal-content">
@@ -61,7 +79,7 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" (click)="closeModal()">cancel</button>
 
-        <button type="button" class="btn btn-danger" (click)="deleteCar()">confirm</button>
+        <button type="button" class="btn btn-success" (click)="deleteCar()">confirm</button>
       </div>
     </div>
   </div>

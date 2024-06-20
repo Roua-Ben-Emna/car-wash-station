@@ -31,7 +31,6 @@ showExteriorInteriorOption: boolean = false;
       carWashStationId: [ Validators.required],
       carId: [ Validators.required],
       washType: ['', Validators.required],
-      washTime: ['', Validators.required]
     });
   }
 

@@ -47,3 +47,14 @@
     background-color: #45a049;
   }
   
+  .btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .btn:hover {
+    opacity: 0.9;
+  }
+  

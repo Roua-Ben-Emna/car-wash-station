@@ -1,3 +1,5 @@
 <app-header ></app-header>
+<section class="content-section" [ngClass]="{ 'no-padding': isAuthenticationRoute() }">
 <router-outlet></router-outlet>
+</section>
 <app-footer ></app-footer>

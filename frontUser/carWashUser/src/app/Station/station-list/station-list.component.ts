@@ -15,6 +15,8 @@ export class StationListComponent implements OnInit {
   nearcarWashStations: any[] = [];
   selectedStationInfo: any;
   map: any;
+  searchQuery: string = '';
+  notFound: boolean = false;
 
   constructor(private carWashStationService: CarWashStationService, private router: Router) { }
 
@@ -28,6 +30,7 @@ export class StationListComponent implements OnInit {
     ).subscribe(
       (stations) => {
         this.carWashStations = stations;
+        this.nearcarWashStations = stations; 
       },
       (error) => {
         console.error('Error fetching car wash stations:', error);
@@ -87,13 +90,32 @@ export class StationListComponent implements OnInit {
         this.nearcarWashStations.forEach((station) => {
           const marker = L.marker([station.latitude, station.longitude], { icon: customIcon }).addTo(this.map);
           const popupContent = `
-            <b>${station.name}</b><br>
-            Location: ${station.location}<br>
-            Available places: ${station.currentCarsInWash} / ${station.maxCapacityCars}<br>
-            Services: ${station.services}
-          `;
-          marker.bindPopup(popupContent);
+          <div class="popup-container">
+            <div class="popup-header">
+              <b>${station.name}</b>
+            </div>
+            <div class="popup-body">
+              <p><strong>Location:</strong> ${station.location}</p>
+              <p><strong>Available places:</strong> ${station.currentCarsInWash} / ${station.maxCapacityCars}</p>
+              <p><strong>Services:</strong></p>
+              <ul class="services-list">
+                ${this.getServicesList(station)}
+              </ul>
+              <button class="btn btn-primary btn-reserve" style="border-radius: 5px;">Réserver</button>
+            </div>
+          </div>
+        `;
+        marker.bindPopup(popupContent).on('popupopen', () => {
+          const popup = marker.getPopup();
+          const content = popup?.getContent() as HTMLElement;
+          const reserveButton = content.querySelector('.btn-reserve');
+          reserveButton?.addEventListener('click', () => {
+            this.reservation(station);
+          });
         });
+        
+
+});
       },
       (error) => {
         console.error('Error fetching nearby car wash stations:', error);
@@ -101,8 +123,39 @@ export class StationListComponent implements OnInit {
     );
   }
 
+
+ getServicesList(station: any): string {
+  let servicesList = '';
+  if (station.estimateTypeExterior) {
+    servicesList += '<li>Exterior</li>';
+  }
+  if (station.estimateTypeInterior) {
+    servicesList += '<li>Interior</li>';
+  }
+  if (station.estimateTypeExteriorInterior) {
+    servicesList += '<li>Interior & Exterior</li>';
+  }
+  return servicesList;
+}
+
   reservation(data: any): void {
     this.carWashStationService.setStationData(data); 
     this.router.navigate(['/create-session']);
+  }
+
+searchStations(): void {
+    if (!this.searchQuery.trim()) {
+      // If search query is empty, display all stations
+      this.carWashStations = this.nearcarWashStations;
+      this.notFound = false;
+    } else {
+      // Filter stations based on the search query
+      this.carWashStations = this.nearcarWashStations.filter(station =>
+        station.name.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
+        station.location.toLowerCase().includes(this.searchQuery.toLowerCase())
+      );
+      // Display "Not Found" message if no stations match the search query
+      this.notFound = this.carWashStations.length === 0;
+    }
   }
 }

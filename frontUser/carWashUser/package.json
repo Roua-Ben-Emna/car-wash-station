@@ -23,6 +23,7 @@
     "@angular/router": "^14.0.0",
     "@bluehalo/ngx-leaflet": "^18.0.2",
     "bootstrap": "^5.2.0",
+    "date-fns": "^3.6.0",
     "leaflet": "^1.9.4",
     "owl.carousel": "^2.3.4",
     "rxjs": "~7.5.0",

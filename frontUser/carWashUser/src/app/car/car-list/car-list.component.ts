@@ -12,6 +12,9 @@ export class CarListComponent implements OnInit {
   userId: number = 1;
   showModal = false;
   carToDelete: any;
+  searchTerm: string = '';
+  filteredCars: any[] = [];
+  noCarsFound: boolean = false;
 
   constructor(private carService: CarService, private router: Router) { }
 
@@ -22,6 +25,8 @@ export class CarListComponent implements OnInit {
   getAllCarsByUser(): void {
     this.carService.getAllCarsByUser(this.userId).subscribe((cars) => {
       this.cars = cars;
+      this.filteredCars = [...this.cars];
+      this.checkIfNoCarsFound();
     });
   }
 
@@ -54,5 +59,17 @@ export class CarListComponent implements OnInit {
 
   addCar(): void {
     this.router.navigate(['/create-car']);
+  }
+
+  searchCars(): void {
+    this.filteredCars = this.cars.filter((car) => {
+      const makeModel = `${car.make} ${car.model}`.toLowerCase();
+      return makeModel.includes(this.searchTerm.toLowerCase());
+    });
+    this.checkIfNoCarsFound();
+  }
+
+  checkIfNoCarsFound(): void {
+    this.noCarsFound = this.filteredCars.length === 0;
   }
 }

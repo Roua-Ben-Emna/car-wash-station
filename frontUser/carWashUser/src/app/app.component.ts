@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -8,5 +9,12 @@ import { Component } from '@angular/core';
 export class AppComponent {
 
   title='car wash'
-
+  constructor(private router: Router) {}
+  isAuthenticationRoute(): boolean {
+    // Get the current route URL
+    const currentRoute = this.router.url;
+    
+    // Check if the current route is the authentication route
+    return currentRoute.includes('authentication');
+  }
   }

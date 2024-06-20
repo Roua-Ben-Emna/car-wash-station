@@ -42,20 +42,7 @@
         </div>
       </div>
   
-      <div class="form-group">
-        <label for="washTime">Wash Time:</label>
-        <input
-          type="datetime-local"
-          id="washTime"
-          formControlName="washTime"
-          class="form-control"
-        />
-        <div *ngIf="carWashSessionForm.get('washTime')?.invalid && carWashSessionForm.get('washTime')?.touched" class="text-danger">
-          Wash Time is required.
-        </div>
-      </div>
-  
-      <button type="submit" class="btn btn-primary" [disabled]="carWashSessionForm.invalid">Create Session</button>
+      <button type="submit" class="btn btn-submit" [disabled]="carWashSessionForm.invalid">Create Session</button>
     </form>
   </div>
   

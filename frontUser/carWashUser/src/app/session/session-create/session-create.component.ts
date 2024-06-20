@@ -31,7 +31,6 @@ showExteriorInteriorOption: boolean = false;
       carWashStationId: [ Validators.required],
       carId: [ Validators.required],
       washType: ['', Validators.required],
-      washTime: ['', Validators.required]
     });
   }
 
@@ -111,7 +110,6 @@ showExteriorInteriorOption: boolean = false;
       carWashStation: { id: this.carWashSessionForm.value.carWashStationId },
       car: { id: this.carWashSessionForm.value.carId },
       washType: this.carWashSessionForm.value.washType,
-      washTime: new Date(this.carWashSessionForm.value.washTime)
       
     };
 console.log(newSession);

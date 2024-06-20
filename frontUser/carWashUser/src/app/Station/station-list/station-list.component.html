@@ -1,6 +1,5 @@
 
-  
-<section class="content-section">
+
   <div class="section-header">
       <h2 class="section-title text-center wow fadeInDown">Nearby Car Wash Stations</h2>
       <p class="text-center wow fadeInDown">Trouver les stations de lavage proximité de vous<br> </p>
@@ -17,6 +16,24 @@
       <div class="section-header">
           <h2 class="section-title text-center wow fadeInDown">Car Wash Stations</h2>
       </div>
+        <!-- Search input
+  <div class="row mb-3">
+    <div class="col-md-6 offset-md-3">
+      <div class="input-group input-group-sm">
+        <input type="text" class="form-control" placeholder="Search stations by name" [(ngModel)]="searchQuery">
+        <button class="btn btn-primary" type="button" (click)="searchStations()">
+          <i class="fas fa-search"></i> Search
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="row mb-3" *ngIf="notFound">
+    <div class="col-md-6 offset-md-3">
+      <div class="alert alert-info" role="alert">
+        No stations found matching the search criteria.
+      </div>
+    </div>
+  </div> -->
       <div class="colomn"> 
       <div  *ngFor="let station of carWashStations">
           <div class="col-md-4">     
@@ -24,23 +41,34 @@
                   <li class="header">{{ station.name }}</li>
                   <li class="grey">{{ station.location }}</li>
                   <li class="grey">Places:  {{station.currentCarsInWash}}  / {{ station.maxCapacityCars }}</li>
-                  <li class="grey" *ngIf="station.estimateTypeExterior">Services: <p class="card-text">Exterior</p>
-                      <p class="card-text" *ngIf="station.estimateTypeInterior">Interior</p>
-                      <p class="card-text" *ngIf="station.estimateTypeExteriorInterior">Interior & Exterior</p>
-                  </li>
+                  <li class="grey">
+                    Services:
+                    <ng-container *ngIf="station.estimateTypeExterior; else exteriorSpace">
+                        <p class="card-text">Exterior</p>
+                    </ng-container>
+                    <ng-template #exteriorSpace><p class="card-text">&nbsp;</p></ng-template>
+                
+                    <ng-container *ngIf="station.estimateTypeInterior; else interiorSpace">
+                        <p class="card-text">Interior</p>
+                    </ng-container>
+                    <ng-template #interiorSpace><p class="card-text">&nbsp;</p></ng-template>
+                
+                    <ng-container *ngIf="station.estimateTypeExteriorInterior; else exteriorInteriorSpace">
+                        <p class="card-text">Interior & Exterior</p>
+                    </ng-container>
+                    <ng-template #exteriorInteriorSpace><p class="card-text">&nbsp;</p></ng-template>
+                </li>
                   <li class="grey">       
-                    <button class="btn btn-primary btn-add-car" style="border-radius: 5px;" (click)="reservation(station)">
+                    <button class="btn btn-primary btn-add-car" style="border-radius: 5px;" (click)="reservation(station)" [disabled]="station.currentCarsInWash >= station.maxCapacityCars">
                     To book
                     </button>
               </li>
-           
-
                   </ul>
           </div>        
       </div>        
       </div>
   </div>
-</section>
+
 
 
 
