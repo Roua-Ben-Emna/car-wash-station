@@ -30,7 +30,7 @@ export const routes: Routes = [
     component:ResetPasswordComponent
   },
   {
-    path:'new-password',
+    path:'set-new-password',
     component:SetNewPasswordComponent
   },
   {

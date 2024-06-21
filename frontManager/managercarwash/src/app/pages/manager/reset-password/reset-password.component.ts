@@ -40,11 +40,11 @@ export class ResetPasswordComponent implements OnInit {
       const email = this.resetPasswordForm.value.email;
       this.userService.resetPasswordRequest(email).subscribe(
         (response) => {
-          this.responseMessage = 'Réinitialisation du mot de passe réussie. Veuillez vérifier votre e-mail.';
+          this.responseMessage = 'Password reset successful. Please check your email';
           this.errorMessage = null;
         },
         (errorResponse) => {
-          this.errorMessage = 'Erreur lors de la réinitialisation du mot de passe. Veuillez réessayer.';
+          this.errorMessage = 'Error resetting password. Please try again';
           this.responseMessage = null;
         }
       );

@@ -18,7 +18,8 @@ export class AuthenticationComponent {
 
 
   isLogin: boolean = true;
-  
+  successMessage: string = '';
+  errorMessage: string = '';
   registerForm !: FormGroup;
   loginForm !: FormGroup;
 
@@ -60,9 +61,11 @@ export class AuthenticationComponent {
   register() {
     this.authService.register(this.registerForm.value).subscribe({
       next: (res) => {
+        this.successMessage = "Please check your mailbox to verify your account";
         console.log(res);
       },
       error: (error) => {
+        this.errorMessage = 'Error. Please try again';
         console.error('Error:', error);
       },
       complete: () => this.resetForm()
@@ -73,27 +76,34 @@ export class AuthenticationComponent {
     this.registerForm.reset();
   }
 
-  login(){
+  login() {
     this.authService.login(
       this.loginForm.get(['email'])!.value,
       this.loginForm.get(['password'])!.value
     ).subscribe((res) => {
       console.log(res);
-      if(LocalStorageService.isAdminLoggedIn()){
-        this.router.navigateByUrl("");
-      }else {
-        this.router.navigateByUrl("");
-      }
+
+      const userRole = res.body.role; // Modify this based on how the role is returned in the response
+  
+      if (userRole === "USER") {
+        this.errorMessage = 'You are not allowed to log in.';
+        console.log("User role 1 is not allowed to log in.");
+      } else {
+          this.router.navigateByUrl(""); // Default route for other roles
+        }
+  
     }, error => {
       console.log(error);
-      if(error.status == 406) {
-        console.log("Account is not active. Please register first")
+      if (error.status == 406) {
+        this.errorMessage = 'Account is not active. Please register first';
+        console.log("Account is not active. Please register first");
       } else {
-        console.log("Bad crendentials")
+        this.errorMessage = 'Bad credentials';
+        console.log("Bad credentials");
       }
-    })
-   
+    });
   }
+  
   toggleForm() {
     this.isLogin = !this.isLogin;
   }

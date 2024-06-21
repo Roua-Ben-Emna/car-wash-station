@@ -26,7 +26,7 @@ interface Menu {
 
 export class SidebarComponent implements OnInit {
   isOpen = true
-
+  user: any = {}; 
   sidebars! : Array<Menu>
   constructor(
     private router : Router,
@@ -38,7 +38,13 @@ export class SidebarComponent implements OnInit {
     this.menuService.menu$.subscribe(menuData => {
       this.sidebars = menuData;
     });
+    this.user.firstname = LocalStorageService.getUser().firstname;
+    this.user.lastname = LocalStorageService.getUser().lastname;
+    this.user.role = LocalStorageService.getUser().role;
     
+  }
+  isAdminLoggedIn(): boolean {
+    return LocalStorageService.isAdminLoggedIn();
   }
 
   toggleSubmenu(parentIndex : number, menuIndex : number) {
