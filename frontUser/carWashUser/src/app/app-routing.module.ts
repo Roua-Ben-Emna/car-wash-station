@@ -55,7 +55,7 @@ const routes: Routes = [
   {path:'create-session',component:SessionCreateComponent},
   {path:'edit-session',component:SessionEditComponent},
   {path:'reset-password',component:ResetPasswordComponent},
-  {path:'new-password',component:SetNewPasswordComponent},
+  {path:'set-new-password',component:SetNewPasswordComponent},
   {path:'verification-email',component:VerificationEmailComponent},
   {path:'edit-account',component:EditAccountComponent},
 

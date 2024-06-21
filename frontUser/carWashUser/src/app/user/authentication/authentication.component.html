@@ -7,6 +7,8 @@
     <div *ngIf="isLogin; else signupForm">
       <!-- Login form -->
       <form [formGroup]="loginForm" (ngSubmit)="login()">
+        <div *ngIf="successMessage" class="alert alert-success">{{ successMessage }}</div>
+        <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
         <!-- Login form fields -->
         <input placeholder="Email address" name="email_login" id="email_login" formControlName="email" required>
         <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched" class="text-danger">
@@ -25,6 +27,8 @@
     </div>
     
     <ng-template #signupForm>
+      <div *ngIf="successMessage" class="alert alert-success">{{ successMessage }}</div>
+      <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
       <!-- Signup form -->
         <form [formGroup]="registerForm" (ngSubmit)="register()">
           <!-- Signup form fields -->
@@ -55,7 +59,6 @@
             <div *ngIf="registerForm.get('confirmPassword')?.errors?.['confirmationvalidator']">Passwords do not match.</div>
           </div>
           <button type="submit" (click) = "register()">Signup</button>
-        
         </form>
     </ng-template>
     

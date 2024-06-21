@@ -12,7 +12,8 @@
                 <div class="collapse navbar-collapse navbar-right">
                     <ul class="nav navbar-nav">
                         <li class="scroll" [class.active]="setActiveLink('/')"><a routerLink="/">Home</a></li> 
-                        <li class="scroll" [class.active]="setActiveLink('/car')"><a routerLink="/car">Cars</a></li>  
+                       <!-- <ng-container *ngIf="isUserLoggedIn()">       </ng-container>   --> 
+                        <li class="scroll" [class.active]="setActiveLink('/car')"><a routerLink="/car">Cars</a></li>      
                         <li class="scroll" [class.active]="setActiveLink('/station')"><a routerLink="/station">Stations</a></li>  
                         <li class="scroll" [class.active]="setActiveLink('/session')"><a routerLink="/session">Reservation</a></li>  
                         <li class="scroll" [class.active]="setActiveLink('/edit-account')"><a routerLink="/edit-account">Profile</a></li>  
