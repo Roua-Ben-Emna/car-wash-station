@@ -128,7 +128,7 @@ public class UserController {
         }
         String verificationResult = userService.validateToken(token);
         if (verificationResult.equalsIgnoreCase("valid")) {
-            response.sendRedirect("http://localhost:4200/pages/verification-email");
+            response.sendRedirect("http://localhost:4200/verification-email");
             return "Email verified successfully. Now you can login to your account";
         }
         return "Invalid verification token";
@@ -158,7 +158,7 @@ public class UserController {
 
     private String passwordResetEmailLink(User user, String applicationUrl,
                                           String passwordToken) throws MessagingException, UnsupportedEncodingException {
-        String url = "http://localhost:4200/pages/set-new-paswword?token=" + passwordToken;
+        String url = "http://localhost:4200/set-new-password?token=" + passwordToken;
         eventListener.sendPasswordResetVerificationEmail(user,url);
         log.info("Click the link to reset your password :  {}", url);
         return url;

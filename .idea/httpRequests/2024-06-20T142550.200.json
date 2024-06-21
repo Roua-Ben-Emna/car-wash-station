@@ -1,0 +1,31 @@
+[
+  {
+    "id": 8,
+    "name": "new station",
+    "latitude": 36.742103059663386,
+    "longitude": 10.201251982070971,
+    "location": "mourouj 3",
+    "maxCapacityCars": 10,
+    "currentCarsInWash": 10,
+    "parallelCarWashing": 0,
+    "manager": {
+      "id": 1,
+      "firstname": "roua",
+      "lastname": "ben amna",
+      "email": "b.amnaroua@gmail.com",
+      "telephone": "+1234567890",
+      "password": "$2a$10$sv5V/KVZ5mgh/bOwU4kET.8.7UNJYhWwFHZ3bUdiXIenllGgDArb.",
+      "latitude": 0.0,
+      "longitude": 0.0,
+      "userRole": "USER",
+      "managedStations": [],
+      "enabled": true
+    },
+    "estimateTypeInterior": 120000,
+    "estimateCarMedium": 120000,
+    "estimateCarLarge": 120000,
+    "estimateCarSmall": 120000,
+    "estimateTypeExterior": 120000,
+    "estimateTypeExteriorInterior": 120000
+  }
+]

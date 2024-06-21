@@ -117,44 +117,33 @@ public class CarWashSessionService {
     }
 
     private boolean isSessionOverlap(CarWashSession session, CarWashSession mySession) {
-        // Get the session start time
         Date sessionStartTime = session.getWashTime();
 
-        // Convert session start time to LocalDateTime using the desired time zone
         LocalDateTime sessionStartDateTime = LocalDateTime.ofInstant(sessionStartTime.toInstant(), ZoneId.systemDefault());
 
-        // Format the session start time to match the other time format
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS");
         String formattedSessionStartTime = sessionStartDateTime.format(formatter);
 
-        // Calculate the end time of the session by adding the wash duration and wait time to the start time
         long washDurationMillis = session.getEstimatedWashDuration();
         long waitTimeMillis = session.getEstimatedWaitTime();
         long sessionEndMillis = sessionStartTime.getTime() + washDurationMillis + waitTimeMillis;
 
-        // Convert session end time to LocalDateTime using the desired time zone
         LocalDateTime sessionEndTime = LocalDateTime.ofInstant(Instant.ofEpochMilli(sessionEndMillis), ZoneId.systemDefault());
 
-        // Format the session end time to match the other time format
         String formattedSessionEndTime = sessionEndTime.format(formatter);
 
-        // Convert the user's session start time to LocalDateTime using the desired time zone
         LocalDateTime mySessionStartDateTime = LocalDateTime.ofInstant(mySession.getWashTime().toInstant(), ZoneId.systemDefault());
 
-        // Format the user's session start time to match the other time format
         String formattedMySessionStartTime = mySessionStartDateTime.format(formatter);
 
-        // Print the session start and end times for debugging
         System.out.println("Checking overlap for sessions:");
         System.out.println("Session start time: " + formattedSessionStartTime);
         System.out.println("Session end time: " + formattedSessionEndTime);
         System.out.println("My session start time: " + formattedMySessionStartTime);
 
-        // Convert LocalDateTime to Date for comparison
         ZonedDateTime sessionEndZonedDateTime = sessionEndTime.atZone(ZoneId.systemDefault());
         Date sessionEndDate = Date.from(sessionEndZonedDateTime.toInstant());
 
-        // Check if the start time of the user's session is between the start and end time of the existing session
         boolean overlap = mySessionStartDateTime.isAfter(sessionStartDateTime) && mySessionStartDateTime.isBefore(sessionEndTime);
         System.out.println("Overlap: " + overlap);
 

@@ -5,8 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="140f50dd-f6d0-47ff-a56b-2cafc7894b11" name="Changes" comment="update  car , station , add session">
+      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/http-requests-log.http" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/httpRequests/http-requests-log.http" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontManager/managercarwash/src/app/pages/car-wash-station/car-wash-station.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontManager/managercarwash/src/app/pages/car-wash-station/car-wash-station.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/com/isi/carwash/Controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/com/isi/carwash/Controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/com/isi/carwash/Service/session/CarWashSessionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/com/isi/carwash/Service/session/CarWashSessionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontManager/managercarwash/src/app/app.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontManager/managercarwash/src/app/app.routes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontManager/managercarwash/src/app/pages/manager/authentication/authentication.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontManager/managercarwash/src/app/pages/manager/authentication/authentication.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontManager/managercarwash/src/app/pages/manager/authentication/authentication.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontManager/managercarwash/src/app/pages/manager/authentication/authentication.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontManager/managercarwash/src/app/pages/manager/reset-password/reset-password.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontManager/managercarwash/src/app/pages/manager/reset-password/reset-password.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontManager/managercarwash/src/app/pages/manager/reset-password/reset-password.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontManager/managercarwash/src/app/pages/manager/reset-password/reset-password.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontUser/carWashUser/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontUser/carWashUser/src/app/app-routing.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontUser/carWashUser/src/app/user/authentication/authentication.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontUser/carWashUser/src/app/user/authentication/authentication.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontUser/carWashUser/src/app/user/authentication/authentication.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontUser/carWashUser/src/app/user/authentication/authentication.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontUser/carWashUser/src/app/user/reset-password/reset-password.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontUser/carWashUser/src/app/user/reset-password/reset-password.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontUser/carWashUser/src/app/user/reset-password/reset-password.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontUser/carWashUser/src/app/user/reset-password/reset-password.component.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,8 +113,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="HTTP Request.generated-requests | #37" />
         <item itemvalue="HTTP Request.generated-requests | #36" />
+        <item itemvalue="HTTP Request.generated-requests | #37" />
       </list>
     </recent_temporary>
   </component>
@@ -140,7 +152,11 @@
       <workItem from="1718270347347" duration="9413000" />
       <workItem from="1718355932615" duration="1259000" />
       <workItem from="1718362866926" duration="14454000" />
-      <workItem from="1718702619583" duration="2815000" />
+      <workItem from="1718702619583" duration="11498000" />
+      <workItem from="1718800022111" duration="5331000" />
+      <workItem from="1718875726515" duration="21274000" />
+      <workItem from="1718903380168" duration="717000" />
+      <workItem from="1718967919324" duration="5456000" />
     </task>
     <task id="LOCAL-00001" summary="authentication , car , station">
       <option name="closed" value="true" />
@@ -185,7 +201,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="main" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
