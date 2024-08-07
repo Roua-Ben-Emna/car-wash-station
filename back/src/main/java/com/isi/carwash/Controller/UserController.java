@@ -117,7 +117,6 @@ public class UserController {
     public List<User> getUsers() {
         return userService.getUsers();
     }
-
     private final VerificationTokenRepository tokenRepository;
 
     @GetMapping("/verifyEmail")
@@ -185,11 +184,11 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid password reset token");
     }
 
-
     @GetMapping("/user/{id}")
-    @Cacheable(key = "#id",value = "User")
     public ResponseEntity<User> getUserById(@PathVariable Long id){
         User user = userService.getUserById(id);
+        System.out.println("called find user from db");
+
         if(user == null) return ResponseEntity.notFound().build();
         return ResponseEntity.ok(user);
     }
@@ -198,6 +197,7 @@ public class UserController {
     public ResponseEntity<Map<String, String>> updateUser(@PathVariable Long id, @RequestBody User user) {
         try {
             User updatedUser = userService.updateUser(id, user);
+            System.out.println( "Your information has been successfully updated.");
             Map<String, String> response = new HashMap<>();
             response.put("message", "Your information has been successfully updated.");
             return ResponseEntity.ok(response);
@@ -240,15 +240,31 @@ public class UserController {
             return ResponseEntity.badRequest().body(responseBody);
         }
     }
-    @PutMapping("/{userId}/location")
-    public ResponseEntity<Void> updateLocation(@PathVariable("userId") Long userId, @RequestParam("latitude") double latitude, @RequestParam("longitude") double longitude) {
+
+    @PutMapping("/user/enable/{id}")
+    public ResponseEntity<Map<String, String>> enableUserAccount(@PathVariable Long id) {
+        User user = userService.getUserById(id);
+        if (user == null) {
+            Map<String, String> responseBody = new HashMap<>();
+            responseBody.put("error", "L'utilisateur n'existe pas.");
+            return ResponseEntity.notFound().build();
+        }
+
+        if (user.isEnabled()) {
+            Map<String, String> responseBody = new HashMap<>();
+            responseBody.put("error", "Le compte de cet utilisateur est déjà activé.");
+            return ResponseEntity.badRequest().body(responseBody);
+        }
+
         try {
-            userService.updateLocation(userId, latitude, longitude);
-            return new ResponseEntity<>(HttpStatus.OK);
+            userService.enableUser(id);
+            Map<String, String> responseBody = new HashMap<>();
+            responseBody.put("message", "Le compte de l'utilisateur a été activé avec succès.");
+            return ResponseEntity.ok(responseBody);
         } catch (IllegalArgumentException e) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+            Map<String, String> responseBody = new HashMap<>();
+            responseBody.put("error", e.getMessage());
+            return ResponseEntity.badRequest().body(responseBody);
         }
     }
     @DeleteMapping("/user/delete/{userId}")

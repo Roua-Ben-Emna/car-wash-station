@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CarService } from 'src/app/services/car-service/car.service';
+import { LocalStorageService } from 'src/app/services/storage-service/local-storage.service';
 
 @Component({
   selector: 'app-car-list',
@@ -9,7 +10,6 @@ import { CarService } from 'src/app/services/car-service/car.service';
 })
 export class CarListComponent implements OnInit {
   cars: any[] = [];
-  userId: number = 1;
   showModal = false;
   carToDelete: any;
   searchTerm: string = '';
@@ -23,7 +23,7 @@ export class CarListComponent implements OnInit {
   }
 
   getAllCarsByUser(): void {
-    this.carService.getAllCarsByUser(this.userId).subscribe((cars) => {
+    this.carService.getAllCarsByUser(LocalStorageService.getUser().id).subscribe((cars) => {
       this.cars = cars;
       this.filteredCars = [...this.cars];
       this.checkIfNoCarsFound();

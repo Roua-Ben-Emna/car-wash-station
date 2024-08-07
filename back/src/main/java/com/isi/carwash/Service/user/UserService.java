@@ -33,9 +33,10 @@ public interface UserService {
     User updateUser(Long id, User user);
 
     User desactiverCompteuser(Long id);
+    User enableUser(Long id);
 
     User getUserById(Long id);
     void deleteUser(Long userId);
-    void updateLocation(Long id,double latitude, double longitude);
+
 
     }

@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CarService } from 'src/app/services/car-service/car.service';
+import { LocalStorageService } from 'src/app/services/storage-service/local-storage.service';
 
 @Component({
   selector: 'app-car-create',
@@ -12,7 +13,7 @@ export class CarCreateComponent implements OnInit {
 
   carForm!: FormGroup;
   sizes = ['SMALL', 'MEDIUM', 'LARGE']; 
-  constructor(private formBuilder: FormBuilder, private carService: CarService,private router: Router) {}
+  constructor(private formBuilder: FormBuilder, private carService: CarService,private router: Router, private el: ElementRef) {}
 
   ngOnInit(): void {
     this.initializeForm();
@@ -22,9 +23,9 @@ export class CarCreateComponent implements OnInit {
     this.carForm = this.formBuilder.group({
       make: [null, Validators.required],
       model: [null, Validators.required],
-      year: [null, Validators.required],
+      registrationNumber: [null, Validators.required],
       size: [null, Validators.required],
-      user: { id: 1 }
+      user: { id: LocalStorageService.getUser().id  }
     });
   }
   onSubmit(): void {
@@ -41,6 +42,13 @@ export class CarCreateComponent implements OnInit {
       );
     } else {
       console.error('Form is invalid. Please fill in all required fields.');
+    }
+  }
+
+  focusNext(nextElementId: string) {
+    const nextElement = this.el.nativeElement.querySelector(`#${nextElementId}`);
+    if (nextElement) {
+      nextElement.focus();
     }
   }
 }

@@ -4,6 +4,8 @@ import * as L from 'leaflet';
 import { Router } from '@angular/router';
 import { Observable,timer  } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
+import { CarWashSessionService } from 'src/app/services/session-service/session.service';
+import { LocalStorageService } from 'src/app/services/storage-service/local-storage.service';
 @Component({
   selector: 'app-station-list',
   templateUrl: './station-list.component.html',
@@ -17,8 +19,12 @@ export class StationListComponent implements OnInit {
   map: any;
   searchQuery: string = '';
   notFound: boolean = false;
+  availabilityMap: { [key: number]: number } = {};
+  stationCapacity: number = 0;
 
-  constructor(private carWashStationService: CarWashStationService, private router: Router) { }
+  constructor(private carWashStationService: CarWashStationService,
+    private carWashSessionService: CarWashSessionService,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.getCarWashStations();
@@ -31,45 +37,59 @@ export class StationListComponent implements OnInit {
       (stations) => {
         this.carWashStations = stations;
         this.nearcarWashStations = stations; 
+        this.getTodayAvailability();
       },
       (error) => {
         console.error('Error fetching car wash stations:', error);
       }
     );
   }
+
+  private getTodayAvailability(): void {
+    const today = new Date(); // Get the current date
+    today.setHours(0, 0, 0, 0); 
+    console.log(today)
+    this.carWashStations.forEach(station => {
+      this.carWashSessionService.countSessionsByStationAndDate(station.id, today).subscribe(
+        (availability: number) => {
+          
+          this.availabilityMap[station.id] = station.maxCapacityCars - availability;
+        },
+        (error) => {
+          console.error('Error fetching availability:', error);
+          this.availabilityMap[station.id] = -1; // Indicate error fetching availability
+        }
+      );
+    });
+  }
+
+ 
+
   ngAfterViewInit(): void {
     this.initializeMap();
   }
   private initializeMap(): void {
-    // Create the Leaflet map
     this.map = L.map('map').setView([51.505, -0.09], 13);
-
-    // Add an OpenStreetMap tile layer
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 15,
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(this.map);
-
-    // Get the current location
     navigator.geolocation.getCurrentPosition((position) => {
       const lat = position.coords.latitude;
       const lon = position.coords.longitude;
       this.map.setView([lat, lon], 13);
-
-      // Create a custom marker icon for the current location
       const customIcon = L.icon({
-        iconUrl: 'assets/images/slider/marker.png', // Path to your custom image
-        iconSize: [32, 32], // Size of the icon in pixels
-        iconAnchor: [16, 32], // Anchor point of the icon (bottom middle point)
-        popupAnchor: [0, -32] // Anchor point of the popup relative to the icon
+        iconUrl: 'assets/images/slider/marker.png',
+        iconSize: [32, 32],
+        iconAnchor: [16, 32],
+        popupAnchor: [0, -32] 
       });
 
-      // Place a marker at the current location with the custom icon
       L.marker([lat, lon], { icon: customIcon }).addTo(this.map)
         .bindPopup('Vous êtes ici.')
         .openPopup();
 
-      // Fetch and display nearby car wash stations
+
       this.getNearbyCarWashStations(lat, lon);
     }, (error) => {
       console.error('Erreur de géolocalisation : ', error);
@@ -81,48 +101,51 @@ export class StationListComponent implements OnInit {
       (stations) => {
         this.nearcarWashStations = stations;
         const customIcon = L.icon({
-          iconUrl: 'assets/images/slider/marker2.png', // Path to your custom image
-          iconSize: [32, 32], // Size of the icon in pixels
-          iconAnchor: [16, 32], // Anchor point of the icon (bottom middle point)
-          popupAnchor: [0, -32] // Anchor point of the popup relative to the icon
+          iconUrl: 'assets/images/slider/marker2.png', 
+          iconSize: [32, 32],
+          iconAnchor: [16, 32],
+          popupAnchor: [0, -32]
         });
-        // Add a marker for each car wash station
+  
         this.nearcarWashStations.forEach((station) => {
           const marker = L.marker([station.latitude, station.longitude], { icon: customIcon }).addTo(this.map);
           const popupContent = `
-          <div class="popup-container">
-            <div class="popup-header">
-              <b>${station.name}</b>
+            <div class="popup-container">
+              <div class="popup-header">
+                <center><p><strong>${station.name}</strong></p></center>
+              </div>
+              <div class="popup-body">
+                <p><strong>Today's Availability:</strong> ${this.availabilityMap[station.id] !== undefined ? this.availabilityMap[station.id] : 'Loading...'} places </p>
+                <p><strong>Location:</strong> ${station.location}</p>
+                <p><strong>Services:</strong></p>
+                <ul class="services-list">
+                  ${this.getServicesList(station)}
+                </ul>
+               <center> <button class="btn btn-primary btn-reserve" style="border-radius: 5px;" data-station-id="${station.id}">To book</button></center>
+              </div>
             </div>
-            <div class="popup-body">
-              <p><strong>Location:</strong> ${station.location}</p>
-              <p><strong>Available places:</strong> ${station.currentCarsInWash} / ${station.maxCapacityCars}</p>
-              <p><strong>Services:</strong></p>
-              <ul class="services-list">
-                ${this.getServicesList(station)}
-              </ul>
-              <button class="btn btn-primary btn-reserve" style="border-radius: 5px;">Réserver</button>
-            </div>
-          </div>
-        `;
-        marker.bindPopup(popupContent).on('popupopen', () => {
-          const popup = marker.getPopup();
-          const content = popup?.getContent() as HTMLElement;
-          const reserveButton = content.querySelector('.btn-reserve');
-          reserveButton?.addEventListener('click', () => {
-            this.reservation(station);
-          });
+          `;
+          marker.bindPopup(popupContent);
         });
-        
-
-});
+  
+        this.map.on('popupopen', (e: any) => {
+          const popupNode = e.popup.getElement();
+          const reserveButton = popupNode.querySelector('.btn-reserve');
+          if (reserveButton) {
+            const stationId = reserveButton.getAttribute('data-station-id');
+            const station = this.nearcarWashStations.find(s => s.id === +stationId);
+            reserveButton.addEventListener('click', () => {
+              this.reservation(station);
+            });
+          }
+        });
       },
       (error) => {
         console.error('Error fetching nearby car wash stations:', error);
       }
     );
   }
-
+  
 
  getServicesList(station: any): string {
   let servicesList = '';
@@ -137,24 +160,29 @@ export class StationListComponent implements OnInit {
   }
   return servicesList;
 }
+isUserLoggedIn(): boolean {
+  return LocalStorageService.isUserLoggedIn();
+}
 
   reservation(data: any): void {
-    this.carWashStationService.setStationData(data); 
-    this.router.navigate(['/create-session']);
+    const isLoggedIn = this.isUserLoggedIn(); 
+    if (!isLoggedIn) {
+      this.router.navigate(['/authentication']);
+    } else {
+      this.carWashStationService.setStationData(data); 
+      this.router.navigate(['/create-session']); 
+    }
   }
 
 searchStations(): void {
     if (!this.searchQuery.trim()) {
-      // If search query is empty, display all stations
       this.carWashStations = this.nearcarWashStations;
       this.notFound = false;
     } else {
-      // Filter stations based on the search query
       this.carWashStations = this.nearcarWashStations.filter(station =>
         station.name.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
         station.location.toLowerCase().includes(this.searchQuery.toLowerCase())
       );
-      // Display "Not Found" message if no stations match the search query
       this.notFound = this.carWashStations.length === 0;
     }
   }

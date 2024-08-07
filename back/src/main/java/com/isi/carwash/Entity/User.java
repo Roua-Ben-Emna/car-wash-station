@@ -25,8 +25,6 @@ public class User {
     private String email;
     private String telephone;
     private String password;
-    private double latitude;
-    private double longitude;
     private UserRole userRole;
     private boolean isEnabled = false;
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)

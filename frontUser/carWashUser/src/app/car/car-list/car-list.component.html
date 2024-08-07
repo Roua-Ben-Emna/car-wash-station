@@ -1,7 +1,7 @@
 <div class="container">
   <div class="section-header">
     <h2 class="section-title text-center wow fadeInDown">My Cars</h2>
-    <p class="text-center wow fadeInDown">Ajouter ici votre voitures<br></p>
+    <p class="text-center wow fadeInDown">Add your cars here<br></p>
   </div>
 
   <div class="row mb-3">
@@ -14,14 +14,14 @@
   </div>
   <div class="row mb-3">
     <div class="col-md-6">
-      <div class="input-group input-group-sm">
-        <input type="text" class="form-control" placeholder="Search by make or model" [(ngModel)]="searchTerm">
-        <button class="btn btn-primary" type="button" (click)="searchCars()">
-          <i class="fas fa-search"></i> Search
-        </button>
+      <div class="position-relative">
+        <input type="text" class="form-control pl-4" placeholder="Search by make or model" [(ngModel)]="searchTerm" (keyup.enter)="searchCars()">
+        <i class="fas fa-search position-absolute search-icon" (click)="searchCars()"></i>
       </div>
     </div>
   </div>
+  
+  
 
   <div class="row">
     <ng-container *ngIf="filteredCars.length > 0; else noCarsFound">
@@ -48,7 +48,7 @@
           <div class="card-body">
             <h5 class="card-title">{{ car.make }} {{ car.model }}</h5>
             <p class="card-text">
-              <strong>Year:</strong> {{ car.year }}<br>
+              <strong>registration Number (VIN):</strong> {{ car.registrationNumber }}<br>
               <strong>Size:</strong> {{ car.size }}
             </p>
           </div>
@@ -63,26 +63,29 @@
       </div>
     </ng-template>
   </div>
-  <div class="modal" [class.show]="showModal">
 
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Confirm Delete</h5>
-        <button type="button" class="close" (click)="closeModal()">
-          <span>&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <p>Are you sure you want to delete this car?</p>
-      </div>
-  
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" (click)="closeModal()">cancel</button>
+</div>
 
-        <button type="button" class="btn btn-success" (click)="deleteCar()">confirm</button>
-      </div>
+
+
+<div class="modal" [class.show]="showModal">
+
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title">Confirm Delete</h5>
+      <button type="button" class="close" (click)="closeModal()">
+        <span>&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <p>Are you sure you want to delete this car?</p>
+    </div>
+
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" (click)="closeModal()">cancel</button>
+
+      <button type="button" class="btn btn-success" (click)="deleteCar()">confirm</button>
     </div>
   </div>
-     
 </div>
 

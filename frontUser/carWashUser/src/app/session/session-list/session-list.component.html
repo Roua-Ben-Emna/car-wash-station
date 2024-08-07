@@ -4,43 +4,61 @@
     <p class="text-center wow fadeInDown">Car Wash Sessions<br></p>
   </div>
   <ul>
-    <li *ngFor="let session of sessions" class="session-item">
-      <div class="session-details">
-        <div class="status" [ngClass]="{'status-in-progress': session.status === 'in progress', 'status-completed': session.status === 'completed'}">
-          {{ session.status | uppercase }}
-        </div>
-        <div class="session-header">
-          <h3>Session #{{ session.id }}</h3>
-          <div class="dropdown" style="float: right;">
-            <button class="btn btn-transparent" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i class="fas fa-ellipsis-v text-primary"></i>
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="border: none; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); background-color: #fff;">
-              <button class="dropdown-item" (click)="editSession(session)">
-                <i class="fas fa-pencil-alt"></i> Edit
-              </button>
-              <button class="dropdown-item" (click)="openModal(session)">
-                <i class="fas fa-trash"></i> Cancel
-              </button>
+    <ng-container *ngIf="sessions.length > 0; else nosessionFound">
+      <ng-container *ngFor="let session of sessions">
+        <ng-container *ngIf="session.status === 'In Progress' || session.status === 'Pending'">
+          <li class="session-item">
+            <div class="session-details">
+              <div class="status" [ngClass]="{
+                  'status-in-progress': session.status === 'In Progress',
+                  'status-completed': session.status === 'Completed',
+                  'status-pending': session.status === 'Pending'
+                }">
+                {{ session.status | uppercase }}
+              </div>
+              <div class="session-header">
+                <h3>Session #{{ session.id }}</h3>
+                <div class="dropdown" style="float: right;">
+                  <button class="btn btn-transparent" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-ellipsis-v text-primary"></i>
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="border: none; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); background-color: #fff;">
+                    <button class="dropdown-item" (click)="editSession(session)">
+                      <i class="fas fa-pencil-alt"></i> Edit
+                    </button>
+                    <button class="dropdown-item" (click)="openModal(session)">
+                      <i class="fas fa-trash"></i> Cancel
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="session-info">
+                <p><i class="fas fa-calendar-alt"></i> <strong>Wash Date:</strong> {{ session.washDate | date: 'd MMM yyyy' }}</p>
+                <p><i class="fas fa-clock"></i> <strong>Wash Time:</strong> {{ formatTime(session.washTime) }}</p>
+                <!--<p><i class="fas fa-hourglass-half"></i> <strong>Estimated Wait Time:</strong> {{ formatTime(session.estimatedWaitTime) }}</p>-->
+                <p><i class="fas fa-hourglass-half"></i> <strong>Estimated Wash Duration:</strong> {{ formatTime(session.estimatedWashDuration) }}</p>
+                <p><i class="fas fa-tint"></i> <strong>Wash Type:</strong> {{ session.washType }}</p>
+                <p><i class="fas fa-car"></i> <strong>Car:</strong> {{ session.car.make }} {{ session.car.model }}</p>
+                <p><i class="fas fa-map-marker-alt"></i> <strong>Car Wash Station:</strong> {{ session.carWashStation.name }}</p>
+              </div>
+              <!-- New button for completing the session -->
             </div>
-          </div>
-        </div>
-        <div class="session-info">
-          <p><i class="fas fa-calendar-alt"></i> <strong>Wash Date and Time:</strong> {{ session.washTime | date:'short' }}</p>
-          <p><i class="fas fa-tint"></i> <strong>Wash Type:</strong> {{ session.washType }}</p>
-          <p><i class="fas fa-hourglass-half"></i> <strong>Estimated Wait Time:</strong> {{ formatTime(session.estimatedWaitTime) }}</p>
-          <p><i class="fas fa-clock"></i> <strong>Estimated Wash Duration:</strong> {{ formatTime(session.estimatedWashDuration) }}</p>
-          <p><i class="fas fa-car"></i> <strong>Car Model:</strong> {{ session.car.make }} {{ session.car.model }}</p>
-          <p><i class="fas fa-map-marker-alt"></i> <strong>Car Wash Station:</strong> {{ session.carWashStation.name }}</p>
-        </div>
-      </div>
-    </li>
+          </li>
+        </ng-container>
+      </ng-container>
+    </ng-container>
   </ul>
 </div>
 
+<ng-template #nosessionFound>
+  <div class="col-md-12">
+    <div class="alert alert-info" role="alert">
+      No sessions found.
+    </div>
+  </div>
+</ng-template>
 
 <div class="modal" [class.show]="showModal">
-
   <div class="modal-content">
     <div class="modal-header">
       <h5 class="modal-title">Confirmation</h5>
@@ -51,11 +69,9 @@
     <div class="modal-body">
       <p>Are you sure you want to cancel this reservation?</p>
     </div>
-
     <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" (click)="closeModal()">cancel</button>
-
-      <button type="button" class="btn btn-success" (click)="cancelReservation()">confirm</button>
+      <button type="button" class="btn btn-secondary" (click)="closeModal()">Cancel</button>
+      <button type="button" class="btn btn-success" (click)="cancelReservation()">Confirm</button>
     </div>
   </div>
 </div>

@@ -11,7 +11,7 @@ export class CarService {
   private carData: any;
   constructor(private http: HttpClient) { }
 
-  getAllCarsByUser(userId: number): Observable<any[]> {
+  getAllCarsByUser(userId: any): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}/user/${userId}`);
   }
   getAllCarsByStation(stationId: number): Observable<any[]> {

@@ -69,6 +69,6 @@
   #map {   position: relative;
     width: 100%;
     width: 100%;
-    max-width: 750px; /* Limit map width */
-    height: 400px;
+    max-width: 1000px; /* Limit map width */
+    height: 500px;
     }

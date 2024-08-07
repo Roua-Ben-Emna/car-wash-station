@@ -14,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -64,6 +65,7 @@ public class CarWashSessionController {
 
     @PostMapping
     public ResponseEntity<CarWashSession> createCarWashSession(@RequestBody CarWashSession carWashSession) {
+        System.out.println( carWashSession);
         Optional<CarWashStation> carWashStationOptional = carWashStationRepository.findById(carWashSession.getCarWashStation().getId());
         if (carWashStationOptional.isPresent()) {
             carWashSession.setCarWashStation(carWashStationOptional.get());
@@ -82,6 +84,19 @@ public class CarWashSessionController {
     }
     @PutMapping("/{id}")
     public ResponseEntity<CarWashSession> updateCarWashSession(@PathVariable Long id, @RequestBody CarWashSession carWashSession) {
+        Optional<CarWashStation> carWashStationOptional = carWashStationRepository.findById(carWashSession.getCarWashStation().getId());
+        if (carWashStationOptional.isPresent()) {
+            carWashSession.setCarWashStation(carWashStationOptional.get());
+        } else {
+            throw new EntityNotFoundException("probléme dans station");
+        }
+        Optional<Car> carOptional = carRepository.findById(carWashSession.getCar().getId());
+        carOptional.ifPresent(carWashSession::setCar);
+        if (carOptional.isPresent()) {
+            carWashSession.setCar(carOptional.get());
+        } else {
+            throw new EntityNotFoundException("probléme dans voiture");
+        }
         CarWashSession updatedCarWashSession = carWashSessionService.updateCarWashSession(id, carWashSession);
         return new ResponseEntity<>(updatedCarWashSession, HttpStatus.OK);
     }
@@ -90,5 +105,31 @@ public class CarWashSessionController {
     public ResponseEntity<Void> deleteCarWashSession(@PathVariable Long id) {
         carWashSessionService.deleteCarWashSession(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+    @GetMapping("/availability")
+    public ResponseEntity<List<Date>> getAvailableDatesByStationId(@RequestParam Long stationId) {
+        List<Date> availableDates = carWashSessionService.getAvailableDatesByStationId(stationId);
+        return ResponseEntity.ok(availableDates);
+    }
+
+    @GetMapping("/unavailability")
+    public ResponseEntity<List<Date>> getUnAvailableDatesByStationId(@RequestParam Long stationId) {
+        List<Date> unavailableDates = carWashSessionService.getUnavailableDatesByStationId(stationId);
+        return ResponseEntity.ok(unavailableDates);
+    }
+
+
+    @GetMapping("/countSessions")
+    public ResponseEntity<Long> countSessionsByStationAndDate(@RequestParam Long stationId,@RequestParam String washDate) {
+        Date parsedDate = new Date(washDate);
+        long sessionCount = carWashSessionService.countSessionsByStationAndDate(stationId, parsedDate,"In Progress");
+        sessionCount+= carWashSessionService.countSessionsByStationAndDate(stationId, parsedDate,"Pending");
+        return ResponseEntity.ok(sessionCount);
+    }
+
+    @GetMapping("/stations/{stationId}/current-week")
+    public ResponseEntity<List<CarWashSession>> getSessionsForStationInCurrentWeek(@PathVariable Long stationId) {
+        List<CarWashSession> sessions = carWashSessionService.getSessionsForStationInCurrentWeek(stationId);
+        return new ResponseEntity<>(sessions, HttpStatus.OK);
     }
 }

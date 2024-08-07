@@ -1,4 +1,5 @@
 package com.isi.carwash.Controller;
+import com.isi.carwash.Entity.Car;
 import com.isi.carwash.Entity.CarWashStation;
 import com.isi.carwash.Entity.User;
 import com.isi.carwash.Repository.UserRepository;
@@ -29,6 +30,12 @@ public class CarWashStationController {
         return new ResponseEntity<>(carWashStations, HttpStatus.OK);
     }
 
+    @GetMapping("/user/{userId}")
+    public ResponseEntity<List<CarWashStation>> getAllCarWashStationsByManager(@PathVariable Long userId) {
+        List<CarWashStation> cars = carWashStationService.getAllCarWashStationsByManager(userId);
+        return new ResponseEntity<>(cars, HttpStatus.OK);
+    }
+
 
     @GetMapping("/{id}")
     public ResponseEntity<CarWashStation> getCarWashStationById(@PathVariable Long id) {
@@ -44,7 +51,7 @@ public class CarWashStationController {
             CarWashStation savedCarWashStation = carWashStationService.createCarWashStation(carWashStation);
             return new ResponseEntity<>(savedCarWashStation, HttpStatus.CREATED);
         } else {
-            throw new EntityNotFoundException("probleme");
+            throw new EntityNotFoundException("probléme");
         }
 
     }

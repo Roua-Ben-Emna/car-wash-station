@@ -5,8 +5,11 @@ import com.isi.carwash.Entity.Car;
 import com.isi.carwash.Entity.CarWashStation;
 import com.isi.carwash.Entity.User;
 import com.isi.carwash.Repository.CarRepository;
+
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -23,12 +26,15 @@ public class CarService {
     public List<Car> getAllCarsByUser(Long userId) {
         return carRepository.findByUserId(userId);
     }
+
     public List<Car> getAllCarsByStation(Long stationId) {
         return carRepository.findAllByStationId(stationId);
     }
+
     public  Car createCar(Car car){
         return carRepository.save(car);
     }
+
     public Car getCarById(Long id){
         Optional<Car> carOptional = carRepository.findById(id);
         if(carOptional.isPresent()){
@@ -41,13 +47,14 @@ public class CarService {
     public List<Car> searchCarsByMakeAndModel(String make, String model) {
         return carRepository.findByMakeAndModel(make, model);
     }
+
     public Car updateCar(Long id, Car updatedcar){
         Optional<Car> optionalCar = carRepository.findById(id);
         if(optionalCar.isPresent()) {
             Car car = optionalCar.get();
             car.setMake(updatedcar.getMake());
             car.setModel(updatedcar.getModel());
-            car.setYear(updatedcar.getYear());
+            car.setRegistrationNumber(updatedcar.getRegistrationNumber());
             car.setSize(updatedcar.getSize());
             car.setUser(car.getUser());
             return carRepository.save(car);

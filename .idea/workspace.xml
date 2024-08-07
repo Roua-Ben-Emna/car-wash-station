@@ -5,20 +5,94 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="140f50dd-f6d0-47ff-a56b-2cafc7894b11" name="Changes" comment="update  car , station , add session">
-      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/http-requests-log.http" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/httpRequests/http-requests-log.http" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/back/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/com/isi/carwash/BackendCarWashApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/com/isi/carwash/BackendCarWashApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/com/isi/carwash/Controller/CarWashSessionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/com/isi/carwash/Controller/CarWashSessionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/com/isi/carwash/Controller/CarWashStationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/com/isi/carwash/Controller/CarWashStationController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/back/src/main/java/com/isi/carwash/Controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/com/isi/carwash/Controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/com/isi/carwash/Entity/Car.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/com/isi/carwash/Entity/Car.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/com/isi/carwash/Entity/CarWashSession.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/com/isi/carwash/Entity/CarWashSession.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/com/isi/carwash/Entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/com/isi/carwash/Entity/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/com/isi/carwash/Repository/CarWashSessionRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/com/isi/carwash/Repository/CarWashSessionRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/com/isi/carwash/Repository/CarWashStationRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/com/isi/carwash/Repository/CarWashStationRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/com/isi/carwash/Service/car/CarService.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/com/isi/carwash/Service/car/CarService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/com/isi/carwash/Service/car/CarWashStationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/com/isi/carwash/Service/car/CarWashStationService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/back/src/main/java/com/isi/carwash/Service/session/CarWashSessionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/com/isi/carwash/Service/session/CarWashSessionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/com/isi/carwash/Service/user/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/com/isi/carwash/Service/user/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/com/isi/carwash/Service/user/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/com/isi/carwash/Service/user/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/com/isi/carwash/enums/UserRole.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/com/isi/carwash/enums/UserRole.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontManager/managercarwash/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontManager/managercarwash/angular.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontManager/managercarwash/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontManager/managercarwash/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontManager/managercarwash/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontManager/managercarwash/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontManager/managercarwash/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontManager/managercarwash/src/app/app.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontManager/managercarwash/src/app/app.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontManager/managercarwash/src/app/app.routes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontManager/managercarwash/src/app/pages/car-wash-station/car-wash-station.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontManager/managercarwash/src/app/pages/car-wash-station/car-wash-station.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontManager/managercarwash/src/app/pages/car-wash-station/car-wash-station.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontManager/managercarwash/src/app/pages/car-wash-station/car-wash-station.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontManager/managercarwash/src/app/pages/car-wash-station/car-wash-station.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontManager/managercarwash/src/app/pages/car-wash-station/car-wash-station.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontManager/managercarwash/src/app/pages/dashboard/dashboard.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontManager/managercarwash/src/app/pages/dashboard/dashboard.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontManager/managercarwash/src/app/pages/dashboard/dashboard.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontManager/managercarwash/src/app/pages/dashboard/dashboard.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontManager/managercarwash/src/app/pages/dashboard/dashboard.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontManager/managercarwash/src/app/pages/dashboard/dashboard.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontManager/managercarwash/src/app/pages/manager/authentication/authentication.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontManager/managercarwash/src/app/pages/manager/authentication/authentication.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontManager/managercarwash/src/app/pages/manager/authentication/authentication.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontManager/managercarwash/src/app/pages/manager/authentication/authentication.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontManager/managercarwash/src/app/pages/manager/reset-password/reset-password.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontManager/managercarwash/src/app/pages/manager/reset-password/reset-password.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontManager/managercarwash/src/app/pages/manager/reset-password/reset-password.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontManager/managercarwash/src/app/pages/manager/reset-password/reset-password.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontUser/carWashUser/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontUser/carWashUser/src/app/app-routing.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontManager/managercarwash/src/app/pages/manager/edit-account/edit-account.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontManager/managercarwash/src/app/pages/manager/edit-account/edit-account.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontManager/managercarwash/src/app/pages/session-list/session-list.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontManager/managercarwash/src/app/pages/session-list/session-list.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontManager/managercarwash/src/app/pages/session-list/session-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontManager/managercarwash/src/app/pages/session-list/session-list.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontManager/managercarwash/src/app/pages/session-list/session-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontManager/managercarwash/src/app/pages/session-list/session-list.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontManager/managercarwash/src/app/services/session-service/session.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontManager/managercarwash/src/app/services/session-service/session.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontManager/managercarwash/src/app/services/station-service/station.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontManager/managercarwash/src/app/services/station-service/station.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontManager/managercarwash/src/app/services/storage-service/local-storage.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontManager/managercarwash/src/app/services/storage-service/local-storage.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontManager/managercarwash/src/app/services/user-service/user.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontManager/managercarwash/src/app/services/user-service/user.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontManager/managercarwash/src/app/shared/layout/sidebar/sidebar.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontManager/managercarwash/src/app/shared/layout/sidebar/sidebar.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontManager/managercarwash/src/app/shared/layout/sidebar/sidebar.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontManager/managercarwash/src/app/shared/layout/sidebar/sidebar.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontUser/carWashUser/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontUser/carWashUser/angular.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontUser/carWashUser/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontUser/carWashUser/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontUser/carWashUser/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontUser/carWashUser/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontUser/carWashUser/src/app/Station/station-list/station-list.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontUser/carWashUser/src/app/Station/station-list/station-list.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontUser/carWashUser/src/app/Station/station-list/station-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontUser/carWashUser/src/app/Station/station-list/station-list.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontUser/carWashUser/src/app/Station/station-list/station-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontUser/carWashUser/src/app/Station/station-list/station-list.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontUser/carWashUser/src/app/app.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontUser/carWashUser/src/app/app.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontUser/carWashUser/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontUser/carWashUser/src/app/app.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontUser/carWashUser/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontUser/carWashUser/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontUser/carWashUser/src/app/car/car-create/car-create.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontUser/carWashUser/src/app/car/car-create/car-create.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontUser/carWashUser/src/app/car/car-create/car-create.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontUser/carWashUser/src/app/car/car-create/car-create.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontUser/carWashUser/src/app/car/car-create/car-create.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontUser/carWashUser/src/app/car/car-create/car-create.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontUser/carWashUser/src/app/car/car-edit/car-edit.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontUser/carWashUser/src/app/car/car-edit/car-edit.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontUser/carWashUser/src/app/car/car-edit/car-edit.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontUser/carWashUser/src/app/car/car-edit/car-edit.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontUser/carWashUser/src/app/car/car-edit/car-edit.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontUser/carWashUser/src/app/car/car-edit/car-edit.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontUser/carWashUser/src/app/car/car-list/car-list.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontUser/carWashUser/src/app/car/car-list/car-list.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontUser/carWashUser/src/app/car/car-list/car-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontUser/carWashUser/src/app/car/car-list/car-list.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontUser/carWashUser/src/app/car/car-list/car-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontUser/carWashUser/src/app/car/car-list/car-list.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontUser/carWashUser/src/app/footer/footer.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontUser/carWashUser/src/app/footer/footer.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontUser/carWashUser/src/app/footer/footer.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontUser/carWashUser/src/app/footer/footer.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontUser/carWashUser/src/app/header/header.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontUser/carWashUser/src/app/header/header.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontUser/carWashUser/src/app/header/header.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontUser/carWashUser/src/app/header/header.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontUser/carWashUser/src/app/header/header.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontUser/carWashUser/src/app/header/header.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontUser/carWashUser/src/app/home/home.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontUser/carWashUser/src/app/home/home.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontUser/carWashUser/src/app/home/home.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontUser/carWashUser/src/app/home/home.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontUser/carWashUser/src/app/home/home.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontUser/carWashUser/src/app/home/home.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontUser/carWashUser/src/app/services/car-service/car.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontUser/carWashUser/src/app/services/car-service/car.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontUser/carWashUser/src/app/services/session-service/session.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontUser/carWashUser/src/app/services/session-service/session.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontUser/carWashUser/src/app/services/station-service/station.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontUser/carWashUser/src/app/services/station-service/station.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontUser/carWashUser/src/app/session/session-create/session-create.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontUser/carWashUser/src/app/session/session-create/session-create.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontUser/carWashUser/src/app/session/session-create/session-create.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontUser/carWashUser/src/app/session/session-create/session-create.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontUser/carWashUser/src/app/session/session-create/session-create.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontUser/carWashUser/src/app/session/session-create/session-create.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontUser/carWashUser/src/app/session/session-edit/session-edit.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontUser/carWashUser/src/app/session/session-edit/session-edit.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontUser/carWashUser/src/app/session/session-edit/session-edit.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontUser/carWashUser/src/app/session/session-edit/session-edit.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontUser/carWashUser/src/app/session/session-edit/session-edit.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontUser/carWashUser/src/app/session/session-edit/session-edit.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontUser/carWashUser/src/app/session/session-list/session-list.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontUser/carWashUser/src/app/session/session-list/session-list.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontUser/carWashUser/src/app/session/session-list/session-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontUser/carWashUser/src/app/session/session-list/session-list.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontUser/carWashUser/src/app/session/session-list/session-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontUser/carWashUser/src/app/session/session-list/session-list.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontUser/carWashUser/src/app/user/authentication/authentication.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontUser/carWashUser/src/app/user/authentication/authentication.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontUser/carWashUser/src/app/user/authentication/authentication.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontUser/carWashUser/src/app/user/authentication/authentication.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontUser/carWashUser/src/app/user/reset-password/reset-password.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontUser/carWashUser/src/app/user/reset-password/reset-password.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontUser/carWashUser/src/app/user/reset-password/reset-password.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontUser/carWashUser/src/app/user/reset-password/reset-password.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontUser/carWashUser/src/app/user/edit-account/edit-account.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontUser/carWashUser/src/app/user/edit-account/edit-account.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontUser/carWashUser/src/app/user/edit-account/edit-account.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontUser/carWashUser/src/app/user/edit-account/edit-account.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontUser/carWashUser/src/assets/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontUser/carWashUser/src/assets/css/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontUser/carWashUser/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontUser/carWashUser/src/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontUser/carWashUser/src/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontUser/carWashUser/src/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontUser/carWashUser/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontUser/carWashUser/tsconfig.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,29 +132,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;HTTP Request.generated-requests | #36.executor&quot;: &quot;Run&quot;,
-    &quot;HTTP Request.generated-requests | #37.executor&quot;: &quot;Run&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;Spring Boot.BackendCarWashApplication.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/summer_internship/car_wash_station/back/src/main/java/com/isi/carwash/Service/user&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "HTTP Request.generated-requests | #36.executor": "Run",
+    "HTTP Request.generated-requests | #37.executor": "Run",
+    "HTTP Request.generated-requests | #42.executor": "Run",
+    "JUnit.UserServiceImplTest.createUser_ShouldReturnCreatedUser.executor": "Debug",
+    "JUnit.UserServiceImplTest.hasUserWithEmail_ShouldReturnTrue_WhenUserExists.executor": "Run",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "Spring Boot.BackendCarWashApplication.executor": "Run",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/summer_internship/car_wash_station/back/src/main/java/com/isi/carwash/Service/user",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.keymap",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\summer_internship\car_wash_station\back\src\main\java\com\isi\carwash\Service\user" />
@@ -104,6 +181,41 @@
     <configuration name="generated-requests | #37" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="37" requestIdentifier="#37" runType="Run single request">
       <method v="2" />
     </configuration>
+    <configuration name="generated-requests | #42" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="42" requestIdentifier="#42" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="UserServiceImplTest.createUser_ShouldReturnCreatedUser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="backend_car_wash" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.isi.carwash.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.isi.carwash" />
+      <option name="MAIN_CLASS_NAME" value="com.isi.carwash.UserServiceImplTest" />
+      <option name="METHOD_NAME" value="createUser_ShouldReturnCreatedUser" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserServiceImplTest.hasUserWithEmail_ShouldReturnTrue_WhenUserExists" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="backend_car_wash" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.isi.carwash.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.isi.carwash" />
+      <option name="MAIN_CLASS_NAME" value="com.isi.carwash.UserServiceImplTest" />
+      <option name="METHOD_NAME" value="hasUserWithEmail_ShouldReturnTrue_WhenUserExists" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="BackendCarWashApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="backend_car_wash" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.isi.carwash.BackendCarWashApplication" />
@@ -113,6 +225,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="HTTP Request.generated-requests | #42" />
+        <item itemvalue="JUnit.UserServiceImplTest.hasUserWithEmail_ShouldReturnTrue_WhenUserExists" />
+        <item itemvalue="JUnit.UserServiceImplTest.createUser_ShouldReturnCreatedUser" />
         <item itemvalue="HTTP Request.generated-requests | #36" />
         <item itemvalue="HTTP Request.generated-requests | #37" />
       </list>
@@ -156,7 +271,19 @@
       <workItem from="1718800022111" duration="5331000" />
       <workItem from="1718875726515" duration="21274000" />
       <workItem from="1718903380168" duration="717000" />
-      <workItem from="1718967919324" duration="5456000" />
+      <workItem from="1718967919324" duration="6535000" />
+      <workItem from="1719014593526" duration="687000" />
+      <workItem from="1719047178462" duration="442000" />
+      <workItem from="1719226375713" duration="18877000" />
+      <workItem from="1719310778384" duration="9855000" />
+      <workItem from="1719399398706" duration="12193000" />
+      <workItem from="1719487285184" duration="3055000" />
+      <workItem from="1719790191273" duration="395000" />
+      <workItem from="1719829699202" duration="8450000" />
+      <workItem from="1720087141019" duration="3987000" />
+      <workItem from="1720527417214" duration="3145000" />
+      <workItem from="1720709612711" duration="356000" />
+      <workItem from="1721052102788" duration="37540000" />
     </task>
     <task id="LOCAL-00001" summary="authentication , car , station">
       <option name="closed" value="true" />
@@ -223,17 +350,6 @@
     <MESSAGE value="authentication , car , station" />
     <MESSAGE value="update  car , station , add session" />
     <option name="LAST_COMMIT_MESSAGE" value="update  car , station , add session" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/back/src/main/java/com/isi/carwash/Configuration/SwaggerConfig.java</url>
-          <line>30</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

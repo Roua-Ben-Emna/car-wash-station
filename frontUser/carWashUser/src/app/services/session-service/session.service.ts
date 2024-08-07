@@ -12,7 +12,7 @@ export class CarWashSessionService {
 
   constructor(private http: HttpClient) {}
 
-  getSessionsByUserCarId(userId: number): Observable<any[]> {
+  getSessionsByUserCarId(userId: any): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}/user/${userId}`);
   }
   getAllCarWashSessions(): Observable<any[]> {
@@ -45,5 +45,20 @@ export class CarWashSessionService {
 
   getSessionData(): any {
     return this.sessionData;
+  }
+
+  getavailableDates(stationId: number): Observable<any> {
+    return this.http.get(`${this.apiUrl}/availability?stationId=${stationId}`);
+  }
+
+  getUnavailableDates(stationId: number): Observable<any> {
+    return this.http.get(`${this.apiUrl}/unavailability?stationId=${stationId}`);
+  }
+
+
+  countSessionsByStationAndDate(stationId: number, washDate:any): Observable<number> {
+    const url = `${this.apiUrl}/countSessions`;
+    const params = { stationId: stationId.toString(), washDate: washDate };
+    return this.http.get<number>(url, { params });
   }
 }

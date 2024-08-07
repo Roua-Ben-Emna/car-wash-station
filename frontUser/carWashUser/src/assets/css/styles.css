@@ -1017,3 +1017,12 @@ app-footer {
   z-index: 1000; /* Ensure it's above other content */
   background-color: #fff; /* Adjust as needed */
 }
+
+ p {
+  font-size: 18px; /* Ajustez cette valeur selon vos besoins */
+}
+
+ ul li {
+  font-size: 18px; /* Ajustez cette valeur selon vos besoins */
+  line-height: 1.1; /* Ajoute de l'espace entre les lignes */
+}

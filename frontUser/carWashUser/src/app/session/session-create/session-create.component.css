@@ -22,6 +22,7 @@
   label {
     display: block;
     font-weight: bold;
+    font-size: 1.3em; 
   }
   
   input[type="text"],
@@ -34,6 +35,9 @@
     box-sizing: border-box;
   }
   
+
+
+
   .btn-submit {
     background-color: #4CAF50;
     color: white;
@@ -58,3 +62,44 @@
     opacity: 0.9;
   }
   
+ 
+/* Custom date input styles */
+.custom-date-input {
+  width: 100%;
+  padding: 0.75rem 1rem; /* Padding adjusted for better spacing */
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da; /* Lighter border color */
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.custom-date-input:focus {
+  border-color: #007bff; /* Updated focus color to a more vibrant blue */
+  outline: 0; /* Remove default focus outline */
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Focus shadow effect */
+}
+
+
+
+::ng-deep .p-datepicker table td.p-datepicker-today > span {
+  background-color: rgb(71, 69, 215);
+  color: white; 
+}
+.calendar-date {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+  text-align: center;
+  border-radius: 50%;
+  background-color: transparent; /* Ensure the circle is transparent initially */
+}
+
+.unavailable-date {
+  background-color: #ff2600; /* Red color for unavailable dates */
+  color: white; /* Text color for unavailable dates */
+}

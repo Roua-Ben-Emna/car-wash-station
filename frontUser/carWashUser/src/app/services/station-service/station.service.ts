@@ -29,6 +29,8 @@ export class CarWashStationService {
     return this.http.get<any[]>(`${this.apiUrl}/search?name=${name}`);
   }
 
+
+
   // Method to create a new car wash station
 /*   createCarWashStation(carWashStation: any): Observable<any> {
     return this.http.post<any>(this.apiUrl, carWashStation);

@@ -36,6 +36,11 @@ import { StationListComponent } from './Station/station-list/station-list.compon
 import { SessionListComponent } from './session/session-list/session-list.component';
 import { SessionCreateComponent } from './session/session-create/session-create.component';
 import { SessionEditComponent } from './session/session-edit/session-edit.component';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { CalendarModule } from 'primeng/calendar';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DropdownModule } from 'primeng/dropdown';
+import {ToastModule} from 'primeng/toast';
 
 @NgModule({
   declarations: [
@@ -71,6 +76,9 @@ import { SessionEditComponent } from './session/session-edit/session-edit.compon
     SessionListComponent,
     SessionCreateComponent,
     SessionEditComponent,
+  
+
+
   ],
   imports: [
     BrowserModule,
@@ -79,6 +87,11 @@ import { SessionEditComponent } from './session/session-edit/session-edit.compon
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
+    BsDatepickerModule.forRoot(),
+    CalendarModule,
+    BrowserAnimationsModule,
+    DropdownModule,
+  
 
     
   ],

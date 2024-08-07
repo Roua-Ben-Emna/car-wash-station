@@ -2,7 +2,7 @@
 
   <div class="section-header">
       <h2 class="section-title text-center wow fadeInDown">Nearby Car Wash Stations</h2>
-      <p class="text-center wow fadeInDown">Trouver les stations de lavage proximité de vous<br> </p>
+      <p class="text-center wow fadeInDown">Discover nearby car wash stations and find the one that suits your needs best.<br> </p>
   </div>
  
   <div class="map-container">
@@ -15,8 +15,9 @@
   <div class="container">
       <div class="section-header">
           <h2 class="section-title text-center wow fadeInDown">Car Wash Stations</h2>
+          <p class="text-center wow fadeInDown">Discover car wash stations and find the one that suits your needs best.</p>
       </div>
-        <!-- Search input
+  <!-- Search input
   <div class="row mb-3">
     <div class="col-md-6 offset-md-3">
       <div class="input-group input-group-sm">
@@ -40,7 +41,8 @@
                   <ul class="price" style="width:100%">
                   <li class="header">{{ station.name }}</li>
                   <li class="grey">{{ station.location }}</li>
-                  <li class="grey">Places:  {{station.currentCarsInWash}}  / {{ station.maxCapacityCars }}</li>
+                  <li>Today's Availability: {{ availabilityMap[station.id] !== undefined ? availabilityMap[station.id] : 'Loading...' }} places</li>
+                 <!-- <li class="grey">Places:  {{station.currentCarsInWash}}  / {{ station.maxCapacityCars }}</li>-->
                   <li class="grey">
                     Services:
                     <ng-container *ngIf="station.estimateTypeExterior; else exteriorSpace">
@@ -58,8 +60,8 @@
                     </ng-container>
                     <ng-template #exteriorInteriorSpace><p class="card-text">&nbsp;</p></ng-template>
                 </li>
-                  <li class="grey">       
-                    <button class="btn btn-primary btn-add-car" style="border-radius: 5px;" (click)="reservation(station)" [disabled]="station.currentCarsInWash >= station.maxCapacityCars">
+                  <li>       
+                    <button class="btn btn-primary btn-add-car" style="border-radius: 5px;" (click)="reservation(station)">
                     To book
                     </button>
               </li>
@@ -68,7 +70,7 @@
       </div>        
       </div>
   </div>
-
+</section>
 
 
 

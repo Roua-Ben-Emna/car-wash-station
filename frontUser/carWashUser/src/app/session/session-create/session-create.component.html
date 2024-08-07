@@ -20,13 +20,28 @@
           id="carId"
         formControlName="carId"
         >
-          <option *ngFor="let car of cars" [value]="car.id"  >{{ car.model }}</option>
+        <option *ngFor="let car of cars" [value]="car.id"  >{{ car.model }}</option>
         </select>
         <div *ngIf="carWashSessionForm.get('carId')?.invalid && carWashSessionForm.get('carId')?.touched" class="text-danger">
           Car is required.
         </div>
       </div>
-  
+<!--
+     
+      <div class="form-group">
+        <label for="carId">Car:</label>
+        <p-dropdown
+          id="carId"
+          formControlName="carId"
+          [options]="cars"
+          optionLabel="model"
+          placeholder="Select a Car"
+        ></p-dropdown>
+        <div *ngIf="carWashSessionForm.get('carId')?.invalid && carWashSessionForm.get('carId')?.touched" class="text-danger">
+          Car is required.
+        </div>
+      </div> -->
+
       <div class="form-group">
         <label for="washType">Wash Type:</label>
         <select
@@ -41,7 +56,51 @@
           Wash Type is required.
         </div>
       </div>
-  
+<!--
+      <div class="form-group">
+        <label for="washDate">Wash Date:</label>
+        <input type="date" class="form-control custom-date-input"  id="washDate" formControlName="washDate" [min]="minDate" [max]="maxDate" (change)="onDateChange($event)">
+        <div *ngIf="carWashSessionForm.get('washDate')?.invalid && carWashSessionForm.get('washDate')?.touched" class="text-danger">
+          Wash Date is required.
+        </div>
+        <div *ngIf="isDateDisabled" class="text-danger">
+          Selected date is not available.
+        </div>
+      </div> -->
+
+      <div class="form-group">
+        <label for="washDate">Wash Date:</label>
+        <p-calendar 
+          id="washDate" 
+          formControlName="washDate" 
+          [minDate]="minDate" 
+          [maxDate]="maxDate" 
+          (onSelect)="onDateChange($event)"
+          dateFormat="yy-mm-dd"
+          class="max-w-full" 
+          [inline]="true" 
+          [showWeek]="true">
+          <ng-template pTemplate="date" let-date>
+            <span class="calendar-date" [ngClass]="{'unavailable-date': isUnavailable(date)}">
+              {{ date.day }}
+            </span>
+          </ng-template>
+        </p-calendar>
+        <div *ngIf="carWashSessionForm.get('washDate')?.invalid && carWashSessionForm.get('washDate')?.touched" class="text-danger">
+          Wash Date is required.
+        </div>
+        <div *ngIf="isDateDisabled" class="text-danger">
+          Selected date is not available.
+        </div>
+      </div>
+         <!-- Display current session count and station capacity -->
+    <div *ngIf="carWashSessionForm.get('washDate')?.valid">
+      <p>Current Sessions: {{ currentSessionCount }}</p>
+      <p>Station Capacity: {{ stationCapacity }}</p>
+    </div>
+      
+
+
       <button type="submit" class="btn btn-submit" [disabled]="carWashSessionForm.invalid">Create Session</button>
     </form>
   </div>

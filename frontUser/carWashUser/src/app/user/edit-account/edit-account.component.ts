@@ -30,7 +30,7 @@ export class EditAccountComponent implements OnInit {
     this.createForm();
   }
   loadUserData(): void {
-    this.userService.getUserById(1).subscribe({
+    this.userService.getUserById(this.userId).subscribe({
         next: (user) => {
             this.user = user;
             this.createForm();

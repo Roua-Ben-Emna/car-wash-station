@@ -2,17 +2,17 @@
 <form [formGroup]="carForm" (ngSubmit)="onSubmit()" class="form-container">
     <div class="form-group">
       <label for="make">Make:</label>
-      <input type="text" id="make" formControlName="make" class="form-control">
+      <input type="text" id="make" formControlName="make" class="form-control"(keyup.enter)="focusNext('model')">
     </div>
   
     <div class="form-group">
       <label for="model">Model:</label>
-      <input type="text" id="model" formControlName="model" class="form-control">
+      <input type="text" id="model" formControlName="model" class="form-control" (keyup.enter)="focusNext('registrationNumber')">
     </div>
   
     <div class="form-group">
-      <label for="year">Year:</label>
-      <input type="number" id="year" formControlName="year" class="form-control">
+      <label for="registrationNumber">registration Number:</label>
+      <input type="text" id="registrationNumber" formControlName="registrationNumber" class="form-control" (keyup.enter)="focusNext('size')">
     </div>
   
     <div class="form-group">
@@ -22,7 +22,6 @@
       </select>
     </div>
   
-    <!-- Add more form fields as needed -->
     <div class="form-buttons">
     <button type="submit" class="btn btn-submit" >Save Changes</button>
     </div>

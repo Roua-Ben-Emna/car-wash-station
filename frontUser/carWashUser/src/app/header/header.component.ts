@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 import { LocalStorageService } from '../services/storage-service/local-storage.service';
 
 @Component({
@@ -8,20 +8,45 @@ import { LocalStorageService } from '../services/storage-service/local-storage.s
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  currentUrl: string = '';
+  menuActive = false;
+  showProfileDropdown = false;
+  user: any = {};
 
-  constructor(private router: Router) { }
-  user: any = {}; 
+  constructor(private router: Router) {
+    this.currentUrl = this.router.url;
+
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.currentUrl = event.url;
+      }
+    });
+  }
+
   ngOnInit(): void {
-    this.user.firstname = LocalStorageService.getUser().firstname;
-    this.user.lastname = LocalStorageService.getUser().lastname;
-    this.user.role = LocalStorageService.getUser().role;
+    if (this.isUserLoggedIn()) {
+      const user = LocalStorageService.getUser();
+      this.user.firstname = user.firstname;
+      this.user.lastname = user.lastname;
+      this.user.role = user.role;
+    }
+    
   }
 
   isUserLoggedIn(): boolean {
     return LocalStorageService.isUserLoggedIn();
   }
 
-  setActiveLink(link: string): boolean {
-    return this.router.url === link;
+  logout() {
+    LocalStorageService.signOut();
+    this.router.navigateByUrl('/');
+  }
+
+  toggleMenu() {
+    this.menuActive = !this.menuActive;
+  }
+
+  toggleProfileDropdown() {
+    this.showProfileDropdown = !this.showProfileDropdown;
   }
 }

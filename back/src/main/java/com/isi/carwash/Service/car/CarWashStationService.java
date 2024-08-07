@@ -1,5 +1,6 @@
 package com.isi.carwash.Service.car;
 
+import com.isi.carwash.Entity.Car;
 import com.isi.carwash.Entity.CarWashStation;
 import com.isi.carwash.Repository.CarWashStationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,11 +15,14 @@ public class CarWashStationService {
     @Autowired
     private CarWashStationRepository carWashStationRepository;
 
-    private static final double DEFAULT_DISTANCE = 5000; // 5 km
+    private static final double DEFAULT_DISTANCE = 20000; // 20 km
     public List<CarWashStation> getAllCarWashStations() {
         return carWashStationRepository.findAll();
     }
 
+    public List<CarWashStation> getAllCarWashStationsByManager(Long userId) {
+        return carWashStationRepository.findByManagerId(userId);
+    }
     public CarWashStation getCarWashStationById(Long id) {
         return carWashStationRepository.findById(id).orElseThrow(() -> new RuntimeException("Car Wash Station not found"));
     }
@@ -33,7 +37,7 @@ public class CarWashStationService {
         existingCarWashStation.setLatitude(carWashStation.getLatitude());
         existingCarWashStation.setLongitude(carWashStation.getLongitude());
         existingCarWashStation.setMaxCapacityCars(carWashStation.getMaxCapacityCars());
-        existingCarWashStation.setCurrentCarsInWash(carWashStation.getCurrentCarsInWash());
+
         existingCarWashStation.setManager(carWashStation.getManager());
         existingCarWashStation.setLocation(carWashStation.getLocation());
         existingCarWashStation.setEstimateCarSmall(carWashStation.getEstimateCarSmall());

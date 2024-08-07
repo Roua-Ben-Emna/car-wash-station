@@ -1,0 +1,15 @@
+#about p {
+    font-size: 18px; /* Ajustez cette valeur selon vos besoins */
+  }
+  
+  #about ul li {
+    font-size: 18px; /* Ajustez cette valeur selon vos besoins */
+    line-height: 1.6; /* Ajoute de l'espace entre les lignes */
+    margin-bottom: 10px; /* Ajoute de l'espace entre les éléments de liste */
+  }
+
+  .portfolio-item img {
+    height: 250px; /* Définissez la hauteur souhaitée */
+    width: 100%; /* Pour maintenir la proportion de l'image */
+    object-fit: cover; /* Assure que l'image couvre complètement le conteneur sans déformer */
+}

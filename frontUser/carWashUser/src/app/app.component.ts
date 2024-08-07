@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
 
-  title='car wash'
+  title = 'Car Wash Station';
   constructor(private router: Router) {}
   isAuthenticationRoute(): boolean {
     // Get the current route URL

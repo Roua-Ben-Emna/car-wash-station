@@ -18,6 +18,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Calendar;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Service
@@ -32,21 +33,7 @@ public class UserServiceImpl implements UserService{
 
     private final VerificationTokenRepository verificationTokenRepository;
 
-   /* @PostConstruct
-    public void createAdminAccount(){
-        User adminAccount = userRepository.findByUserRole(UserRole.ADMIN);
-        if(adminAccount == null){
-            User user = new User();
-            user.setUserRole(UserRole.ADMIN);
-            user.setEmail("admin@test.com");
-            user.setFirstname("admin");
-            user.setLastname("admin");
-            user.setTelephone("99887766");
-            user.setPassword(new BCryptPasswordEncoder().encode("admin"));
-            userRepository.save(user);
 
-        }
-    }*/
 
     @Override
     public List<User> getUsers() {
@@ -128,9 +115,12 @@ public class UserServiceImpl implements UserService{
             if (user.getPassword() != null && !user.getPassword().isEmpty()) {
                 existingUser.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
             }
-            return userRepository.save(existingUser);
+            User savedUser = userRepository.save(existingUser);
+            System.out.println("User updated successfully: " + savedUser);
+            return savedUser;
+        }else {
+            throw new NoSuchElementException("User not found with id: " + id);
         }
-        return null;
     }
 
     @Override
@@ -145,8 +135,19 @@ public class UserServiceImpl implements UserService{
         }
     }
     @Override
+    public User enableUser(Long id) {
+        Optional<User> optionalUser = userRepository.findById(id);
+        if (optionalUser.isPresent()) {
+            User user = optionalUser.get();
+            user.setEnabled(true);
+            return userRepository.save(user);
+        } else {
+            throw new IllegalArgumentException("Utilisateur avec l'ID " + id + " non trouvé.");
+        }
+    }
+    @Override
     public User getUserById(Long id) {
-        System.out.println("called finduser from db");
+        System.out.println("called find user from db");
         return userRepository.findById(id).orElse(null);
 
     }
@@ -170,18 +171,6 @@ public class UserServiceImpl implements UserService{
         return userRepository.findByEmail(email);
     }
 
-    @Override
-    public void updateLocation(Long userId,double latitude, double longitude){
-        Optional<User> optionalUser = userRepository.findById(userId);
-        if (optionalUser.isPresent()) {
-            User existingUser = optionalUser.get();
-            existingUser.setLatitude(latitude);
-            existingUser.setLongitude(longitude);
-            userRepository.save(existingUser);
-        }else {
-            throw new IllegalArgumentException("Erreur lors de modifier la localisation ");
-        }
-    }
 
     @Override
     public void deleteUser(Long userId) {

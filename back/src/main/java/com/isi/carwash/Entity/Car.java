@@ -22,9 +22,9 @@ public class Car {
     private Long id;
     private String make;
     private String model;
-    private int year;
+    private String registrationNumber;
     @Enumerated(EnumType.STRING)
-    private CarSize size; // Ajouter cet attribut pour représenter la taille de la voiture
+    private CarSize size;
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;

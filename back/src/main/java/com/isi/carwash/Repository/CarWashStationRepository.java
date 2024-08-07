@@ -1,5 +1,6 @@
 package com.isi.carwash.Repository;
 
+import com.isi.carwash.Entity.Car;
 import com.isi.carwash.Entity.CarWashStation;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -16,6 +17,6 @@ public interface CarWashStationRepository extends JpaRepository<CarWashStation, 
 //                                                 @Param("longitude") double longitude,
 //                                                 @Param("distance") double distance);
 List<CarWashStation> findByNameContainingIgnoreCase(String name);
-
+    List<CarWashStation> findByManagerId(Long userId);
 
 }

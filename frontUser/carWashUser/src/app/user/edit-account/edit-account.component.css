@@ -95,3 +95,9 @@
 .btn:hover {
   opacity: 0.9;
 }
+
+label {
+  display: block;
+  font-weight: bold;
+  font-size: 1.3em; 
+}

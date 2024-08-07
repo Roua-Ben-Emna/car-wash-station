@@ -146,3 +146,31 @@
 .dropdown-item:hover {
   background-color: #f8f9fa; /* Hover background color */
 }
+
+.transparent-button {
+  background-color: transparent;
+  border-color: transparent;
+  color: #007bff; /* Couleur du texte pour le style primaire Bootstrap */
+  /* Autres styles personnalisés si nécessaire */
+}
+
+.transparent-button:hover {
+  background-color: rgba(0, 123, 255, 0.1); /* Couleur de fond lorsqu'on survole */
+  color: #0056b3; /* Couleur du texte au survol */
+}
+.position-relative {
+  position: relative;
+}
+
+.search-icon {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #aaa; /* Adjust the color as needed */
+}
+
+.form-control.pl-4 {
+  padding-left: 30px; /* Adjust this to ensure the text does not overlap with the icon */
+}

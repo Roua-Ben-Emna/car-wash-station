@@ -2,7 +2,7 @@
 <form [formGroup]="carForm" (ngSubmit)="onSubmit()" class="form-container">
     <div class="form-group">
       <label for="make">Make:</label>
-      <input type="text" id="make" formControlName="make" class="form-control">
+      <input type="text" id="make" formControlName="make" class="form-control" (keyup.enter)="focusNext('model')" >
       <div *ngIf="carForm.get('make')?.invalid && carForm.get('make')?.touched" class="text-danger">
         Make is required.
       </div>
@@ -10,17 +10,17 @@
   
     <div class="form-group">
       <label for="model">Model:</label>
-      <input type="text" id="model" formControlName="model" class="form-control">
+      <input type="text" id="model" formControlName="model" class="form-control" (keyup.enter)="focusNext('registrationNumber')">
       <div *ngIf="carForm.get('model')?.invalid && carForm.get('model')?.touched" class="text-danger">
         Model is required.
       </div>
     </div>
   
     <div class="form-group">
-      <label for="year">Year:</label>
-      <input type="number" id="year" formControlName="year" class="form-control">
-      <div *ngIf="carForm.get('year')?.invalid && carForm.get('year')?.touched" class="text-danger">
-        Year is required.
+      <label for="registrationNumber">registration Number (VIN):</label>
+      <input type="text" id="registrationNumber" formControlName="registrationNumber" class="form-control" (keyup.enter)="focusNext('size')">
+      <div *ngIf="carForm.get('registrationNumber')?.invalid && carForm.get('registrationNumber')?.touched" class="text-danger">
+        registration Number is required.
       </div>
     </div>
   
@@ -33,8 +33,7 @@
         Size is required.
       </div>
     </div>
-  
-    <!-- Add more form fields as needed -->
+
   
     <button type="submit" class="btn btn-submit" [disabled]="carForm.invalid" >Create car</button>
   </form>

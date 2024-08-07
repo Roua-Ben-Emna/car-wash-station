@@ -30,26 +30,29 @@ public class CarWashSession {
 
 
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "wash_time")
-    private Date washTime;
+    @Column(name = "wash_Date")
+    private Date washDate;
+
+    @Column(name = "wash_Time")
+    private long washTime;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "wash_type")
     private WashType washType;
 
-    @Column(name = "actual_wait_time")
-    private long actualWaitTime;
-
-    @Column(name = "actual_wash_duration")
-    private long actualWashDuration;
-
-    @Column(name = "estimated_wait_time")
-    private long estimatedWaitTime;
+//    @Column(name = "actual_wait_time")
+//    private long actualWaitTime;
+//
+//    @Column(name = "actual_wash_duration")
+//    private long actualWashDuration;
+//
+//    @Column(name = "estimated_wait_time")
+//    private long estimatedWaitTime;
 
     @Column(name = "estimated_wash_duration")
     private long estimatedWashDuration;
 
     @Column(name = "status")
     private String status;
-    private boolean notified;
+
 }

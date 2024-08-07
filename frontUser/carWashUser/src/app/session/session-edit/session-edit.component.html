@@ -1,49 +1,49 @@
 <div class="container">
-    <h2 class="form-title">Edit Car Wash Session</h2>
-    <form [formGroup]="carWashSessionForm" (ngSubmit)="onSubmit()"  class="form-container">
-      <div class="form-group">
-        <label for="stationId">Car Wash Station:</label>
-        <select
-          id="stationId"
-          formControlName="carWashStationId"
-          (ngModelChange)="onStationChange()">
-        <option *ngFor="let station of carWashStations" [value]="station.id" [selected]="station.id === defaultStationId">{{ station.name }}</option>
-        </select>
-        <div *ngIf="carWashSessionForm.get('carWashStationId')?.invalid && carWashSessionForm.get('carWashStationId')?.touched" class="text-danger">
-          Station is required.
-        </div>
+  <h2 class="form-title">Edit Car Wash Session</h2>
+  <form [formGroup]="carWashSessionForm" (ngSubmit)="onSubmit()" class="form-container">
+    <div class="form-group">
+      <label for="stationId">Car Wash Station:</label>
+      <select
+        id="stationId"
+        formControlName="carWashStationId"
+        (change)="onStationChange()">
+        <option *ngFor="let station of carWashStations" [value]="station.id" [selected]="station.id === carWashSessionForm.value.carWashStationId">
+          {{ station.name }}
+        </option>
+      </select>
+      <div *ngIf="carWashSessionForm.get('carWashStationId')?.invalid && carWashSessionForm.get('carWashStationId')?.touched" class="text-danger">
+        Station is required.
       </div>
-  
-      <div class="form-group">
-        <label for="carId">Car:</label>
-        <select
-          id="carId"
-        formControlName="carId"
-        >
-          <option *ngFor="let car of cars" [value]="car.id"  >{{ car.model }}</option>
-        </select>
-        <div *ngIf="carWashSessionForm.get('carId')?.invalid && carWashSessionForm.get('carId')?.touched" class="text-danger">
-          Car is required.
-        </div>
-      </div>
-  
-      <div class="form-group">
-        <label for="washType">Wash Type:</label>
-        <select
-          id="washType"
-          formControlName="washType"
-        >
-          <option *ngIf="showExteriorOption" value="EXTERIOR" >Exterior</option>
-          <option *ngIf="showInteriorOption" value="INTERIOR">Interior</option>
-          <option *ngIf="showExteriorInteriorOption" value="EXTERIOR_INTERIOR">Exterior & Interior</option>
-        </select>
-        <div *ngIf="carWashSessionForm.get('washType')?.invalid && carWashSessionForm.get('washType')?.touched" class="text-danger">
-          Wash Type is required.
-        </div>
-      </div>
+    </div>
 
-  
-      <button type="submit" class="btn btn-submit" [disabled]="carWashSessionForm.invalid">Save Changes</button>
-    </form>
-  </div>
-  
+    <div class="form-group">
+      <label for="carId">Car:</label>
+      <select
+        id="carId"
+        formControlName="carId">
+        <option *ngFor="let car of cars" [value]="car.id" [selected]="car.id === carWashSessionForm.value.carId">
+          {{ car.model }}
+        </option>
+      </select>
+      <div *ngIf="carWashSessionForm.get('carId')?.invalid && carWashSessionForm.get('carId')?.touched" class="text-danger">
+        Car is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="washType">Wash Type:</label>
+      <select
+        id="washType"
+        formControlName="washType">
+        <option *ngIf="showExteriorOption" value="EXTERIOR" [selected]="carWashSessionForm.value.washType === 'EXTERIOR'">Exterior</option>
+        <option *ngIf="showInteriorOption" value="INTERIOR" [selected]="carWashSessionForm.value.washType === 'INTERIOR'">Interior</option>
+        <option *ngIf="showExteriorInteriorOption" value="EXTERIOR_INTERIOR" [selected]="carWashSessionForm.value.washType === 'EXTERIOR_INTERIOR'">Exterior & Interior</option>
+      </select>
+      <div *ngIf="carWashSessionForm.get('washType')?.invalid && carWashSessionForm.get('washType')?.touched" class="text-danger">
+        Wash Type is required.
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-submit" [disabled]="carWashSessionForm.invalid">Save Changes</button>
+  </form>
+</div>
