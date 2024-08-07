@@ -1,44 +1,48 @@
-<div id="sidebar">
+<div id="sidebar" [class.active]="menuActive">
   <div class="sidebar-wrapper active">
     <div class="sidebar-header position-relative">
       <div class="d-flex justify-content-between align-items-center">
         <div class="logo">
-          <a href="index.html">SpotWash</a>
+          <a routerLink="/dashboard" *ngIf="isManagerLoggedIn()">SpotWash</a>
+          <a routerLink="/admin/user" *ngIf="isAdminLoggedIn()">SpotWash</a>
+
         </div>
-       
-        <div class="sidebar-toggler  x">
+        <div class="sidebar-toggler x" (click)="toggleMenu($event)">
           <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
         </div>
       </div>
     </div>
     <div class="sidebar-menu">
       <ul class="menu">
-        <li class="sidebar-item" [routerLinkActive]="['active']">
-          <a routerLink="/dashboard" style="cursor: pointer;" class='sidebar-link'>
+        <li class="sidebar-item" routerLinkActive="active">
+          <a routerLink="/dashboard" style="cursor: pointer;" class="sidebar-link" *ngIf="isManagerLoggedIn()" >
             <i class="bi bi-backpack-fill"></i>
             <span>Dashboard</span>
           </a>
         </li>
-        <li class="sidebar-item" [routerLinkActive]="['active']">
-          <a routerLink="/map" style="cursor: pointer;" class='sidebar-link'>
-            <i class="bi bi-backpack-fill"></i>
-            <span>map</span>
+
+        <li class="sidebar-item" routerLinkActive="active">
+          <a routerLink="/admin/user" style="cursor: pointer;" class="sidebar-link" *ngIf="isAdminLoggedIn()">
+            <i class="bi bi-person-lines-fill"></i>
+            <span>Users list</span>
           </a>
         </li>
-        <li class="sidebar-item" [routerLinkActive]="['active']">
-          <a routerLink="/station" style="cursor: pointer;" class='sidebar-link'>
+
+        <li class="sidebar-item" routerLinkActive="active">
+          <a routerLink="/station" style="cursor: pointer;" class="sidebar-link" *ngIf="isManagerLoggedIn()">
             <i class="bi bi-car-front"></i>
-            <span>Gestion des stations</span>
+            <span>Station management</span>
           </a>
         </li>
-        <li class="sidebar-item" [routerLinkActive]="['active']">
-          <a routerLink="/edit-account" style="cursor: pointer;" class='sidebar-link'>
+
+        <li class="sidebar-item" routerLinkActive="active">
+          <a routerLink="/edit-account" style="cursor: pointer;" class="sidebar-link">
             <i class="bi bi-person"></i>
             <span>Profile</span>
           </a>
         </li>
         <li class="sidebar-item">
-          <a style="cursor: pointer;" (click)="onLogout()" class='sidebar-link'>
+          <a style="cursor: pointer;" (click)="onLogout()" class="sidebar-link">
             <i class="bi bi-box-arrow-in-right"></i>
             <span>Logout</span>
           </a>

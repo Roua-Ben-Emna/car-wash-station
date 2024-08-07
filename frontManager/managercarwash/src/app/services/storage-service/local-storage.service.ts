@@ -94,7 +94,7 @@ export class LocalStorageService {
     }
 
    
-    static isAdminLoggedIn() : boolean {
+    static isManagerLoggedIn() : boolean {
         if(this.getToken() === null){
             return false;
         }
@@ -103,7 +103,35 @@ export class LocalStorageService {
         
     }
 
+    static isAdminLoggedIn() : boolean {
+        if(this.getToken() === null){
+            return false;
+        }
+        const role: string | null = this.getUserRole();
+        return role == "ADMIN" ;
+        
+    }
+
     static signOut(){
         window.localStorage.clear();
     }
+    updateUser(data: any) {
+        if (data.firstname) {
+            this.saveUserFirstname(data.firstname);
+        }
+        if (data.lastname) {
+            this.saveUserLastname(data.lastname);
+        }
+        if (data.telephone) {
+            this.saveUserTelephone(data.telephone);
+        }
+        // No need to update email as it's not changed
+    }
+    static getItem(key: string): string | null {
+        return localStorage.getItem(key);
+      }
+    
+      static setItem(key: string, value: string): void {
+        localStorage.setItem(key, value);
+      }
 }

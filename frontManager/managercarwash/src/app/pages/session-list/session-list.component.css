@@ -1,5 +1,4 @@
-
-  /* session-list.component.css */
+/* Status text styles */
 .status-pending {
   color: #ffc107; /* Yellow for pending */
   font-weight: bold;
@@ -19,3 +18,52 @@
   color: #dc3545; /* Red for cancelled */
   font-weight: bold;
 }
+
+/* Button styles */
+.btn-complete {
+  background-color: #28a745;
+  border-color: #28a745;
+}
+
+.btn-complete:hover {
+  background-color: #218838;
+  border-color: #1e7e34;
+}
+
+.btn-in-progress {
+  background-color: #17a2b8;
+  border-color: #17a2b8;
+}
+
+.btn-in-progress:hover {
+  background-color: #138496;
+  border-color: #117a8b;
+}
+
+.btn-delete {
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+
+.btn-delete:hover {
+  background-color: #c82333;
+  border-color: #bd2130;
+}
+
+/* CSS pour les tooltips */
+.btn[title]:hover::after {
+  content: attr(title);
+  position: absolute;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+  z-index: 9999;
+  /* ajustez la position du tooltip si nécessaire */
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+

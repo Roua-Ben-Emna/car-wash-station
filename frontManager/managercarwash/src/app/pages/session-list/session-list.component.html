@@ -1,51 +1,85 @@
-
 <div class="main-content">
-    <div class="container mt-4">
-      <h2>Sessions List</h2>
-      <div class="table-responsive">
-        <table class="table table-striped table-hover">
-          <thead class="thead-dark">
+  <div class="container mt-4">
+    <h2>Sessions List</h2>
+
+    <!-- Filters -->
+
+
+    <div class="table-responsive">
+      <table class="table table-striped table-hover">
+        <thead class="thead-dark">
+          <tr>
+            <th>ID</th>
+            <th>Car Model</th>
+            <th>Car Registration Number</th>
+            <th>Size of Car</th>
+            <th>Wash Type
+              <i class="bi bi-filter" (click)="toggleWashTypeDropdown()"></i>
+              <div *ngIf="showWashTypeDropdown" class="dropdown-menu show">
+                <a class="dropdown-item" (click)="setWashTypeFilter('')">All</a>
+                <a class="dropdown-item" (click)="setWashTypeFilter('INTERIOR')">INTERIOR</a>
+                <a class="dropdown-item" (click)="setWashTypeFilter('EXTERIOR_INTERIOR')">EXTERIOR_INTERIOR</a>
+                <a class="dropdown-item" (click)="setWashTypeFilter('EXTERIOR')">EXTERIOR</a>
+              </div>
+            </th>
+            <th>Wash Date
+              <form [formGroup]="filterForm">
+                <i class="bi bi-calendar" (click)="toggleDatePicker()"></i>
+                <input *ngIf="showDatePicker" type="date" class="form-control form-control-sm" formControlName="dateFilter" (change)="applyFilters()">
+              </form>
+            </th>
+            <th>Estimated Wash Duration</th>
+            <th>Status
+              <i class="bi bi-filter" (click)="toggleStatusDropdown()"></i>
+              <div *ngIf="showStatusDropdown" class="dropdown-menu show">
+                <a class="dropdown-item" (click)="setFilter('statusFilter', '')">All</a>
+                <a class="dropdown-item" (click)="setFilter('statusFilter', 'Pending')">Pending</a>
+                <a class="dropdown-item" (click)="setFilter('statusFilter', 'In Progress')">In Progress</a>
+                <a class="dropdown-item" (click)="setFilter('statusFilter', 'Completed')">Completed</a>
+              </div>
+            </th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container *ngIf="filteredSessions.length === 0">
             <tr>
-              <th>ID</th>
-              <th>Car</th>
-              <th>Size of Car</th>
-              <th>Wash Type</th>
-              <th>Reservation Time</th>
-              <th>Estimated Wait Time</th>
-              <th>Estimated Wait Duration</th>
-              <th>Status</th>
-              <th>Actions</th>
-              <!-- Add more headers as needed -->
+              <td colspan="9" class="text-center">No sessions found.</td>
             </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let session of sessions$ | async">
-              <td>{{ session.id }}</td>
-              <td>{{ session.car.make }} {{ session.car.model }}</td>
-              <td>{{ session.car.size }}</td>
-              <td>{{ session.washType }}</td>
-              <td>{{ session.washTime | date:'medium' }}</td>
-              <td>{{ formatDurationShow(session.estimatedWaitTime) }}</td>
-              <td>{{ formatDurationShow(session.estimatedWashDuration) }}</td>
-              <td [ngClass]="getStatusClass(session.status)">{{ session.status }}</td>
-              <td>
-                <button *ngIf="session.status === 'In Progress'" (click)="updateSessionStatus(session)" class="btn btn-success">
-                    <div class="d-flex align-items-center">
-                      <i class="bi bi-check2 me-1"></i>
-                      <span>Complete</span>
-                    </div>
-                  </button>
-              </td>
-              <!-- Add more columns as needed
-              <td>
-                <button *ngIf="session.status === 'In Progress'" (click)="updateSessionStatus(session)" class="btn btn-success btn-sm">
-                  <i class="fa fa-check"></i> Complete
-                </button>
-              </td>
-              -->
-            </tr>
-          </tbody>
-        </table>
-      </div>
+          </ng-container>
+          <tr *ngFor="let session of filteredSessions">
+            <td>{{ session.id }}</td>
+            <td>{{ session.car.make }} {{ session.car.model }}</td>
+            <td>{{ session.car.registrationNumber }}</td>
+            <td>{{ session.car.size }}</td>
+            <td>{{ session.washType }}</td>
+            <td>{{ session.washDate | date: 'd MMM yyyy'}} At {{ formatDurationShow(session.washTime) }}</td>
+            <td>{{ formatDurationShow(session.estimatedWashDuration) }}</td>
+            <td [ngClass]="getStatusClass(session.status)">{{ session.status }}</td>
+            <td class="d-flex">
+              <button class="btn btn-primary btn-sm me-2"
+              (click)="updateSessionStatus(session)"
+              *ngIf="session.status === 'In Progress'"
+              title="Complete">
+        <i class="bi bi-arrow-right-circle"></i>
+      </button>
+      
+      <button class="btn btn-warning btn-sm me-2"
+              (click)="updateSessionStatusInProgress(session)"
+              *ngIf="session.status === 'Pending'"
+              title="In Progress">
+        <i class="bi bi-hourglass-split"></i>
+      </button>
+      
+      <button class="btn btn-danger btn-sm me-2"
+              (click)="deleteSession(session.id)"
+              title="Delete">
+        <i class="bi bi-trash"></i>
+      </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
+</div>

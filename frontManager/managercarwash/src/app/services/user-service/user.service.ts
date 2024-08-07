@@ -15,10 +15,10 @@ export class UserService {
 
     }
 
-    getUserById(userId: number): Observable<any> {
+    getUserById(userId: any): Observable<any> {
         return this.http.get<any>(`${BASIC_URL}api/auth/user/${userId}`);
     }
-    updateUser(userId: number, user: any): Observable<any> {
+    updateUser(userId: any, user: any): Observable<any> {
         return this.http.put<any>(`${BASIC_URL}api/auth/user/${userId}`, user);
     }
          
@@ -37,8 +37,13 @@ export class UserService {
     getUsers(): Observable<any[]> {
         return this.http.get<any[]>(`${BASIC_URL}api/auth/getUsers`);
     }
+
     disableUserAccount(userId: number): Observable<any> {
         const url = `${BASIC_URL}api/auth/user/disable/${userId}`;
+        return this.http.put<any>(url, null);
+    }
+    enableUserAccount(userId: number): Observable<any> {
+        const url = `${BASIC_URL}api/auth/user/enable/${userId}`;
         return this.http.put<any>(url, null);
     }
 

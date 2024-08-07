@@ -1,11 +1,44 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../../services/auth-service/auth.service';
 import { LocalStorageService } from '../../../services/storage-service/local-storage.service';
 
+export function tunisianTelephoneValidator(): ValidatorFn {
+  return (control: AbstractControl): ValidationErrors | null => {
+    const valid = /^([2-9])[0-9]{7}$/.test(control.value);
+    return valid ? null : { invalidTelephone: true };
+  };
+}
+
+export function passwordComplexityValidator(): ValidatorFn {
+  return (control: AbstractControl): ValidationErrors | null => {
+    const value = control.value;
+
+    if (!value) {
+      return null;
+    }
+
+    const hasUpperCase = /[A-Z]/.test(value);
+    const hasLowerCase = /[a-z]/.test(value);
+    const hasNumeric = /[0-9]/.test(value);
+    const hasSpecialCharacter = /[!@#$%^&*(),.?":{}|<>]/.test(value);
+    const hasMinimumLength = value.length >= 8;
+
+    const passwordValid = hasUpperCase && hasLowerCase && hasNumeric && hasSpecialCharacter && hasMinimumLength;
+
+    return !passwordValid ? { passwordComplexity: true } : null;
+  };
+}
+
+export function onlyLettersValidator(): ValidatorFn {
+  return (control: AbstractControl): ValidationErrors | null => {
+    const valid =  /^[A-Za-z\s]+$/.test(control.value);
+    return valid ? null : { onlyLetters: true };
+  };
+}
 @Component({
   selector: 'app-authentication',
   standalone: true,
@@ -14,6 +47,7 @@ import { LocalStorageService } from '../../../services/storage-service/local-sto
   templateUrl: './authentication.component.html',
   styleUrl: './authentication.component.css'
 })
+
 export class AuthenticationComponent {
 
 
@@ -35,14 +69,16 @@ export class AuthenticationComponent {
       }
       return {}
     }
+
+
   ngOnInit(): void {
     document.body.classList.add('hide-header-footer');
     this.registerForm = this.fb.group({
-      firstname: [null, [Validators.required]],
-      lastname: [null, [Validators.required]],
+      firstname: [null, [Validators.required,onlyLettersValidator()]],
+      lastname: [null, [Validators.required,onlyLettersValidator()]],
       email: [null, [Validators.required, Validators.email]],
-      telephone: [null, [Validators.required]],
-      password: [null, [Validators.required]],
+      telephone: [null, [Validators.required, tunisianTelephoneValidator()]],
+      password: [null, [Validators.required, passwordComplexityValidator()]],
       confirmPassword: [null, [Validators.required, this.confirmationvalidator]],
       userRole:'MANAGER'
       })
@@ -88,8 +124,10 @@ export class AuthenticationComponent {
       if (userRole === "USER") {
         this.errorMessage = 'You are not allowed to log in.';
         console.log("User role 1 is not allowed to log in.");
-      } else {
-          this.router.navigateByUrl(""); // Default route for other roles
+      } else if (LocalStorageService.isManagerLoggedIn()) {
+        this.router.navigateByUrl("dashboard");}
+        else if (userRole === "ADMIN") {
+          this.router.navigateByUrl("admin/user"); // Default route for other roles
         }
   
     }, error => {

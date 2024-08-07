@@ -57,4 +57,7 @@ export class CarWashStationService {
   getStationData(): any {
     return this.stationData;
   }
+  getAllCarWashStationsByUser(userId: any): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/user/${userId}`);
+  }
 }

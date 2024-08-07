@@ -18,6 +18,7 @@ import { ResetPasswordComponent } from './pages/manager/reset-password/reset-pas
 import { SetNewPasswordComponent } from './pages/manager/set-new-password/set-new-password.component';
 import { VerificationEmailComponent } from './pages/manager/verification-email/verification-email.component';
 import { SessionListComponent } from './pages/session-list/session-list.component';
+import { ListUserComponent } from './pages/admin/list-user/list-user.component';
 
 export const routes: Routes = [
   {
@@ -61,6 +62,10 @@ export const routes: Routes = [
       {
         path : 'sessions',
         component :SessionListComponent
+      },
+      {
+        path : 'admin/user',
+        component :ListUserComponent
       },
       
     ]

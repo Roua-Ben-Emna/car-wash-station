@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -6,6 +6,8 @@ import { CarWashStationService } from '../../services/station-service/station.se
 import { HttpClientModule } from '@angular/common/http';
 import * as L from 'leaflet';
 import { Router } from '@angular/router';
+import { CarWashSessionService } from '../../services/session-service/session.service';
+import { LocalStorageService } from '../../services/storage-service/local-storage.service';
 
 @Component({
   selector: 'app-car-wash-station',
@@ -30,6 +32,7 @@ export class CarWashStationComponent {
      private carWashStationService: CarWashStationService,  
      private cdr: ChangeDetectorRef,
      private router: Router,
+     private el: ElementRef
   ) { }
 
   ngOnInit(): void {
@@ -40,7 +43,7 @@ export class CarWashStationComponent {
   }
 
   loadStations(): void {
-    this.carWashStationService.getAllCarWashStations().subscribe(
+    this.carWashStationService.getAllCarWashStationsByUser(LocalStorageService.getUser().id).subscribe(
       data => {
         this.stations = data;
       },
@@ -68,7 +71,6 @@ formatDurationShow(duration: number): string {
       longitude: ['', Validators.required],
       location: ['', Validators.required],
       maxCapacityCars: ['', Validators.required],
-      currentCarsInWash: ['', Validators.required],
       parallelCarWashing: ['', Validators.required],
       estimateTypeExterior: [''],
       estimateTypeInterior: [''],
@@ -76,7 +78,7 @@ formatDurationShow(duration: number): string {
       estimateCarSmall: ['',Validators.required],
       estimateCarMedium: ['',Validators.required],
       estimateCarLarge: ['',Validators.required],
-      manager:  { id: 1 }
+      manager:  { id:  LocalStorageService.getUser().id }
     });
     
   }
@@ -122,14 +124,14 @@ formatDurationShow(duration: number): string {
       longitude: station.longitude,
       location: station.location,
       maxCapacityCars: station.maxCapacityCars,
-      currentCarsInWash: station.currentCarsInWash,
+      parallelCarWashing: station.parallelCarWashing,
       estimateTypeExterior: this.formatDuration(station.estimateTypeExterior),
       estimateTypeInterior: this.formatDuration(station.estimateTypeInterior),
       estimateTypeExteriorInterior: this.formatDuration(station.estimateTypeExteriorInterior),
       estimateCarSmall: this.formatDuration(station.estimateCarSmall),
       estimateCarMedium: this.formatDuration(station.estimateCarMedium),
       estimateCarLarge: this.formatDuration(station.estimateCarLarge),
-      manager: { id: 1 }
+      manager: { id:  LocalStorageService.getUser().id }
     });
     this.showModal = true;
     this.cdr.detectChanges();  // Ensure DOM is updated
@@ -189,7 +191,7 @@ formatDurationShow(duration: number): string {
       }  
     
       if (formValue.manager === null || !formValue.manager.id) {
-        formValue.manager = { id: 1 };
+        formValue.manager = { id: LocalStorageService.getUser().id };
       }
       if (this.isEditMode) {
         this.carWashStationService.updateCarWashStation(this.stationToEdit.id, this.stationForm.value).subscribe(
@@ -283,9 +285,15 @@ formatDurationShow(duration: number): string {
   }
 
   openReservationsModal(stationId: Number): void {
-    
-  
-    // Navigate to the sessions list page with the station ID as a parameter
-    this.router.navigate(['/sessions'], { queryParams: { stationId } });
+        this.router.navigate(['/sessions'], { queryParams: { stationId } });
   }
+
+  focusNext(nextElementId: string) {
+    const nextElement = this.el.nativeElement.querySelector(`#${nextElementId}`);
+    if (nextElement) {
+      nextElement.focus();
+    }
+  }
+
+  
 }

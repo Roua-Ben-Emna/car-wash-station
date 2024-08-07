@@ -18,3 +18,11 @@
   left: 50%;
   transform: translateX(-50%);
 }
+.custom-info-btn {
+    background-color: #0da7d6; /* Change this to your desired color */
+    border-color: #0da7d6;
+    color: white;
+  }
+  
+
+  

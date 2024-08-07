@@ -31,6 +31,10 @@ export class CarWashSessionService {
     return this.http.get<any[]>(`${this.apiUrl}/station/${stationId}`); 
   }
 
+  getSessionsForStationInCurrentWeek(stationId: number): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/stations/${stationId}/current-week`);
+  }
+
   createCarWashSession(carWashSession: any): Observable<any> {
     return this.http.post<any>(this.apiUrl, carWashSession);
   }
@@ -43,6 +47,7 @@ export class CarWashSessionService {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 
+  
   setSessionData(data: any): void {
     this.sessionData = data;
   }

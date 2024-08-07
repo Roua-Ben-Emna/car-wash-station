@@ -21,11 +21,13 @@ interface Menu {
   imports: [RouterLink, RouterLinkActive, CommonModule, HttpClientModule],
   providers : [AuthService],
   templateUrl: './sidebar.component.html',
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  
 })
 
 export class SidebarComponent implements OnInit {
   isOpen = true
+  menuActive = false;
   user: any = {}; 
   sidebars! : Array<Menu>
   constructor(
@@ -43,13 +45,23 @@ export class SidebarComponent implements OnInit {
     this.user.role = LocalStorageService.getUser().role;
     
   }
-  isAdminLoggedIn(): boolean {
-    return LocalStorageService.isAdminLoggedIn();
+  isManagerLoggedIn(): boolean {
+    return LocalStorageService.isManagerLoggedIn();
   }
 
-  toggleSubmenu(parentIndex : number, menuIndex : number) {
-    console.log('togle')
-    this.sidebars[parentIndex].childs[menuIndex].isOpen = !this.sidebars[parentIndex].childs[menuIndex].isOpen
+  toggleSubmenu(parentIndex: number, menuIndex: number) {
+    this.sidebars[parentIndex].childs[menuIndex].isOpen = !this.sidebars[parentIndex].childs[menuIndex].isOpen;
+  }
+  toggleMenu(event: Event) {
+    event.preventDefault(); // Prevent default anchor behavior
+    this.menuActive = !this.menuActive;
+    console.log("Menu toggled:", this.menuActive); // Debugging line
+  }
+
+
+
+  isAdminLoggedIn(): boolean {
+    return LocalStorageService.isAdminLoggedIn();
   }
 
   onLogout() {
