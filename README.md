@@ -174,7 +174,7 @@ Maven and Gradle are project management and dependency management tools for Java
 
 - Edit the `application.properties` file in the `src/main/resources` directory of the backend to configure the database connection:
   ```properties
-  spring.datasource.url=jdbc:mysql://localhost:3306/car_wash_station_db
+  spring.datasource.url=jdbc:mysql://localhost:3306/washcarstation
   spring.datasource.username=root
   spring.datasource.password=your_password
   ```
