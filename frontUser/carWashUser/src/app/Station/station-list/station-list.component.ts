@@ -46,7 +46,7 @@ export class StationListComponent implements OnInit {
   }
 
   private getTodayAvailability(): void {
-    const today = new Date(); // Get the current date
+    const today = new Date(); 
     today.setHours(0, 0, 0, 0); 
     console.log(today)
     this.carWashStations.forEach(station => {
@@ -57,7 +57,7 @@ export class StationListComponent implements OnInit {
         },
         (error) => {
           console.error('Error fetching availability:', error);
-          this.availabilityMap[station.id] = -1; // Indicate error fetching availability
+          this.availabilityMap[station.id] = -1; 
         }
       );
     });

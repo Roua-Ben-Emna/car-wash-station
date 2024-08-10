@@ -3,22 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { GoogleMapsModule } from '@angular/google-maps'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AppNavigationBarComponent } from './maps/app-navigation-bar/app-navigation-bar.component';
-import { GooglemapComponent } from './maps/googlemap/googlemap.component';
-import { MapMarkerComponent } from './maps/map-marker/map-marker.component';
-import { MapInfoWindowComponent } from './maps/map-info-window/map-info-window.component';
-import { MapPolylineComponent } from './maps/map-polyline/map-polyline.component';
-import { MapPolygonComponent } from './maps/map-polygon/map-polygon.component';
-import { MapRectangleComponent } from './maps/map-rectangle/map-rectangle.component';
-import { MapCircleComponent } from './maps/map-circle/map-circle.component';
-import { MapGroundOverlayComponent } from './maps/map-ground-overlay/map-ground-overlay.component';
-import { MapKmlLayerComponent } from './maps/map-kml-layer/map-kml-layer.component';
-import { MapTrafficLayerComponent } from './maps/map-traffic-layer/map-traffic-layer.component';
-import { MapTransitLayerComponent } from './maps/map-transit-layer/map-transit-layer.component';
-import { MapBicyclingLayerComponent } from './maps/map-bicycling-layer/map-bicycling-layer.component';
-import { MapDirectionsRendererComponent } from './maps/map-directions-renderer/map-directions-renderer.component';
-import { MapHeatmapLayerComponent } from './maps/map-heatmap-layer/map-heatmap-layer.component';
-import { GeocoderComponent } from './maps/geocoder/geocoder.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
@@ -45,22 +29,6 @@ import {ToastModule} from 'primeng/toast';
 @NgModule({
   declarations: [
     AppComponent,
-    AppNavigationBarComponent,
-    GooglemapComponent,
-    MapMarkerComponent,
-    MapInfoWindowComponent,
-    MapPolylineComponent,
-    MapPolygonComponent,
-    MapRectangleComponent,
-    MapCircleComponent,
-    MapGroundOverlayComponent,
-    MapKmlLayerComponent,
-    MapTrafficLayerComponent,
-    MapTransitLayerComponent,
-    MapBicyclingLayerComponent,
-    MapDirectionsRendererComponent,
-    MapHeatmapLayerComponent,
-    GeocoderComponent,
     HeaderComponent,
     FooterComponent,
     HomeComponent,
@@ -76,8 +44,6 @@ import {ToastModule} from 'primeng/toast';
     SessionListComponent,
     SessionCreateComponent,
     SessionEditComponent,
-  
-
 
   ],
   imports: [
@@ -90,10 +56,7 @@ import {ToastModule} from 'primeng/toast';
     BsDatepickerModule.forRoot(),
     CalendarModule,
     BrowserAnimationsModule,
-    DropdownModule,
-  
-
-    
+    DropdownModule, 
   ],
   providers: [],
   bootstrap: [AppComponent],

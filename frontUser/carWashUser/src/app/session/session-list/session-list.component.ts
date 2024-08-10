@@ -12,18 +12,14 @@ import { LocalStorageService } from 'src/app/services/storage-service/local-stor
   styleUrls: ['./session-list.component.css']
 })
 export class SessionListComponent implements OnInit {
-
   sessions: any[] = [];
-  // Remplacez par l'ID de l'utilisateur actuel
   showModal = false;
   sessionToDelete: any;
   sessionToEdit: any;
   showEditModal = false;
 
   constructor(private carWashSessionService: CarWashSessionService,
-    private router: Router,
-    private carWashStationService: CarWashStationService,
-    private carService: CarService) { }
+    private router: Router) { }
 
   ngOnInit(): void {
     this.loadSessions();
@@ -45,14 +41,14 @@ export class SessionListComponent implements OnInit {
     if (!sessions) {
       return [];
     }
-    // Sort sessions by washDate (oldest first), and by washTime for the same date
+
     return sessions.sort((a, b) => {
       const dateA = new Date(a.washDate).getTime();
       const dateB = new Date(b.washDate).getTime();
       if (dateA === dateB) {
-        return b.washTime - a.washTime; // Inverse order of washTime
+        return b.washTime - a.washTime; 
       }
-      return dateA - dateB; // Inverse order of washDate
+      return dateA - dateB; 
     });
   }
 
@@ -72,12 +68,11 @@ export class SessionListComponent implements OnInit {
   }
 
   updateSessionStatus(session: any): void {
-    session.status = 'completed'; // Ensure the status matches exactly with what you use in your ngClass condition
+    session.status = 'completed';
     this.carWashSessionService.updateCarWashSession(session.id, session).subscribe(response => {
       this.loadSessions();
     });
   }
-
 
   openModal(session: any): void {
     this.sessionToDelete = session;

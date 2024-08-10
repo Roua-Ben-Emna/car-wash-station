@@ -34,7 +34,7 @@ export class CarEditComponent implements OnInit {
 
   onSubmit(): void {
     if (this.carForm.valid) {
-      const updatedCarData = { ...this.carForm.value, user: { id: LocalStorageService.getUser().id } }; // Merge userId back into car data
+      const updatedCarData = { ...this.carForm.value, user: { id: LocalStorageService.getUser().id } };
       this.carService.updateCar(this.carId, updatedCarData).subscribe(
         (response) => {
           console.log('Car data updated successfully:', response);

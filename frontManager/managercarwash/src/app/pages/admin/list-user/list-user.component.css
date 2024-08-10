@@ -1,8 +1,8 @@
 .action-buttons .button-container {
     display: flex;
-    gap: 5px; /* Adjust as needed */
+    gap: 5px; 
   }
-  /* CSS pour les tooltips */
+
 .btn[title]:hover::after {
   content: attr(title);
   position: absolute;
@@ -13,13 +13,12 @@
   font-size: 12px;
   white-space: nowrap;
   z-index: 9999;
-  /* ajustez la position du tooltip si nécessaire */
   top: 100%;
   left: 50%;
   transform: translateX(-50%);
 }
 .custom-info-btn {
-    background-color: #0da7d6; /* Change this to your desired color */
+    background-color: #0da7d6; 
     border-color: #0da7d6;
     color: white;
   }

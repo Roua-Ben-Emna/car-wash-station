@@ -49,7 +49,7 @@ export class DashboardComponent {
           sessionCounts[index] = sessionCount;
 
           sessions.forEach(session => {
-            totalWaitingTime += session.estimatedWashDuration; // Assuming this is in minutes
+            totalWaitingTime += session.estimatedWashDuration; 
           });
 
           if (sessionCount > maxSessions) {
@@ -69,10 +69,10 @@ export class DashboardComponent {
   }
 
   fetchCurrentWeekSessions(): void {
-    const userId = LocalStorageService.getUser().id; // Replace with actual logic to get userId
+    const userId = LocalStorageService.getUser().id; 
     const today = new Date();
     const startOfWeek = new Date(today);
-    startOfWeek.setDate(today.getDate() - today.getDay()); // Get start of current week
+    startOfWeek.setDate(today.getDate() - today.getDay()); 
 
     this.stationService.getAllCarWashStationsByUser(userId).subscribe(stations => {
       stations.forEach(station => {
@@ -82,8 +82,6 @@ export class DashboardComponent {
             stationName: station.name,
             sessionCounts: sessionCounts
           });
-
-          // Update chart data after fetching sessions
           this.updateChartData1();
         });
       });
@@ -94,8 +92,6 @@ export class DashboardComponent {
     this.currentWeekSessionCounts.forEach(station => {
       const labels = this.generateDateLabels();
       const data = station.sessionCounts;
-  
-      // Initialize chartData[station.stationName] if it doesn't exist
       if (!this.chartData[station.stationName]) {
         this.chartData[station.stationName] = {
           labels: labels,
@@ -110,7 +106,6 @@ export class DashboardComponent {
           ]
         };
       } else {
-        // Update existing chartData[station.stationName]
         this.chartData[station.stationName].labels = labels;
         this.chartData[station.stationName].datasets[0].data = data;
       }
@@ -118,7 +113,7 @@ export class DashboardComponent {
   }
 
   calculateSessionsByDay(sessions: any[], startOfWeek: Date): number[] {
-    const sessionCounts = new Array(7).fill(0); // Initialize array for 7 days
+    const sessionCounts = new Array(7).fill(0);
 
     sessions.forEach(session => {
       const sessionDate = new Date(session.washDate);
@@ -139,7 +134,7 @@ export class DashboardComponent {
     const labels = [];
     const today = new Date();
     const startOfWeek = new Date(today);
-    startOfWeek.setDate(today.getDate() - today.getDay()); // Get start of current week
+    startOfWeek.setDate(today.getDate() - today.getDay());
 
     for (let i = 0; i < 7; i++) {
       const date = new Date(startOfWeek);

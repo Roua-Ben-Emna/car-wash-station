@@ -78,7 +78,7 @@ export class ListUserComponent {
   enableUser(userId: number): void {
     this.userService.enableUserAccount(userId).subscribe(
       () => {
-        this.loadUsers(); // Refresh the user list after enabling an account
+        this.loadUsers(); 
       },
       error => {
         console.error('Error enabling user account:', error);
@@ -116,7 +116,7 @@ export class ListUserComponent {
         this.filteredSessions = data;
         this.selectedStationName = stationName;
         this.showSessionsSection = true;
-        this.applyFilters(); // Apply filters after fetching sessions
+        this.applyFilters(); 
       },
       error => {
         console.error('Error fetching station sessions:', error);

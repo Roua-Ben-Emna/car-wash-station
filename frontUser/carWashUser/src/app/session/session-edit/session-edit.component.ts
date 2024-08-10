@@ -16,7 +16,7 @@ export class SessionEditComponent implements OnInit {
   carWashStations: any[] = [];
   cars: any[] = [];
   userId=LocalStorageService.getUser().id;
-  sessionId!: number; // Store session ID
+  sessionId!: number; 
   selectedStation: any;
   showExteriorOption: boolean = false;
   showInteriorOption: boolean = false;
@@ -60,7 +60,7 @@ export class SessionEditComponent implements OnInit {
 
   private setDefaultStation(): void {
     const session = this.carWashSessionService.getSessionData();
-    this.sessionId = session.id; // Set the session ID
+    this.sessionId = session.id; 
     this.carWashSessionForm.patchValue({
       carWashStationId: session.carWashStation.id,
       carId: session.car.id,
@@ -111,13 +111,12 @@ export class SessionEditComponent implements OnInit {
     }
 
     const newSession = {
-      id: this.sessionId, // Include the session ID here
+      id: this.sessionId, 
       carWashStation: { id: this.carWashSessionForm.value.carWashStationId },
       car: { id: this.carWashSessionForm.value.carId },
       washType: this.carWashSessionForm.value.washType
     };
 
-    // Check if sessionId is set and valid
     if (!this.sessionId) {
       console.error('Session ID is not set or invalid.');
       return;

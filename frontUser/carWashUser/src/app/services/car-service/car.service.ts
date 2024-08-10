@@ -41,8 +41,7 @@ export class CarService {
     return this.carData;
   }
 
-    // New method to search cars by make and model
-    searchCarsByMakeAndModel(make: string, model: string): Observable<any[]> {
+  searchCarsByMakeAndModel(make: string, model: string): Observable<any[]> {
       const params = { make, model };
       return this.http.get<any[]>(`${this.apiUrl}/search`, { params });
     }

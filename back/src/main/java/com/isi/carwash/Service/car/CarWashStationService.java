@@ -1,6 +1,5 @@
 package com.isi.carwash.Service.car;
 
-import com.isi.carwash.Entity.Car;
 import com.isi.carwash.Entity.CarWashStation;
 import com.isi.carwash.Repository.CarWashStationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +36,6 @@ public class CarWashStationService {
         existingCarWashStation.setLatitude(carWashStation.getLatitude());
         existingCarWashStation.setLongitude(carWashStation.getLongitude());
         existingCarWashStation.setMaxCapacityCars(carWashStation.getMaxCapacityCars());
-
         existingCarWashStation.setManager(carWashStation.getManager());
         existingCarWashStation.setLocation(carWashStation.getLocation());
         existingCarWashStation.setEstimateCarSmall(carWashStation.getEstimateCarSmall());

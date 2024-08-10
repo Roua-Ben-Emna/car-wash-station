@@ -1,25 +1,24 @@
-/* Status text styles */
+
 .status-pending {
-  color: #ffc107; /* Yellow for pending */
+  color: #ffc107;
   font-weight: bold;
 }
 
 .status-in-progress {
-  color: #17a2b8; /* Blue for in progress */
+  color: #17a2b8;
   font-weight: bold;
 }
 
 .status-completed {
-  color: #28a745; /* Green for completed */
+  color: #28a745;
   font-weight: bold;
 }
 
 .status-cancelled {
-  color: #dc3545; /* Red for cancelled */
+  color: #dc3545;
   font-weight: bold;
 }
 
-/* Button styles */
 .btn-complete {
   background-color: #28a745;
   border-color: #28a745;

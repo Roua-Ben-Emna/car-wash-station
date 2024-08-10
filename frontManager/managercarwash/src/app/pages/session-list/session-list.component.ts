@@ -22,9 +22,7 @@ export class SessionListComponent implements OnInit {
   filterForm!: FormGroup;
   showWashTypeDropdown = false;
   showStatusDropdown = false;
-
   showDatePicker = false;
-
   constructor(
     private route: ActivatedRoute,
     private carWashSessionService: CarWashSessionService,

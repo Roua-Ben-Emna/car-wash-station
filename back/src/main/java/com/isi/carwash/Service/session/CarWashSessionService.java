@@ -1,7 +1,6 @@
 package com.isi.carwash.Service.session;
 
 import com.isi.carwash.Entity.CarWashSession;
-
 import com.isi.carwash.Entity.CarWashStation;
 import com.isi.carwash.Repository.CarWashSessionRepository;
 import com.isi.carwash.Repository.CarWashStationRepository;
@@ -19,7 +18,6 @@ import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
-import java.util.concurrent.TimeUnit;
 
 
 @Service
@@ -69,97 +67,17 @@ public class CarWashSessionService {
         }
         return washDurationMillis;
     }
-//
-//    public long calculateWaitTime(CarWashSession mySession) {
-//        long waitTimeMillis = 0;
-//
-//        CarWashStation station = mySession.getCarWashStation();
-//        Long stationId = station.getId();
-//
-//        List<CarWashSession> sessions = getInProgressSessionsByStationId(stationId);
-//        System.out.println("Total in-progress sessions for station " + stationId + ": " + sessions.size());
-//
-//        int parallelSessionsCount = 0;
-//        for (CarWashSession session : sessions) {
-//            // Check overlap with the current session
-//            if (isSessionOverlap(session, mySession)) {
-//                parallelSessionsCount++;
-//            }
-//        }
-//
-//        System.out.println("Parallel sessions count: " + parallelSessionsCount);
-//        System.out.println("Station parallel car washing capacity: " + station.getParallelCarWashing());
-//
-//        if (parallelSessionsCount  >= station.getParallelCarWashing()) {
-//            for (CarWashSession session : sessions) {
-//                long maxWashDuration = 0;
-//                boolean sameStation = session.getCarWashStation().equals(mySession.getCarWashStation());
-//                boolean statusInProgress = session.getStatus().equals("In Progress");
-//                boolean overlap = isSessionOverlap(session, mySession);
-//
-//                if (sameStation && statusInProgress && overlap) {
-//                    // Extract durations in milliseconds
-//                    long washDurationInMillis = session.getEstimatedWashDuration();
-//                    long waitTimeInMillis = session.getEstimatedWaitTime();
-//                    if (washDurationInMillis + waitTimeInMillis > maxWashDuration) {
-//                        maxWashDuration = washDurationInMillis + waitTimeInMillis; // Update the maximum wash duration if a longer one is found
-//                    }
-//                    // Calculate total wait time in milliseconds
-//                    waitTimeMillis += maxWashDuration;
-//                }
-//            }
-//        }
-//
-//        System.out.println("Total wait time: " + (waitTimeMillis / (1000 * 60)) + " minutes");
-//        return waitTimeMillis;
-//    }
-
-//    private boolean isSessionOverlap(CarWashSession session, CarWashSession mySession) {
-//        Date sessionStartTime = session.getWashDate();
-//
-//        LocalDateTime sessionStartDateTime = LocalDateTime.ofInstant(sessionStartTime.toInstant(), ZoneId.systemDefault());
-//
-//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS");
-//        String formattedSessionStartTime = sessionStartDateTime.format(formatter);
-//
-//        long washDurationMillis = session.getEstimatedWashDuration();
-//        long waitTimeMillis = session.getEstimatedWaitTime();
-//        long sessionEndMillis = sessionStartTime.getTime() + washDurationMillis + waitTimeMillis;
-//
-//        LocalDateTime sessionEndTime = LocalDateTime.ofInstant(Instant.ofEpochMilli(sessionEndMillis), ZoneId.systemDefault());
-//
-//        String formattedSessionEndTime = sessionEndTime.format(formatter);
-//
-//        LocalDateTime mySessionStartDateTime = LocalDateTime.ofInstant(mySession.getWashDate().toInstant(), ZoneId.systemDefault());
-//
-//        String formattedMySessionStartTime = mySessionStartDateTime.format(formatter);
-//
-//        System.out.println("Checking overlap for sessions:");
-//        System.out.println("Session start time: " + formattedSessionStartTime);
-//        System.out.println("Session end time: " + formattedSessionEndTime);
-//        System.out.println("My session start time: " + formattedMySessionStartTime);
-//
-//        ZonedDateTime sessionEndZonedDateTime = sessionEndTime.atZone(ZoneId.systemDefault());
-//        Date sessionEndDate = Date.from(sessionEndZonedDateTime.toInstant());
-//
-//        boolean overlap = mySessionStartDateTime.isAfter(sessionStartDateTime) && mySessionStartDateTime.isBefore(sessionEndTime);
-//        System.out.println("Overlap: " + overlap);
-//
-//        return overlap;
-//    }
 
     public CarWashSession createCarWashSession(CarWashSession carWashSession) {
         carWashSession.setWashDate(carWashSession.getWashDate());
         carWashSessionRepository.save(carWashSession);
         carWashSession.setStatus("Pending");
         carWashSession.setEstimatedWashDuration(calculateEstimatedDuration(carWashSession.getId()));
-//        carWashSession.setEstimatedWaitTime(calculateWaitTime(carWashSession));
         carWashSession.getCarWashStation().setCurrentCarsInWash( carWashSession.getCarWashStation().getCurrentCarsInWash()+1);
         carWashSession.setWashTime(setDynamicWashTime(carWashSession));
         CarWashSession savedSession = carWashSessionRepository.save(carWashSession);
         // Schedule reminder email
         scheduleReminderEmail(savedSession);
-
         return savedSession;
     }
 
@@ -183,9 +101,6 @@ public class CarWashSessionService {
     public List<CarWashSession> getAllSessionsByUser(Long userId) {
         return carWashSessionRepository.findByCarUserId(userId);
     }
-//    public List<CarWashSession> getInProgressSessionsByStationId(Long stationId) {
-//        return carWashSessionRepository.findByCarWashStationIdAndStatus(stationId, "in progress");
-//    }
 
     public long countSessionsByStationAndDate(Long stationId, Date washDate, String status) {
         LocalDate localDate = washDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
@@ -231,12 +146,9 @@ public class CarWashSessionService {
 
     private void scheduleReminderEmail(CarWashSession session) {
         long estimatedDurationMillis = session.getEstimatedWashDuration();
-//        long waitTimeMillis = session.getEstimatedWaitTime();
-
         // Récupérer la date et l'heure de début de la session
         LocalDateTime sessionStartDateTime = LocalDateTime.ofInstant(session.getWashDate().toInstant(), ZoneId.systemDefault())
                 .with(LocalTime.ofSecondOfDay(session.getWashTime() / 1000)); // Convertir les millisecondes en secondes pour LocalTime
-
         // Calculer l'heure de fin de la session
         LocalDateTime sessionEndDateTime = sessionStartDateTime
                 .plus(Duration.ofMillis(estimatedDurationMillis))

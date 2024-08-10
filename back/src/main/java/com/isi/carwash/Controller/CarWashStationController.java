@@ -1,5 +1,4 @@
 package com.isi.carwash.Controller;
-import com.isi.carwash.Entity.Car;
 import com.isi.carwash.Entity.CarWashStation;
 import com.isi.carwash.Entity.User;
 import com.isi.carwash.Repository.UserRepository;
@@ -59,7 +58,6 @@ public class CarWashStationController {
     @PutMapping("/{id}")
     public ResponseEntity<CarWashStation> updateCarWashStation(@PathVariable Long id, @RequestBody CarWashStation carWashStation) {
         CarWashStation updatedCarWashStation = carWashStationService.updateCarWashStation(id, carWashStation);
-        notifyClients();
         return new ResponseEntity<>(updatedCarWashStation, HttpStatus.OK);
     }
 
@@ -79,39 +77,5 @@ public class CarWashStationController {
     public ResponseEntity<List<CarWashStation>> getCarWashStationsByProximateLocation(@RequestParam double latitude, @RequestParam double longitude) {
         List<CarWashStation> carWashStations = carWashStationService.getCarWashStationsByProximateLocation(latitude, longitude);
         return new ResponseEntity<>(carWashStations, HttpStatus.OK);
-    }
-
-// partie le SSE information en temps réel :
-private final List<SseEmitter> emitters = new CopyOnWriteArrayList<>();
-
-    // SSE endpoint
-    @GetMapping("/sse")
-    public SseEmitter getCarWashStationsSSE() {
-        SseEmitter emitter = new SseEmitter();
-        emitters.add(emitter);
-        emitter.onCompletion(() -> emitters.remove(emitter));
-        emitter.onTimeout(() -> emitters.remove(emitter));
-        emitter.onError((ex) -> emitters.remove(emitter));
-
-        sendCarWashStations(emitter);
-
-        return emitter;
-    }
-
-    private void sendCarWashStations(SseEmitter emitter) {
-        try {
-            List<CarWashStation> carWashStations = carWashStationService.getAllCarWashStations();
-            emitter.send(SseEmitter.event()
-                    .name("carwash-stations")
-                    .data(carWashStations, MediaType.APPLICATION_JSON));
-        } catch (Exception e) {
-            emitter.completeWithError(e);
-        }
-    }
-
-    public void notifyClients() {
-        for (SseEmitter emitter : emitters) {
-            sendCarWashStations(emitter);
-        }
     }
 }

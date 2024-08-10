@@ -1,8 +1,8 @@
 .form-title {
     font-size: 24px;
     margin-bottom: 20px;
-    padding: 20px; /* Add padding */
-    text-align: center; /* Center the form */
+    padding: 20px;
+    text-align: center;
   }
   
 
@@ -16,8 +16,8 @@
   }
   
   .form-group select:focus {
-    outline: none; /* Remove the default focus outline */
-    border-color: #007bff; /* Change the border color when focused */
+    outline: none; 
+    border-color: #007bff; 
   }
   label {
     display: block;

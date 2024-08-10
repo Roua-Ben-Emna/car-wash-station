@@ -46,7 +46,6 @@ export class UserService {
         const url = `${BASIC_URL}api/auth/user/enable/${userId}`;
         return this.http.put<any>(url, null);
     }
-
     deleteUser(userId: number): Observable<any> {
         return this.http.delete(`${BASIC_URL}api/auth/user/delete/${userId}`);
     }

@@ -18,11 +18,8 @@ export class AppComponent {
 
   ngOnInit(): void {
     const isFirstVisit = LocalStorageService.getItem('isFirstVisit');
-
     if (isFirstVisit === null) {
-      // This means it's the first time the user is visiting the app
       LocalStorageService.setItem('isFirstVisit', 'false');
-
       if (!LocalStorageService.isAdminLoggedIn() && !LocalStorageService.isManagerLoggedIn()) {
         this.router.navigate(['/login']);
       }

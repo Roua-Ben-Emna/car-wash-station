@@ -1,7 +1,6 @@
 package com.isi.carwash.Controller;
 
 import com.isi.carwash.Entity.Car;
-import com.isi.carwash.Entity.CarWashSession;
 import com.isi.carwash.Entity.User;
 import com.isi.carwash.Repository.UserRepository;
 import com.isi.carwash.Service.car.CarService;

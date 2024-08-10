@@ -40,7 +40,7 @@ export class CarListComponent implements OnInit {
       this.carService.deleteCar(this.carToDelete.id).subscribe(res => {
         console.log('Car deleted successfully.');
         this.closeModal();
-        this.getAllCarsByUser(); // Reload car list without page refresh
+        this.getAllCarsByUser(); 
       }, error => {
         console.error('Error deleting car:', error);
       });

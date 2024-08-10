@@ -8,7 +8,6 @@ import com.isi.carwash.Entity.VerificationToken;
 import com.isi.carwash.Repository.UserRepository;
 import com.isi.carwash.Repository.VerificationTokenRepository;
 import com.isi.carwash.Service.user.ResetPassword.PasswordResetTokenService;
-import com.isi.carwash.enums.UserRole;
 import lombok.RequiredArgsConstructor;
 import lombok.var;
 import org.springframework.beans.factory.annotation.Autowired;

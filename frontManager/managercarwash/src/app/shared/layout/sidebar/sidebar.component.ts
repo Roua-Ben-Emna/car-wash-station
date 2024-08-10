@@ -53,9 +53,9 @@ export class SidebarComponent implements OnInit {
     this.sidebars[parentIndex].childs[menuIndex].isOpen = !this.sidebars[parentIndex].childs[menuIndex].isOpen;
   }
   toggleMenu(event: Event) {
-    event.preventDefault(); // Prevent default anchor behavior
+    event.preventDefault(); 
     this.menuActive = !this.menuActive;
-    console.log("Menu toggled:", this.menuActive); // Debugging line
+    console.log("Menu toggled:", this.menuActive); 
   }
 
 

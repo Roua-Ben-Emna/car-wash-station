@@ -87,7 +87,7 @@ formatDurationShow(duration: number): string {
     this.isEditMode = false;
     this.stationForm.reset();
     this.showModal = true;
-    this.cdr.detectChanges();  // Ensure DOM is updated
+    this.cdr.detectChanges();  
     navigator.geolocation.getCurrentPosition(
       (position) => {
         const lat = position.coords.latitude;
@@ -96,10 +96,10 @@ formatDurationShow(duration: number): string {
         
         if (this.map) {
           const customIcon = L.icon({
-            iconUrl: '../assets/images/marker2.png', // Replace with the path to your custom icon
-            iconSize: [38, 38], // Size of the icon
-            iconAnchor: [19, 38], // Point of the icon which will correspond to marker's location
-            popupAnchor: [0, -38] // Point from which the popup should open relative to the iconAnchor
+            iconUrl: '../assets/images/marker2.png', 
+            iconSize: [38, 38], 
+            iconAnchor: [19, 38], 
+            popupAnchor: [0, -38] 
           });
           this.marker = L.marker([lat, lng], { icon: customIcon }).addTo(this.map);
           this.map.setView([lat, lng], 13);
@@ -107,7 +107,6 @@ formatDurationShow(duration: number): string {
       },
       (error) => {
         console.error('Error getting current location:', error);
-        // Default to a fixed location if geolocation fails
         const defaultLat = 51.505;
       const defaultLng = -0.09;
       this.initMap(defaultLat, defaultLng);
@@ -134,14 +133,14 @@ formatDurationShow(duration: number): string {
       manager: { id:  LocalStorageService.getUser().id }
     });
     this.showModal = true;
-    this.cdr.detectChanges();  // Ensure DOM is updated
+    this.cdr.detectChanges();
     this.initMap(station.latitude, station.longitude);
     if (this.map) {
       const customIcon = L.icon({
-        iconUrl: '../assets/images/marker2.png', // Replace with the path to your custom icon
-        iconSize: [38, 38], // Size of the icon
-        iconAnchor: [19, 38], // Point of the icon which will correspond to marker's location
-        popupAnchor: [0, -38] // Point from which the popup should open relative to the iconAnchor
+        iconUrl: '../assets/images/marker2.png',
+        iconSize: [38, 38],
+        iconAnchor: [19, 38],
+        popupAnchor: [0, -38]
       });
       this.marker = L.marker([station.latitude, station.longitude], { icon: customIcon }).addTo(this.map);
       this.map.setView([station.latitude, station.longitude], 13);
@@ -170,7 +169,6 @@ formatDurationShow(duration: number): string {
       formValue.estimateCarMedium = this.convertToMilliseconds(formValue.estimateCarMedium);
       formValue.estimateCarLarge = this.convertToMilliseconds(formValue.estimateCarLarge);
       
-      // Check for null values and assign null if necessary
       if (formValue.estimateTypeExterior === null) {
         formValue.estimateTypeExterior = null;
       }
@@ -243,14 +241,10 @@ formatDurationShow(duration: number): string {
 
   }
   private initMap(lat: number, lng: number): void {
-    // Initialize the map with the provided coordinates or a default location
     this.map = L.map('map').setView([lat, lng], 13);
-
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '© OpenStreetMap contributors'
     }).addTo(this.map);
-
-    // Set up click event listener for adding markers
     this.map.on('click', (e: any) => {
       const lat = e.latlng.lat;
       const lng = e.latlng.lng;
@@ -263,10 +257,10 @@ formatDurationShow(duration: number): string {
 
   private setMapMarker(lat: number, lng: number): void {
     const customIcon = L.icon({
-      iconUrl: '../assets/images/marker2.png', // Replace with the path to your custom icon
-      iconSize: [38, 38], // Size of the icon
-      iconAnchor: [19, 38], // Point of the icon which will correspond to marker's location
-      popupAnchor: [0, -38] // Point from which the popup should open relative to the iconAnchor
+      iconUrl: '../assets/images/marker2.png', 
+      iconSize: [38, 38],
+      iconAnchor: [19, 38],
+      popupAnchor: [0, -38]
     });
     if (this.marker) {
       this.marker.setLatLng([lat, lng]);

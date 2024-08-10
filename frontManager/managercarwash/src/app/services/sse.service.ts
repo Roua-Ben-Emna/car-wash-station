@@ -25,7 +25,6 @@ export class SseService {
       };
     });
   }
-
   disconnect() {
     if (this.eventSource) {
       this.eventSource.close();

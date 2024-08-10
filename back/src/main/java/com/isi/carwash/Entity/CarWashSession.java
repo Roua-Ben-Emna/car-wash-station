@@ -1,13 +1,10 @@
 package com.isi.carwash.Entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.isi.carwash.enums.WashType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.time.Duration;
 import java.util.Date;
 
 @Data
@@ -28,7 +25,6 @@ public class CarWashSession {
     @JoinColumn(name = "car_id")
     private Car car;
 
-
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "wash_Date")
     private Date washDate;
@@ -39,15 +35,6 @@ public class CarWashSession {
     @Enumerated(EnumType.STRING)
     @Column(name = "wash_type")
     private WashType washType;
-
-//    @Column(name = "actual_wait_time")
-//    private long actualWaitTime;
-//
-//    @Column(name = "actual_wash_duration")
-//    private long actualWashDuration;
-//
-//    @Column(name = "estimated_wait_time")
-//    private long estimatedWaitTime;
 
     @Column(name = "estimated_wash_duration")
     private long estimatedWashDuration;

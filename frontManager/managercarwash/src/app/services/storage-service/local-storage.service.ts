@@ -54,8 +54,6 @@ export class LocalStorageService {
         }   
         return true;
     }
-
-
     static getUserRole() : string | null {
         const user = this.getUser();
         if( user == null) {
@@ -63,8 +61,6 @@ export class LocalStorageService {
         }
         return user.role;
     }
-
-
     static getUser() {
         const userId = localStorage.getItem(USERID);
         const role = localStorage.getItem(USERROLE);
@@ -115,6 +111,7 @@ export class LocalStorageService {
     static signOut(){
         window.localStorage.clear();
     }
+    
     updateUser(data: any) {
         if (data.firstname) {
             this.saveUserFirstname(data.firstname);
@@ -125,13 +122,13 @@ export class LocalStorageService {
         if (data.telephone) {
             this.saveUserTelephone(data.telephone);
         }
-        // No need to update email as it's not changed
     }
+
     static getItem(key: string): string | null {
         return localStorage.getItem(key);
-      }
+    }
     
-      static setItem(key: string, value: string): void {
+    static setItem(key: string, value: string): void {
         localStorage.setItem(key, value);
-      }
+    }
 }

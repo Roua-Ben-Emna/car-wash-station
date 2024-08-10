@@ -24,7 +24,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.config.ConfigDataResourceNotFoundException;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.http.HttpStatus;
@@ -34,10 +33,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
-
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.security.Key;
 import java.util.*;
 
 @Slf4j
@@ -154,7 +151,7 @@ public class UserController {
        }
    }
 
-
+    // front-end must run with port "4200" 
     private String passwordResetEmailLink(User user, String applicationUrl,
                                           String passwordToken) throws MessagingException, UnsupportedEncodingException {
         String url = "http://localhost:4200/set-new-password?token=" + passwordToken;

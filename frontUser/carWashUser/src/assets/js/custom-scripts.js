@@ -215,6 +215,6 @@ jQuery(function($) {
             map: map
         });
     }
-    google.maps.event.addDomListener(window, 'load', initialize_map);
+  
 
 });

@@ -1,19 +1,11 @@
 package com.isi.carwash.Service.car;
 
 import com.isi.carwash.Entity.Car;
-import com.isi.carwash.Entity.Car;
-import com.isi.carwash.Entity.CarWashStation;
-import com.isi.carwash.Entity.User;
-import com.isi.carwash.Repository.CarRepository;
 
+import com.isi.carwash.Repository.CarRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.CacheEvict;
-import org.springframework.cache.annotation.Cacheable;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 

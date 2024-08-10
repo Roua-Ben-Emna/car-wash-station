@@ -41,8 +41,6 @@ export class MainComponent implements OnInit, OnDestroy {
     this.subs = this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         this.breadCrumb = [];
-        // Rute telah berubah, lakukan sesuatu di sini
-        // console.log('Navigasi ke:', event.url);
         this.currentRoute = event.url;
         this.setBreadCrumb()
       }
@@ -62,7 +60,6 @@ export class MainComponent implements OnInit, OnDestroy {
   setBreadCrumb () {
     let splitRouter = this.currentRoute?.split('/');
     if(!splitRouter) return
-    // splitRouter = splitRouter.split(";")[0]
     this.parent = splitRouter[1];
     for (let x = 2; x <= splitRouter.length - 1; x++) {
       this.breadCrumb.push(splitRouter[x].split(";")[0]);

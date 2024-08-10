@@ -9,12 +9,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
-@Data  // Includes getters, setters, equals, hashCode, toString
+@Data  
 @Entity
-@NoArgsConstructor  // Empty constructor
+@NoArgsConstructor  
 @AllArgsConstructor
 public class Car {
     @Id

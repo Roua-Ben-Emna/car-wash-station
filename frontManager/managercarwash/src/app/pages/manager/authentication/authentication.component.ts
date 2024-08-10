@@ -119,7 +119,7 @@ export class AuthenticationComponent {
     ).subscribe((res) => {
       console.log(res);
 
-      const userRole = res.body.role; // Modify this based on how the role is returned in the response
+      const userRole = res.body.role;
   
       if (userRole === "USER") {
         this.errorMessage = 'You are not allowed to log in.';
@@ -127,7 +127,7 @@ export class AuthenticationComponent {
       } else if (LocalStorageService.isManagerLoggedIn()) {
         this.router.navigateByUrl("dashboard");}
         else if (userRole === "ADMIN") {
-          this.router.navigateByUrl("admin/user"); // Default route for other roles
+          this.router.navigateByUrl("admin/user");
         }
   
     }, error => {

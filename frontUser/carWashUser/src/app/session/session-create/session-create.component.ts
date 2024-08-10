@@ -15,7 +15,7 @@ export class SessionCreateComponent implements OnInit {
   carWashSessionForm: FormGroup;
   carWashStations: any[] = [];
   cars: any[] = [];
-  userId= LocalStorageService.getUser().id ; // Replace with actual user ID if needed
+  userId= LocalStorageService.getUser().id ; 
   selectedStation: any;
   defaultStationId!: number;
   showExteriorOption: boolean = false;
@@ -191,8 +191,6 @@ export class SessionCreateComponent implements OnInit {
     const selectedDate = new Date(event);
     selectedDate.setHours(0, 0, 0, 0); 
     console.log('selectedDate:', selectedDate);
-
-    // Check if the selected date is in the disabled dates array
     this.isDateDisabled = this.unavailableDates.some(d => this.isSameDate(new Date(d), selectedDate));
     console.log('Is date disabled:', this.isDateDisabled);
 
@@ -208,7 +206,7 @@ export class SessionCreateComponent implements OnInit {
 
   private stripTime(date: Date): Date {
     const strippedDate = new Date(date);
-    strippedDate.setHours(0, 0, 0, 0); // Set time to 00:00:00
+    strippedDate.setHours(0, 0, 0, 0); 
     return strippedDate;
   }
   

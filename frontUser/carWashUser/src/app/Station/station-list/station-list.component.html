@@ -17,24 +17,6 @@
           <h2 class="section-title text-center wow fadeInDown">Car Wash Stations</h2>
           <p class="text-center wow fadeInDown">Discover car wash stations and find the one that suits your needs best.</p>
       </div>
-  <!-- Search input
-  <div class="row mb-3">
-    <div class="col-md-6 offset-md-3">
-      <div class="input-group input-group-sm">
-        <input type="text" class="form-control" placeholder="Search stations by name" [(ngModel)]="searchQuery">
-        <button class="btn btn-primary" type="button" (click)="searchStations()">
-          <i class="fas fa-search"></i> Search
-        </button>
-      </div>
-    </div>
-  </div>
-  <div class="row mb-3" *ngIf="notFound">
-    <div class="col-md-6 offset-md-3">
-      <div class="alert alert-info" role="alert">
-        No stations found matching the search criteria.
-      </div>
-    </div>
-  </div> -->
       <div class="colomn"> 
       <div  *ngFor="let station of carWashStations">
           <div class="col-md-4">     
@@ -71,38 +53,3 @@
       </div>
   </div>
 </section>
-
-
-
-
-   <!--
-<div class="map-container">
-  <google-map height="400px" width="750px" [center]="center" [zoom]="zoom" (mapClick)="addMarker($event)">
-    <map-marker *ngIf="markerPosition" [position]="markerPosition" [options]="markerOptions"></map-marker>
-    <map-marker *ngFor="let station of carWashStations" [position]="{lat: station.latitude, lng: station.longitude}" [title]="station.name" (mapClick)="showStationInfo(station)"></map-marker>
-    <map-info-window *ngIf="selectedStationInfo" [options]="infoWindowOptions">
-      <div>
-        <h3>{{ selectedStationInfo.name }}</h3>
-        <p>{{ selectedStationInfo.address }}</p>
-        <p>Services: {{ selectedStationInfo.services }}</p>
-      </div>
-    </map-info-window>
-  </google-map>
-</div>
-
-
-<div class="station-list">
-    <div class="card-container">
-    <div class="card" *ngFor="let station of carWashStations">
-      <div class="card-body">
-        <h3 class="card-title">{{ station.name }}</h3>
-        <p class="card-text">{{ station.location }}</p>
-        <p class="card-text">Places disponibles: {{ station.maxCapacityCars }} - {{station.currentCarsInWash}}</p>
-        <p class="card-text" *ngIf="station.estimateTypeExterior">Services: EXTERIOR</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-</section>
--->

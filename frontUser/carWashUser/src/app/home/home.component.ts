@@ -42,7 +42,7 @@ export class HomeComponent {
 
 
   private getTodayAvailability(): void {
-    const today = new Date(); // Get the current date
+    const today = new Date(); 
     today.setHours(0, 0, 0, 0); 
     console.log(today)
     this.carWashStations.forEach(station => {
