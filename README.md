@@ -161,14 +161,14 @@ Maven and Gradle are project management and dependency management tools for Java
 #### 7.2.2. Database Configuration
 
 - Ensure that WampServer is running and that MySQL is active.
-- Create the MySQL database by importing the provided `.sql` file in the project. You can do this using phpMyAdmin.
+- Create the MySQL database by importing the provided `washcarstation.sql ` file in the project. You can do this using phpMyAdmin.
 
 #### Using phpMyAdmin:
 
 - Open phpMyAdmin via `http://localhost/phpmyadmin`.
 - Log in with your MySQL user.
 - Click on "Import."
-- Select the provided `.sql` file and click "Go."
+- Select the provided `washcarstation.sql ` file and click "Go."
 
 #### 7.2.3. Configure Database Connection
 
